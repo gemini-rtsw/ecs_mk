@@ -1,0 +1,16 @@
+$(LINUX_ONLY)#!${INSTALL}/bin/${ARCH}/ecs-mk-IOC
+
+cd ${INSTALL}
+
+## Register all support components
+dbLoadDatabase("dbd/ecs-mk-IOC.dbd")
+ecs_mk_IOC_registerRecordDeviceDriver(pdbbase)
+
+## Load record instances
+#dbLoadTemplate("db/ecs-mk-IOC.substitutions")
+#dbLoadRecords("db/ecs-mk-IOC.db", "user=mrippa")
+
+iocInit
+
+## Start any sequence programs
+#seq(sncxxx, "user=mrippa")
