@@ -1,0 +1,12 @@
+[symbol2]
+bbox 32 320 256 480
+uniq 54
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 7 0 144 464 Motion Fault Sim
+l 100 0 0 96 336 ecsFaultSim
+r 0 32 320 256 448
+r 0 32 448 256 480
+[comments]

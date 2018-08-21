@@ -6,11 +6,33 @@ cd ${INSTALL}
 dbLoadDatabase("dbd/ecs-mk-IOC.dbd")
 ecs_mk_IOC_registerRecordDeviceDriver(pdbbase)
 
-## Load record instances
-#dbLoadTemplate("db/ecs-mk-IOC.substitutions")
-#dbLoadRecords("db/ecs-mk-IOC.db", "user=mrippa")
+## Load records
+dbLoadRecords("db/ecs-mk-IOC.db", "user=mrippa")
+dbLoadRecords("db/ecs.db", "top=ec:, prtop=pr:, port=/dev/ttyS1 41")
+dbLoadRecords("db/ecsSad.db","sad=ec:sad:, ectop=ec:")
+dbLoadRecords("db/iocAdminRTEMS.db","IOC=ec:iocStats,TODFORMAT=%m/%d/%Y %H:%M:%S")
+
+## Run this to trace the stages of iocInit
+#traceIocInit
+
+# Xycom 240 initialization
+# COMMENTED OUT IN LAB SETUP
+drvXy240Config(1, 32, 0xd000)
+
+# The decimal file number, same as the 1785-KE node number
+# 56: test PLC in the CPO instrument lab
+# 11: production system and PLC in the SBF lab
+#var drvAbDf1SrcStationNumber 56
+var drvAbDf1SrcStationNumber 11
+
+# Turn on A-B debug messages - WARNING! VERY VERBOSE!
+#var drvAbDf1Debug 1
+
+# The following variables are used by the INIT command.
+# They should be initialized before calling iocInit.
+initSetParameters ("./data/ecsInitMK.pv", "top=ec:")
 
 iocInit
 
-## Start any sequence programs
-#seq(sncxxx, "user=mrippa")
+# Initialise the ECS database (no args, they were already set)
+ecsPvload

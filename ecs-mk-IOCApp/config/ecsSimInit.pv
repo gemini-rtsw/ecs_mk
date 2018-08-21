@@ -1,0 +1,71 @@
+#
+# pvload parameter definition file for ECS simulators
+#
+#
+#
+# Disable interlock cycling
+#
+long $(gis)ecMotionSimEn        = 1;	# stop cycling of Motion interlocks 
+long $(gis)ecThermalSimEn       = 1;	# stop cycling of Thermal interlocks 
+#
+# initialise interlock to CLEAR value
+#
+long $(gis)ecMotionSimIncr      = 1;	# init CLEAR Motion interlocks 
+long $(gis)ecThermalSimIncr     = 1;	# init CLEAR Thermal interlocks 
+#
+long $(gis)ecMotionSim          = 1;	# prime to CLEAR Motion interlocks 
+long $(gis)ecThermalSim         = 1;	# prime to CLEAR Thermal interlocks 
+#
+# process interlock simulators
+#
+sleep 1;
+long $(gis)ecMotionSim.PROC     = 1;	# proc CLEAR Motion interlocks 
+long $(gis)ecThermalSim.PROC    = 1;	# proc CLEAR Thermal interlocks 
+#
+# initialise the Gemini Weather Server (gws) values
+#
+long $(gws)present              = 1;    # GWS is present
+double $(gws)ahuSetPoint        = -4.9; # Air Handling Units temperature s/p
+double $(gws)windVel            = 10.00;# current wind velocity
+#
+# intitialise the Primary Control System (m1) values
+#
+long $(m1)present               = 1;    # GWS is present
+double $(m1)chillerSetPoint     = -2.4; # chiller temperature s/p
+
+# set maximum positions x100, for demand acceptance
+# 
+double ecs:domeSim:maxPos       = 36000;# max allowed dome position
+double ecs:tshSim:maxPos        = 12000;# max allowed tsh position
+double ecs:bshSim:maxPos        = 7000; # max allowed bsh position
+double ecs:evgSim:maxPos        = 11000;# max allowed evg position
+double ecs:wvgSim:maxPos        = 11000;# max allowed wvg position
+
+# set maximum velocities x100, for demand acceptance
+# 
+double ecs:domeSim:maxVel       = 300;  # max allowed dome position
+
+#
+# init motion control via ECS
+#
+long $(top)faultS6:bit0         = 0;    # clear CPLC off
+sleep 0.1;
+long $(top)faultS6:bit1         = 1;    # clear CPLC via ECS
+sleep 0.1;
+long $(top)faultS6:bit2         = 0;    # set CPLC via PCU1
+sleep 0.1;
+long $(top)faultS6:bit3         = 0;    # set CPLC via PCU2
+
+#
+# init sim faults
+#
+long $(top)faultS0:word.PROC  = 0;
+long $(top)faultS1:word.PROC  = 0;
+long $(top)faultS2:word.PROC  = 0;
+long $(top)faultS3:word.PROC  = 0;
+long $(top)faultS4:word.PROC  = 0;
+long $(top)faultS5:word.PROC  = 0;
+long $(top)faultS6:word.PROC  = 0;
+long $(top)faultS16:word.PROC  = 0;
+long $(top)faultS17:word.PROC  = 0;
+

@@ -1,0 +1,14 @@
+[symbol2]
+bbox 32 128 256 288
+port 160 192 100 0 wordOut symbol 2 256 192 0
+uniq 768
+[tools]
+[attributes]
+p 32 0 100 0 1 setWord:word 0
+[layers]
+<symbol>
+l 100 7 0 144 272 A-B Read by Bit
+l 100 0 0 48 144 ecsAbWordRead
+r 0 32 256 256 288
+r 0 32 128 256 256
+[comments]

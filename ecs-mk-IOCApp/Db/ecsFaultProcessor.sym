@@ -1,0 +1,19 @@
+[symbol2]
+bbox 32 0 320 448
+port 192 384 100 0 domeFault symbol 2 320 384 0
+port 192 320 100 0 evgFault symbol 2 320 320 0
+port 208 256 100 0 wvgFault symbol 2 320 256 0
+port 208 192 100 0 tshFault symbol 2 320 192 0
+port 192 128 100 0 bshFault symbol 2 320 128 0
+port 144 64 100 0 cardiacArrest symbol 2 320 64 0
+port 64 288 100 0 Interlock symbol 1 32 288 0
+uniq 790
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 7 0 176 432 Motion Faults
+l 100 0 0 112 16 ecsFaultProcessor
+r 0 32 0 320 416
+r 0 32 416 320 448
+[comments]

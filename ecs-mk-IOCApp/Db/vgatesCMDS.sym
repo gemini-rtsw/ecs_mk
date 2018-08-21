@@ -1,0 +1,48 @@
+[symbol2]
+bbox -128 64 320 384
+port 256 160 100 2048 flnk symbol 2 320 160 0
+port 256 224 100 2048 mess symbol 2 320 224 0
+port -48 128 100 1536 wvgProcess symbol 1 -128 128 0
+port -48 160 100 1536 wvgPosition symbol 1 -128 160 0
+port -48 192 100 1536 wvgMode symbol 1 -128 192 0
+port -48 256 100 1536 evgProcess symbol 1 -128 256 0
+port -48 288 100 1536 evgPosition symbol 1 -128 288 0
+port -48 320 100 1536 evgMode symbol 1 -128 320 0
+port 256 256 100 2048 car symbol 2 320 256 0
+uniq 411
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 80 7 0 96 368 Vent Gate Commands
+l 100 8 0 240 80 vgatesCMDS
+r 0 -64 352 256 384
+r 0 -64 64 256 352
+v 0 256 160
+320 160
+_
+v 0 256 224
+320 224
+_
+v 0 256 256
+320 256
+_
+v 0 -128 128
+-64 128
+_
+v 0 -128 160
+-64 160
+_
+v 0 -128 192
+-64 192
+_
+v 0 -128 256
+-64 256
+_
+v 0 -128 288
+-64 288
+_
+v 0 -128 320
+-64 320
+_
+[comments]

@@ -1,0 +1,11 @@
+[symbol2]
+bbox -64 64 256 256
+uniq 79
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 1 0 96 232 Plant Room Status
+r 0 -64 224 256 256
+r 0 -64 64 256 224
+[comments]

@@ -1,0 +1,166 @@
+[schematic2]
+uniq 35
+[tools]
+[detail]
+w 1284 875 100 0 n#1 ebis.bit8.FLNK 1632 592 1664 592 1664 672 1280 672 1280 1088 1376 1088 ebis.bit7.SLNK
+w 964 835 100 0 n#2 ebis.bit0.FLNK 800 1680 960 1680 960 0 1376 0 ebis.bit11.SLNK
+w 610 651 100 0 n#3 ebis.bit12.FLNK 800 560 864 560 864 640 416 640 416 1088 544 1088 ebis.bit3.SLNK
+w 1442 1355 100 0 n#4 ebis.bit6.FLNK 1632 1296 1664 1296 1664 1344 1280 1344 1280 1472 1376 1472 ebis.bit5.SLNK
+w 1442 1547 100 0 n#5 ebis.bit5.FLNK 1632 1488 1664 1488 1664 1536 1280 1536 1280 1664 1376 1664 ebis.bit4.SLNK
+w 610 1547 100 0 n#6 ebis.bit1.FLNK 800 1488 832 1488 832 1536 448 1536 448 1664 544 1664 ebis.bit0.SLNK
+w 610 1355 100 0 n#7 ebis.bit2.FLNK 800 1296 832 1296 832 1344 448 1344 448 1472 544 1472 ebis.bit1.SLNK
+w 1442 1163 100 0 n#8 ebis.bit7.FLNK 1632 1104 1664 1104 1664 1152 1280 1152 1280 1280 1376 1280 ebis.bit6.SLNK
+w 610 1163 100 0 n#9 ebis.bit3.FLNK 800 1104 832 1104 832 1152 448 1152 448 1280 544 1280 ebis.bit2.SLNK
+w 1442 459 100 0 n#10 ebis.bit9.FLNK 1632 400 1664 400 1664 448 1280 448 1280 576 1376 576 ebis.bit8.SLNK
+w 1442 267 100 0 n#11 ebis.bit10.FLNK 1632 208 1664 208 1664 256 1280 256 1280 384 1376 384 ebis.bit9.SLNK
+w 1442 75 100 0 n#12 ebis.bit11.FLNK 1632 16 1664 16 1664 64 1280 64 1280 192 1376 192 ebis.bit10.SLNK
+w 610 427 100 0 n#13 ebis.bit13.FLNK 800 368 832 368 832 416 448 416 448 544 544 544 ebis.bit12.SLNK
+w 610 235 100 0 n#14 ebis.bit14.FLNK 800 176 832 176 832 224 448 224 448 352 544 352 ebis.bit13.SLNK
+w 610 43 100 0 n#15 ebis.bit15.FLNK 800 -16 832 -16 832 32 448 32 448 160 544 160 ebis.bit14.SLNK
+w 228 251 100 0 n#16 embbid.bits.FLNK 128 544 224 544 224 -32 544 -32 ebis.bit15.SLNK
+w 260 283 100 0 n#17 embbid.bits.BF 128 576 256 576 256 0 544 0 ebis.bit15.INP
+w 292 395 100 0 n#18 embbid.bits.BE 128 608 288 608 288 192 544 192 ebis.bit14.INP
+w 324 507 100 0 n#19 embbid.bits.BD 128 640 320 640 320 384 544 384 ebis.bit13.INP
+w 210 683 100 0 n#20 embbid.bits.BC 128 672 352 672 352 576 544 576 ebis.bit12.INP
+w 546 707 100 0 n#21 embbid.bits.BB 128 704 1024 704 1024 32 1376 32 ebis.bit11.INP
+w 562 739 100 0 n#22 embbid.bits.BA 128 736 1056 736 1056 224 1376 224 ebis.bit10.INP
+w 578 771 100 0 n#23 embbid.bits.B9 128 768 1088 768 1088 416 1376 416 ebis.bit9.INP
+w 594 803 100 0 n#24 embbid.bits.B8 128 800 1120 800 1120 608 1376 608 ebis.bit8.INP
+w 594 843 100 0 n#25 embbid.bits.B7 128 832 1120 832 1120 1120 1376 1120 ebis.bit7.INP
+w 578 875 100 0 n#26 embbid.bits.B6 128 864 1088 864 1088 1312 1376 1312 ebis.bit6.INP
+w 562 907 100 0 n#27 embbid.bits.B5 128 896 1056 896 1056 1504 1376 1504 ebis.bit5.INP
+w 546 939 100 0 n#28 embbid.bits.B4 128 928 1024 928 1024 1696 1376 1696 ebis.bit4.INP
+w 210 971 100 0 n#29 embbid.bits.B3 128 960 352 960 352 1120 544 1120 ebis.bit3.INP
+w 324 1147 100 0 n#30 embbid.bits.B2 128 992 320 992 320 1312 544 1312 ebis.bit2.INP
+w 292 1259 100 0 n#31 embbid.bits.B1 128 1024 288 1024 288 1504 544 1504 ebis.bit1.INP
+w 260 1371 100 0 n#32 embbid.bits.B0 128 1056 256 1056 256 1696 544 1696 ebis.bit0.INP
+w -798 787 100 0 n#33 hwin.hwin#767.in -800 784 -736 784 eais.word.INP
+w -430 747 -100 0 wordOut eais.word.VAL -480 736 -320 736 -320 800 -192 800 embbid.bits.INP
+w -324 987 -100 0 wordOut junction -320 800 -320 1184 -176 1184 outhier.wordOut.p
+w -366 779 100 0 n#34 eais.word.FLNK -480 768 -192 768 embbid.bits.SLNK
+[cell use]
+use eborderC -1376 -569 100 0 eborderC#837
+xform 0 304 736
+p 1308 -412 100 1024 -1 author:W.N. Rambold
+p 1304 -444 100 1024 -1 date:May 8, 1998
+p 1704 -444 80 768 -1 file:ecsAbWordRead.sch
+p 1696 -416 100 0 0 page:
+p 1808 -416 100 0 0 pages:
+p 1424 -448 100 0 0 primitive:eborderC
+p 1648 -292 150 256 -1 project:Enclosure Control System
+p 1472 -416 100 0 0 revision:$Revision: 1.1.1.1 $
+p 1424 -304 150 768 0 system:
+p 1652 -356 200 256 -1 title:A-B Read by Bit
+use ebis 544 1591 100 0 bit0
+xform 0 672 1664
+p 320 1502 100 0 0 ONAM:SET
+p 640 1552 100 0 1 PV:$(top)$(dev)$(word):
+p 320 1662 100 0 0 SCAN:Passive
+p 320 1534 100 0 0 ZNAM:CLEAR
+use ebis 544 1399 100 0 bit1
+xform 0 672 1472
+p 320 1310 100 0 0 ONAM:SET
+p 640 1360 100 0 1 PV:$(top)$(dev)$(word):
+p 320 1470 100 0 0 SCAN:Passive
+p 320 1342 100 0 0 ZNAM:CLEAR
+use ebis 544 1207 100 0 bit2
+xform 0 672 1280
+p 320 1118 100 0 0 ONAM:SET
+p 640 1168 100 0 1 PV:$(top)$(dev)$(word):
+p 320 1278 100 0 0 SCAN:Passive
+p 320 1150 100 0 0 ZNAM:CLEAR
+use ebis 544 1015 100 0 bit3
+xform 0 672 1088
+p 320 926 100 0 0 ONAM:SET
+p 640 976 100 0 1 PV:$(top)$(dev)$(word):
+p 320 1086 100 0 0 SCAN:Passive
+p 320 958 100 0 0 ZNAM:CLEAR
+use ebis 544 471 100 0 bit12
+xform 0 672 544
+p 320 382 100 0 0 ONAM:SET
+p 640 432 100 0 1 PV:$(top)$(dev)$(word):
+p 320 542 100 0 0 SCAN:Passive
+p 320 414 100 0 0 ZNAM:CLEAR
+use ebis 544 279 100 0 bit13
+xform 0 672 352
+p 320 190 100 0 0 ONAM:SET
+p 640 240 100 0 1 PV:$(top)$(dev)$(word):
+p 320 350 100 0 0 SCAN:Passive
+p 320 222 100 0 0 ZNAM:CLEAR
+use ebis 544 87 100 0 bit14
+xform 0 672 160
+p 320 -2 100 0 0 ONAM:SET
+p 640 48 100 0 1 PV:$(top)$(dev)$(word):
+p 320 158 100 0 0 SCAN:Passive
+p 320 30 100 0 0 ZNAM:CLEAR
+use ebis 544 -105 100 0 bit15
+xform 0 672 -32
+p 320 -194 100 0 0 ONAM:SET
+p 640 -144 100 0 1 PV:$(top)$(dev)$(word):
+p 320 -34 100 0 0 SCAN:Passive
+p 320 -162 100 0 0 ZNAM:CLEAR
+use ebis 1376 1591 100 0 bit4
+xform 0 1504 1664
+p 1152 1502 100 0 0 ONAM:SET
+p 1472 1552 100 0 1 PV:$(top)$(dev)$(word):
+p 1152 1662 100 0 0 SCAN:Passive
+p 1152 1534 100 0 0 ZNAM:CLEAR
+use ebis 1376 1399 100 0 bit5
+xform 0 1504 1472
+p 1152 1310 100 0 0 ONAM:SET
+p 1472 1360 100 0 1 PV:$(top)$(dev)$(word):
+p 1152 1470 100 0 0 SCAN:Passive
+p 1152 1342 100 0 0 ZNAM:CLEAR
+use ebis 1376 1207 100 0 bit6
+xform 0 1504 1280
+p 1152 1118 100 0 0 ONAM:SET
+p 1472 1168 100 0 1 PV:$(top)$(dev)$(word):
+p 1152 1278 100 0 0 SCAN:Passive
+p 1152 1150 100 0 0 ZNAM:CLEAR
+use ebis 1376 1015 100 0 bit7
+xform 0 1504 1088
+p 1152 926 100 0 0 ONAM:SET
+p 1472 976 100 0 1 PV:$(top)$(dev)$(word):
+p 1152 1086 100 0 0 SCAN:Passive
+p 1152 958 100 0 0 ZNAM:CLEAR
+use ebis 1376 503 100 0 bit8
+xform 0 1504 576
+p 1152 414 100 0 0 ONAM:SET
+p 1472 464 100 0 1 PV:$(top)$(dev)$(word):
+p 1152 574 100 0 0 SCAN:Passive
+p 1152 446 100 0 0 ZNAM:CLEAR
+use ebis 1376 311 100 0 bit9
+xform 0 1504 384
+p 1152 222 100 0 0 ONAM:SET
+p 1472 272 100 0 1 PV:$(top)$(dev)$(word):
+p 1152 382 100 0 0 SCAN:Passive
+p 1152 254 100 0 0 ZNAM:CLEAR
+use ebis 1376 119 100 0 bit10
+xform 0 1504 192
+p 1152 30 100 0 0 ONAM:SET
+p 1472 80 100 0 1 PV:$(top)$(dev)$(word):
+p 1152 190 100 0 0 SCAN:Passive
+p 1152 62 100 0 0 ZNAM:CLEAR
+use ebis 1376 -73 100 0 bit11
+xform 0 1504 0
+p 1152 -162 100 0 0 ONAM:SET
+p 1472 -112 100 0 1 PV:$(top)$(dev)$(word):
+p 1152 -2 100 0 0 SCAN:Passive
+p 1152 -130 100 0 0 ZNAM:CLEAR
+use outhier -208 1143 100 0 wordOut
+xform 0 -192 1184
+use hwin -992 743 100 0 hwin#767
+xform 0 -896 784
+p -1200 768 100 0 -1 val(in):@$(ab) $(word)
+use eais -736 679 100 0 word
+xform 0 -608 752
+p -672 640 100 0 1 DTYP:AB DF1 serial
+p -992 622 100 0 0 LINR:NO CONVERSION
+p -672 576 100 0 1 PV:$(top)$(dev)$(word):
+p -664 608 100 0 1 SCAN:.5 second
+use embbid -128 480 100 0 bits
+xform 0 -32 752
+p -172 396 100 0 1 PV:$(top)$(dev)$(word):
+p -192 1102 100 0 0 SCAN:Passive
+p -192 604 100 0 0 typ(INP):path
+[comments]

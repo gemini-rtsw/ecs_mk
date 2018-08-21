@@ -1,0 +1,11 @@
+[symbol2]
+bbox 32 32 320 288
+uniq 251
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 150 7 0 176 192 General Status
+l 100 0 0 160 48 generalStatus
+r 0 32 32 320 288
+[comments]

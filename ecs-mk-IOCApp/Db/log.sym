@@ -1,0 +1,14 @@
+[symbol2]
+bbox 0 32 192 192
+port 184 60 100 2048 flnk symbol 2 192 64 0
+port 184 92 100 2048 mess symbol 2 192 96 0
+port 184 124 100 2048 car symbol 2 192 128 0
+uniq 42
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 2 0 48 48 log
+l 150 1 0 96 160 Log Cmd
+r 0 0 32 192 192
+[comments]

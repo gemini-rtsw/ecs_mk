@@ -1,0 +1,36 @@
+[symbol2]
+bbox -96 96 352 288
+port 288 160 100 2048 flnk symbol 2 352 160 0
+port 288 192 100 2048 mess symbol 2 352 192 0
+port -16 128 100 1536 Process symbol 1 -96 128 0
+port -16 192 100 1536 Position symbol 1 -96 192 0
+port -16 224 100 1536 Mode symbol 1 -96 224 0
+port 288 224 100 2048 car symbol 2 352 224 0
+uniq 336
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 8 0 272 112 domeCMDS
+l 100 7 0 128 272 Dome Commands
+r 0 -32 96 288 256
+r 0 -32 256 288 288
+v 0 352 160
+288 160
+_
+v 0 352 192
+288 192
+_
+v 0 -96 224
+-32 224
+_
+v 0 -96 192
+-32 192
+_
+v 0 -96 128
+-32 128
+_
+v 0 352 224
+288 224
+_
+[comments]

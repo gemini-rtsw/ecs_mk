@@ -1,0 +1,11 @@
+[symbol2]
+bbox -336 0 -64 128
+uniq 0
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 40 0 0 -144 16 drivePowerState
+l 100 0 0 -304 64 Drive Power Status
+r 0 -336 0 -64 128
+[comments]

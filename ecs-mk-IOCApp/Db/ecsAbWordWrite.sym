@@ -1,0 +1,13 @@
+[symbol2]
+bbox 32 96 256 256
+uniq 630
+[tools]
+[attributes]
+p 32 64 100 0 1 setWord:word 0
+[layers]
+<symbol>
+l 100 7 0 144 240 A-B Write by Bit
+l 100 0 0 64 160 ecsAbWordWrite
+r 0 32 224 256 256
+r 0 32 96 256 224
+[comments]

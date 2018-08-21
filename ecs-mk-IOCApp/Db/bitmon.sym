@@ -1,0 +1,18 @@
+[symbol2]
+bbox -320 128 -192 224
+port -320 198 100 0 SLNK symbol 1 -320 192 0
+port -320 166 100 0 INP symbol 1 -320 160 0
+uniq 0
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 50 0 1 -224 144 Bit Monitor
+r 0 -256 128 -192 224
+v 0 -320 160
+-256 160
+_
+v 0 -320 192
+-256 192
+_
+[comments]

@@ -1,0 +1,11 @@
+[symbol2]
+bbox 32 32 320 288
+uniq 268
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 150 7 0 176 192 Dome SAD
+l 100 0 0 192 48 domeSAD
+r 0 32 32 320 288
+[comments]

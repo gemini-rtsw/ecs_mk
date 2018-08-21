@@ -12,6 +12,18 @@ vpath %.db $(SYS_DB_PATHS)
 # Create and install (or just install) into <top>/db
 # databases, templates, substitutions like this
 # DB += xxx.db
+DEPSCHS = $(wildcard ../*.sch)
+DB += ecs.db
+DB += ecsSim.db
+DB += deiceTop.db
+DB += ecsSad.db
+
+# not needed
+#DB += eecsmotors.sym
+#DB += memsource.db
+#DB += sadtop.db
+
+DB += iocAdminRTEMS.db
 
 include $(TOP)/configure/RULES
 #----------------------------------------

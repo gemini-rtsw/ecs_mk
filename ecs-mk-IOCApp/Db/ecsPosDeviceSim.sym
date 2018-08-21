@@ -1,0 +1,12 @@
+[symbol2]
+bbox 32 32 256 192
+uniq 526
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 7 0 144 176 Pos Device Sim
+l 100 0 0 64 48 ecsPosDeviceSim
+r 0 32 160 256 192
+r 0 32 32 256 192
+[comments]

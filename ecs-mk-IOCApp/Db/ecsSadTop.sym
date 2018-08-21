@@ -1,0 +1,21 @@
+[symbol2]
+bbox -64 48 592 768
+uniq 50
+[tools]
+[attributes]
+[layers]
+<symbol>
+a 0 264 432 544 272 240
+l 600 7 0 272 416 ecsSadTop
+v 0 -16 272
+-16 48
+544 48
+544 272
+_
+v 0 -32 304
+560 304
+_
+v 0 -16 272
+544 272
+_
+[comments]

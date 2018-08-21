@@ -1,0 +1,12 @@
+[symbol2]
+bbox -96 16 320 304
+uniq 205
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 2 0 312 24 gisSim
+l 250 1 0 120 208 GIS
+l 250 1 0 120 160 Simulation
+r 0 -96 16 320 304
+[comments]

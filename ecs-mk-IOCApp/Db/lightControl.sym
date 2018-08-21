@@ -1,0 +1,11 @@
+[symbol2]
+bbox -32 32 352 256
+uniq 251
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 0 0 192 48 lightControl
+l 150 7 0 176 160 Light Control
+r 0 -32 32 352 256
+[comments]

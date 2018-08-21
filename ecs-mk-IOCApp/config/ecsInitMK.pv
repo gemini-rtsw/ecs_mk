@@ -1,0 +1,376 @@
+#
+# pvload parameter definition file
+#
+
+#
+# Set software states
+#
+long $(top)simMask              = 1;       # preset simulation mask to NONE
+long $(top)simulateMode         = 0;       # simulation level selector button
+long $(top)simulateL            = 0;
+long $(top)debugMotorMode       = 3;       # motor debug level to SYSTEM
+long $(top)debugM               = 3;
+long $(top)debugMode            = 0;       # system debug level selector button
+long $(top)debugL               = 0;
+long $(top)logMode              = 0;       # log selector button
+long $(top)logL                 = 0;
+
+#
+# Clear all CADs - to get rid of old error messages and prevent errors
+#  from occuring due to setting CAD ERSV fields
+#
+string $(top)datum.DIR          = "CLEAR"; #
+string $(top)debug.DIR          = "CLEAR"; #
+string $(top)init.DIR           = "CLEAR"; #
+string $(top)log.DIR            = "CLEAR"; #
+string $(top)moveDome.DIR       = "CLEAR"; #
+string $(top)moveShtrs.DIR      = "CLEAR"; #
+string $(top)moveVgates.DIR     = "CLEAR"; #
+string $(top)park.DIR           = "CLEAR"; #
+string $(top)parkDome.DIR       = "CLEAR"; #
+#string $(top)parkShtrs.DIR      = "CLEAR"; #
+string $(top)parkVgates.DIR     = "CLEAR"; #
+string $(top)reboot.DIR         = "CLEAR"; #
+string $(top)simulate.DIR       = "CLEAR"; #
+string $(top)stopDome.DIR       = "CLEAR"; #
+string $(top)stopShtrs.DIR      = "CLEAR"; #
+string $(top)stopVgates.DIR     = "CLEAR"; #
+string $(top)test.DIR           = "CLEAR"; #
+string $(top)tolerance.DIR      = "CLEAR"; #
+
+#
+# Set alarm severity for mechanism CADs
+#
+string $(top)moveDome.ERSV      = "MAJOR"; # moveDome 
+string $(top)stopDome.ERSV      = "MAJOR"; # stopDome 
+string $(top)parkDome.ERSV      = "MAJOR"; # parkDome 
+string $(top)moveShtrs.ERSV     = "MAJOR"; # moveShtrs 
+string $(top)stopShtrs.ERSV     = "MAJOR"; # stopShtrs 
+#string $(top)parkShtrs.ERSV     = "MAJOR"; # parkShtrs 
+string $(top)moveVgates.ERSV    = "MAJOR"; # moveVgates 
+string $(top)stopVgates.ERSV    = "MAJOR"; # stopVgates 
+string $(top)parkVgates.ERSV    = "MAJOR"; # parkVgates 
+string $(top)tolerance.ERSV     = "MAJOR"; # tolerance alarm severity 
+string $(top)park.ERSV          = "MAJOR"; # park alarm severity 
+
+#
+# Set alarms for software CADs
+#
+string $(top)datum.ERSV         = "MAJOR"; # datum alarm severity 
+string $(top)debug.ERSV         = "MAJOR"; # debug alarm severity 
+string $(top)init.ERSV          = "MAJOR"; # init alarm severity 
+string $(top)log.ERSV           = "MAJOR"; # log alarm severity 
+string $(top)reboot.ERSV        = "MAJOR"; # reboot alarm severity 
+string $(top)simulate.ERSV      = "MAJOR"; # simulate alarm severity 
+string $(top)test.ERSV          = "MAJOR"; # test alarm severity 
+
+#
+# Set alarms for General SIRs
+#
+long   $(top)health.HIGH           = 1;       # WARNING
+string $(top)health.HSV	           = "MINOR"; #
+long   $(top)health.HIHI           = 2;       # BAD or INVALID
+string $(top)health.HHSV           = "MAJOR"; # 
+long   $(top)plantRoomPlcDead.HIGH = 1;       # PRPLC h/b dead
+string $(top)plantRoomPlcDead.HSV  = "MAJOR"; #
+long   $(top)plantRoomPlcDead.HIHI = 1;       # PRPLC h/b dead
+string $(top)plantRoomPlcDead.HHSV = "MAJOR"; # 
+long   $(top)carouselPlcDead.HIGH  = 1;       # CPLC h/b dead
+string $(top)carouselPlcDead.HSV   = "MAJOR"; #
+long   $(top)carouselPlcDead.HIHI  = 1;       # CPLC h/b dead
+string $(top)carouselPlcDead.HHSV  = "MAJOR"; # 
+string $(top)ecsDead.BRSV          = "MAJOR"; # ECS h/b stopped
+
+#
+# Set alarms for Vent Gate SIRs
+#
+long   $(top)vgateInPos.LOW		= 0;		# EorW not in position
+string $(top)vgateInPos.LSV		= "MINOR";	#
+long   $(top)vgateInPos.HIGH		= 0;		# EorW in position
+string $(top)vgateInPos.HSV		= "NO_ALARM";	#
+long   $(top)eastVentGateState.HIGH	= 4;		# EVG OFFLINE state
+string $(top)eastVentGateState.HSV	= "MINOR";	#
+long   $(top)eastVentGateState.HIHI	= 5;		# EVG ERROR state
+string $(top)eastVentGateState.HHSV	= "MAJOR";	# 
+long   $(top)eastVentGateLimClose.HIGH	= 2;		# EVG Lim Close EOT
+string $(top)eastVentGateLimClose.HSV	= "MINOR";	#
+long   $(top)eastVentGateLimClose.HIHI	= 3;		# EVG Lim Close OT
+string $(top)eastVentGateLimClose.HHSV	= "MAJOR";	#
+long   $(top)eastVentGateInPos.LOW	= 0;		# EVG not in position
+string $(top)eastVentGateInPos.LSV	= "MINOR";	#
+long   $(top)eastVentGateInPos.HIGH	= 0;		# EVG in position
+string $(top)eastVentGateInPos.HSV	= "NO_ALARM";	#
+long   $(top)westVentGateState.HIGH	= 4;		# WVG OFFLINE state
+string $(top)westVentGateState.HSV	= "MINOR";	#
+long   $(top)westVentGateState.HIHI	= 5;		# WVG ERROR state
+string $(top)westVentGateState.HHSV	= "MAJOR";	# 
+long   $(top)westVentGateLimClose.HIGH	= 2;		# WVG Lim Close EOT
+string $(top)westVentGateLimClose.HSV	= "MINOR";	#
+long   $(top)westVentGateLimClose.HIHI	= 3;		# WVG Lim Close OT
+string $(top)westVentGateLimClose.HHSV	= "MAJOR";	#
+long   $(top)westVentGateInPos.LOW	= 0;		# WVG not in position
+string $(top)westVentGateInPos.LSV	= "MINOR";	#
+long   $(top)westVentGateInPos.HIGH	= 0;		# WVG in position
+string $(top)westVentGateInPos.HSV	= "NO_ALARM";	#
+
+#
+# Set alarms for Shutter SIRs
+#
+long   $(top)shtrInPos.LOW		= 0;		# TorB not in position
+string $(top)shtrInPos.LSV		= "MINOR";	#
+long   $(top)shtrInPos.HIGH		= 0;		# TorB in position
+string $(top)shtrInPos.HSV		= "NO_ALARM";	#
+long   $(top)topShtrState.HIGH		= 4;		# TSH OFFLINE state
+string $(top)topShtrState.HSV		= "MINOR";	#
+long   $(top)topShtrState.HIHI		= 5;		# TSH ERROR state
+string $(top)topShtrState.HHSV		= "MAJOR";	#
+long   $(top)topShtrLimClose.HIGH	= 2;		# TSH Lim Close EOT
+string $(top)topShtrLimClose.HSV	= "MINOR";	#
+long   $(top)topShtrLimClose.HIHI	= 3;		# TSH Lim Close OT
+string $(top)topShtrLimClose.HHSV	= "MAJOR";	#
+long   $(top)topShtrLimOpen.HIGH	= 2;		# TSH Lim Open EOT
+string $(top)topShtrLimOpen.HSV		= "MINOR";	#
+long   $(top)topShtrLimOpen.HIHI	= 3;		# TSH Lim Open OT
+string $(top)topShtrLimOpen.HHSV	= "MAJOR";	#
+long   $(top)topShtrInPos.LOW		= 0;		# TSH not in position
+string $(top)topShtrInPos.LSV		= "MINOR";	#
+long   $(top)topShtrInPos.HIGH		= 0;		# TSH in position
+string $(top)topShtrInPos.HSV		= "NO_ALARM";	#
+long   $(top)botShtrState.HIGH		= 4;		# BSH OFFLINE state
+string $(top)botShtrState.HSV		= "MINOR";	#
+long   $(top)botShtrState.HIHI		= 5;		# BSH ERROR state
+string $(top)botShtrState.HHSV		= "MAJOR";	#
+long   $(top)botShtrLimClose.HIGH	= 2;		# BSH Lim Close EOT
+string $(top)botShtrLimClose.HSV	= "MINOR";	#
+long   $(top)botShtrLimClose.HIHI	= 3;		# BSH Lim Close OT
+string $(top)botShtrLimClose.HHSV	= "MAJOR";	#
+long   $(top)botShtrLimOpen.HIGH	= 2;		# BSH Lim Open EOT
+string $(top)botShtrLimOpen.HSV		= "MINOR";	#
+long   $(top)botShtrLimOpen.HIHI	= 3;		# BSH Lim Open OT
+string $(top)botShtrLimOpen.HHSV	= "MAJOR";	#
+long   $(top)botShtrInPos.LOW		= 0;		# BSH not in position
+string $(top)botShtrInPos.LSV		= "MINOR";	#
+long   $(top)botShtrInPos.HIGH		= 0;		# BSH in position
+string $(top)botShtrInPos.HSV		= "NO_ALARM";	#
+
+#
+# Set alarms for Shutter Skew
+#
+long   $(top)botShtrSkewEnc.LOW           = -12;            # TSH Skew Low Alarm Level
+string $(top)botShtrSkewEnc.LSV           = "MINOR";
+long   $(top)botShtrSkewEnc.LOLO          = -15;            # TSH Skew Lolo Alarm Level
+string $(top)botShtrSkewEnc.LLSV          = "MAJOR";
+long   $(top)botShtrSkewEnc.HIGH          = 12;             # TSH Skew High Alarm Level
+string $(top)botShtrSkewEnc.HSV           = "MINOR";
+long   $(top)botShtrSkewEnc.HIHI          = 15;             # TSH Skew HIHI Alarm Level
+string $(top)botShtrSkewEnc.HHSV          = "MAJOR";     
+
+#
+# Set alarms for Dome SIRs
+#
+long   $(top)domeState.HIGH		= 4;		# Dome OFFLINE state
+string $(top)domeState.HSV		= "MINOR";	#
+long   $(top)domeState.HIHI		= 5;		# Dome ERROR state
+string $(top)domeState.HHSV		= "MAJOR";	#
+long   $(top)domeInPos.LOW		= 0;		# Dome not in position
+string $(top)domeInPos.LSV		= "MINOR";	#
+long   $(top)domeInPos.HIGH		= 0;		# Dome in position
+string $(top)domeInPos.HSV		= "NO_ALARM";	#
+
+#
+# Reset Motor Records to initialise from error or unknown state 
+#
+long $(top)domemotor.MODE         = 3; # RESET mode to dome motor record
+long $(top)domemotor.PROC         = 1;
+long $(top)topShtrmotor.MODE      = 3; # RESET mode to topShtr motor record
+long $(top)topShtrmotor.PROC      = 1;
+long $(top)botShtrmotor.MODE      = 3; # RESET mode to botShtr motor record
+long $(top)botShtrmotor.PROC      = 1;
+long $(top)eastVentGatemotor.MODE = 3; # RESET mode to eastVentGate motor record
+long $(top)eastVentGatemotor.PROC = 1;
+long $(top)westVentGatemotor.MODE = 3; # RESET mode to westVentGate motor record
+long $(top)westVentGatemotor.PROC = 1;
+
+#
+# Set default park positions 
+#
+long $(top)domeParkMode		     =      0; # Dome park keyword to DEFAULT
+double $(top)domeParkDefPos          =  90.00; # Dome default parking position
+double $(top)domeParkA1              =  120.00; # Dome Access 1 parking position
+double $(top)domeParkA2              =  217.00; # Dome Access 2 parking position
+double $(top)domeParkA3              =  290.00; # Dome Access 3 parking position
+#double $(top)topShtrParkDefPos       =  11.80; # Top shtr default parking pos
+#double $(top)botShtrParkDefPos       =  10.80; # Bot shtr default parking pos
+double $(top)topShtrParkDefPos1	= 12.00;
+double $(top)botShtrParkDefPos1	=  7.00;
+double $(top)topShtrParkDefPos2	= 11.00;
+double $(top)botShtrParkDefPos2	= 11.00;
+double $(top)eastVentGateParkDefPos  =   1.00; # East vent gate parking default
+double $(top)westVentGateParkDefPos  =   1.00; # West vent gate parking default
+
+#
+# Set dome velocity limits for bounds checking
+#
+#double $(top)domeVelMax        =   3.0; # dome maximum azimuth velocity
+#double $(top)domeVelMin        =  -3.0; # dome minimum azimuth velocity
+
+#
+# Set dome position limits for bounds checking
+#
+double $(top)domeMax            = 360.0; # dome maximum azimuth
+double $(top)domeMin            =   0.0; # dome minimum azimuth
+double $(top)domeParkMax        = 360.0; # dome parking maximum azimuth
+double $(top)domeParkMin        =   0.0; # dome parking minimum azimuth
+
+#
+# Set shutter position limits for bounds checking. The top and bottom
+# shutter limits are slightly less than the maximum allowed value to
+# avoid getting into the overtravel limits.
+#
+double $(top)shtrOverlap        =   0.50; # Shutter overlap value
+double $(top)topShtrMax         = 105.00; # Top shutter maximum elevation
+double $(top)topShtrMin         =  10.60; # Top shutter minimum elevation
+double $(top)botShtrMax         =  60.00; # Bottom shtr maximum elevation
+double $(top)botShtrMin         =   2.00; # Bottom shtr minimum elevation
+double $(top)topShtrParkMax     = 100.00; # Top shutter maximum elevation
+double $(top)topShtrParkMin     =  10.60; # Top shutter minimum elevation
+double $(top)botShtrParkMax     =  60.00; # Bottom shtr maximum elevation
+double $(top)botShtrParkMin     =   0.50; # Bottom shtr minimum elevation
+
+#
+# Set vent gate position limits for bounds checking
+#
+double $(top)eastVentGateMax     = 100.0; # east vg maximum percent open
+double $(top)eastVentGateMin     =   0.0; # east vg minimum percent open
+double $(top)westVentGateMax     = 100.0; # west vg maximum percent open
+double $(top)westVentGateMin     =   0.0; # west vg minimum percent open
+double $(top)eastVentGateParkMax = 100.0; # east vg maximum percent open
+double $(top)eastVentGateParkMin =   0.0; # east vg minimum percent open
+double $(top)westVentGateParkMax = 100.0; # west vg maximum percent open
+double $(top)westVentGateParkMin =   0.0; # west vg minimum percent open
+
+#
+# Set tolerance command limits for bounds checking
+#
+double $(top)azTolMax           = 20.00; # dome tolerance max limit
+double $(top)azTolMin           =  0.00; # dome tolerance min limit
+double $(top)elTolMax           = 10.00; # shutter tolerance max limit
+double $(top)elTolMin           =  0.00; # shutter tolerance min limit
+double $(top)vgateTolMax        = 10.00; # vent gate tolerance max limit
+double $(top)vgateTolMin        =  0.00; # vent gate tolerance min limit
+
+#
+# Set in position error tolerances
+#
+long $(top)state                = 2;	# State to RUNNING in order to 
+                                        #    work around interlock
+double $(top)tolerance.A        = 0.20;	# prime Dome position error tolerance
+double $(top)tolerance.B        = 0.20;	# prime Shutter position error tolerance
+double $(top)tolerance.C        = 0.20;	# prime Vent gate error tolerance
+string $(top)tolerance.DIR      = "START"; # START directive to set tolerances
+long $(top)state                = 1;    # State to INITIALISING
+
+#
+# Set scan rates for some status records
+#
+string $(top)domeState.SCAN          = ".1 second";
+string $(top)topShtrState.SCAN       = ".1 second";
+string $(top)botShtrState.SCAN       = ".1 second";
+string $(top)eastVentGateState.SCAN  = ".1 second";
+string $(top)westVentGateState.SCAN  = ".1 second";
+string $(top)domePos.SCAN            = ".1 second";
+string $(top)topShtrPos.SCAN         = ".1 second";
+string $(top)botShtrPos.SCAN         = ".1 second";
+string $(top)eastVentGatePos.SCAN    = ".1 second";
+string $(top)westVentGatePos.SCAN    = ".1 second";
+
+#
+# Process the mode buttons to preload values into CADs
+#
+long $(top)simulateMode.PROC    = 1;
+long $(top)debugMode.PROC       = 1;
+long $(top)logMode.PROC         = 1;
+long $(top)domeParkMode.PROC    = 1;
+
+#
+# Set Position demand/readback scaling for each mechanism
+#
+#double $(top)domemotor.PSCA         = 100.00; # dome position scaling factor
+double $(top)domemotor.PSCA         = 100.00; # dome position scaling factor
+double $(top)topShtrmotor.PSCA      = 320.84; # tsh position scaling factor
+double $(top)botShtrmotor.PSCA      = 320.84; # bsh position scaling factor
+#double $(top)eastVentGatemotor.PSCA =  47.50; # evg position scaling factor
+#double $(top)westVentGatemotor.PSCA =  47.50; # wvg position scaling factor
+double $(top)eastVentGatemotor.PSCA =  94.00; # evg position scaling factor
+double $(top)westVentGatemotor.PSCA =  94.00; # wvg position scaling factor
+
+#
+# Set Velocity demand scaling for dome
+#
+double $(top)domemotor.VSCA         = 100; # dome velocity scaling factor
+
+#
+# These numbers are substracted from the demands to match the PLC zero point.
+#
+double $(top)domeAzOffset           = 21.80; # degrees
+double $(top)topShtrOffset          = 10.57; # degrees
+double $(top)botShtrOffset          =  0.00; # degrees
+
+#
+# Set system states
+#
+sleep 1;                                  # allow servos to come up
+long $(top)state                 = 2;     # State to RUNNING
+long $(top)initC.IVAL            = 0;     # CAR to IDLE
+
+#
+# Set fault overrides
+#
+double $(top)fault:analyze.K	= 0; # dome
+double $(top)fault:analyze.N	= 0; # top
+double $(top)fault:analyze.O	= 0; # bottom
+double $(top)fault:analyze.L	= 0; # east
+double $(top)fault:analyze.M	= 0; # west
+double $(top)interlock.G	= 0; # motion
+double $(top)interlock.H	= 1; # thermal
+
+#
+# Park shutter experiment
+#
+string $(top)parkShtrs.DIR		= "CLEAR";
+string $(top)parkShtrs2.DIR	= "CLEAR";
+string $(top)parkShtrs.ERSV	= "MAJOR";
+string $(top)parkShtrs2.ERSV	= "MAJOR";
+double $(top)topShtrTrigger.VAL	= 2;	# must be >1
+double $(top)botShtrTrigger.VAL	= 2;	# must be >1
+double $(top)parkShtrEnable.VAL	= 1;	# must be 1
+double $(top)topShtrParkDefPos1	= 12.00;
+double $(top)botShtrParkDefPos1	=  7.00;
+double $(top)topShtrParkDefPos2	= 11.00;
+double $(top)botShtrParkDefPos2	= 11.00;
+double $(top)topShtrParkMax       	= 105.00;
+double $(top)topShtrParkMin       	=  10.60;
+double $(top)botShtrParkMax       	=  60.00;
+double $(top)botShtrParkMin       	=   0.50;
+double $(top)shtrOverlap          	=   0.50;
+double $(top)topShtrOffset        	= 10.57; # degrees
+double $(top)botShtrOffset        	=  0.00; # degrees
+
+#
+# Shutter park experiment debugging (REMOVE)
+#
+long $(top)topShtrmotor		  = 1;
+long $(top)botShtrmotor		  = 1;
+
+
+#
+# ECS Drive power OFF always visible
+#
+
+long $(top)allDrivesOff.DISA = 1; 
+long $(top)domePowerOff.DISA = 1; 
+long $(top)tsPowerOff.DISA = 1; 
+long $(top)bsPowerOff.DISA = 1; 
+long $(top)evgPowerOff.DISA = 1; 
+long $(top)wvgPowerOff.DISA = 1; 
+long $(top)lightCmdState.PROC     = 1;

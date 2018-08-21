@@ -1,0 +1,30 @@
+[symbol2]
+bbox 32 96 320 320
+port 190 127 100 0 flnk symbol 2 320 128 0
+port 179 192 100 0 power symbol 2 320 192 0
+port 180 225 100 0 skeys symbol 2 320 224 0
+port 192 256 100 0 keys symbol 2 320 256 0
+uniq 519
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 7 0 144 304 PLC Input
+l 100 0 0 39 105 deicePlcIn
+r 0 32 96 256 320
+v 0 256 128
+320 128
+_
+v 0 256 192
+320 192
+_
+v 0 256 224
+320 224
+_
+v 0 32 288
+256 288
+_
+v 0 256 256
+320 256
+_
+[comments]

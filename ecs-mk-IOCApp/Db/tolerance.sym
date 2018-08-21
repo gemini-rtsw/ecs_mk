@@ -1,0 +1,24 @@
+[symbol2]
+bbox -64 64 320 256
+port 256 128 100 2048 flnk symbol 2 320 128 0
+port 256 160 100 2048 mess symbol 2 320 160 0
+port 256 192 100 2048 car symbol 2 320 192 0
+uniq 79
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 1 0 96 232 Tolerance Command
+l 100 2 0 240 80 tolerance
+r 0 -64 224 256 256
+r 0 -64 64 256 224
+v 0 320 128
+256 128
+_
+v 0 320 160
+256 160
+_
+v 0 320 192
+256 192
+_
+[comments]

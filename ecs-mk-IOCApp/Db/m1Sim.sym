@@ -1,0 +1,11 @@
+[symbol2]
+bbox -96 128 320 416
+uniq 265
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 250 7 0 128 304 M1 Simulation
+l 100 0 0 208 144 m1Sim
+r 0 -96 128 320 416
+[comments]

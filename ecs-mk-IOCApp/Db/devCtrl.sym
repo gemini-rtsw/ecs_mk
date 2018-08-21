@@ -1,0 +1,48 @@
+[symbol2]
+bbox -160 32 320 320
+port 256 224 100 2048 carMess symbol 2 320 224 0
+port 256 192 100 2048 curPos symbol 2 320 192 0
+port 256 128 100 2048 curState symbol 2 320 128 0
+port -80 160 100 1536 vel symbol 1 -160 160 0
+port -80 192 100 1536 pos symbol 1 -160 192 0
+port -80 224 100 1536 state symbol 1 -160 224 0
+port 256 256 100 2048 car symbol 2 320 256 0
+port 256 160 100 2048 inPos symbol 2 320 160 0
+port -80 96 100 1536 flnk symbol 1 -160 96 0
+uniq 337
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 2 0 240 48 devCtrl
+l 100 7 0 80 304 Device Control
+r 0 -96 288 256 320
+r 0 -96 32 256 288
+v 0 256 224
+320 224
+_
+v 0 256 160
+320 160
+_
+v 0 256 192
+320 192
+_
+v 0 256 128
+320 128
+_
+v 0 256 256
+320 256
+_
+v 0 -160 96
+-96 96
+_
+v 0 -160 160
+-96 160
+_
+v 0 -160 192
+-96 192
+_
+v 0 -160 224
+-96 224
+_
+[comments]

@@ -1,0 +1,12 @@
+[symbol2]
+bbox -288 32 -96 224
+uniq 0
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 0 0 -236 96 Currents
+l 100 0 0 -220 128 Drive
+l 100 0 0 -220 160 Dome
+r 0 -288 32 -96 224
+[comments]

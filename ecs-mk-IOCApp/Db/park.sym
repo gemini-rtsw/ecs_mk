@@ -1,0 +1,72 @@
+[symbol2]
+bbox 128 320 448 1024
+port 376 376 100 512 wvgFlnk symbol 2 448 384 0
+port 376 408 100 512 wvgPos symbol 2 448 416 0
+port 376 440 100 512 wvgPark symbol 2 448 448 0
+port 376 512 100 512 evgFlnk symbol 2 448 512 0
+port 376 536 100 512 evgPos symbol 2 448 544 0
+port 376 576 100 512 evgPark symbol 2 448 576 0
+port 376 632 100 512 bsFlnk symbol 2 448 640 0
+port 376 664 100 512 bsPos symbol 2 448 672 0
+port 376 704 100 512 bsPark symbol 2 448 704 0
+port 384 760 100 512 tsFlnk symbol 2 448 768 0
+port 384 792 100 512 tsPos symbol 2 448 800 0
+port 376 832 100 512 tsPark symbol 2 448 832 0
+port 376 896 100 512 domeFlnk symbol 2 448 896 0
+port 376 920 100 512 domePos symbol 2 448 928 0
+port 376 960 100 512 domePark symbol 2 448 960 0
+uniq 390
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 0 0 320 336 park
+l 100 7 0 256 1008 Park Command
+r 0 128 320 384 992
+r 0 128 992 384 1024
+v 0 384 960
+448 960
+_
+v 0 384 928
+448 928
+_
+v 0 384 896
+448 896
+_
+v 0 384 832
+448 832
+_
+v 0 384 800
+448 800
+_
+v 0 384 768
+448 768
+_
+v 0 384 704
+448 704
+_
+v 0 384 672
+448 672
+_
+v 0 384 640
+448 640
+_
+v 0 384 576
+448 576
+_
+v 0 384 544
+448 544
+_
+v 0 384 512
+448 512
+_
+v 0 384 448
+448 448
+_
+v 0 384 416
+448 416
+_
+v 0 384 384
+448 384
+_
+[comments]

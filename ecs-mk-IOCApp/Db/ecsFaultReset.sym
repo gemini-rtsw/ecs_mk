@@ -1,0 +1,14 @@
+[symbol2]
+bbox 32 32 352 160
+uniq 1064
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 0 0 80 136 Reset Motion Faults
+l 100 0 0 192 48 ecsFaultReset
+r 0 32 32 352 160
+v 0 32 128
+352 128
+_
+[comments]

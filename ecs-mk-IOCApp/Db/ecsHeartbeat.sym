@@ -1,0 +1,12 @@
+[symbol2]
+bbox 32 32 256 224
+uniq 681
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 7 0 144 208 A-B Heartbeat
+l 100 0 0 112 48 ecsHeartbeat
+r 0 32 192 256 224
+r 0 32 32 256 192
+[comments]

@@ -1,0 +1,48 @@
+[symbol2]
+bbox -128 96 320 416
+port 240 192 100 2048 flnk symbol 2 320 192 0
+port 240 256 100 2048 mess symbol 2 320 256 0
+port -48 160 100 1536 bsProcess symbol 1 -128 160 0
+port -48 192 100 1536 bsPosition symbol 1 -128 192 0
+port -48 224 100 1536 bsMode symbol 1 -128 224 0
+port -48 288 100 1536 tsProcess symbol 1 -128 288 0
+port -48 320 100 1536 tsPosition symbol 1 -128 320 0
+port -48 352 100 1536 tsMode symbol 1 -128 352 0
+port 240 288 100 2048 car symbol 2 320 288 0
+uniq 316
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 90 7 0 96 400 Shutter Commands
+l 100 8 0 240 112 shuttersCMDS
+r 0 -64 96 256 384
+r 0 -64 384 256 416
+v 0 256 192
+320 192
+_
+v 0 256 256
+320 256
+_
+v 0 256 288
+320 288
+_
+v 0 -128 160
+-64 160
+_
+v 0 -128 192
+-64 192
+_
+v 0 -128 224
+-64 224
+_
+v 0 -128 288
+-64 288
+_
+v 0 -128 320
+-64 320
+_
+v 0 -128 352
+-64 352
+_
+[comments]

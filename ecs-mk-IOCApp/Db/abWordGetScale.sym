@@ -1,0 +1,16 @@
+[symbol2]
+bbox 32 32 256 160
+port 160 128 100 0 wordOut symbol 2 256 128 0
+port 192 64 100 0 flnk symbol 2 256 64 0
+uniq 27
+[tools]
+[attributes]
+p 32 -32 100 0 1 setAb:ab $(port)
+p 32 -96 100 0 1 setCalc:calc A
+p 32 -64 100 0 1 setDev:dev
+p 32 0 100 0 1 setWord:word 0
+[layers]
+<symbol>
+l 100 0 0 48 48 abWordGetScale
+r 0 32 32 256 160
+[comments]

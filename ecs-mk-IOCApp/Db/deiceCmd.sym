@@ -1,0 +1,56 @@
+[symbol2]
+bbox -32 32 416 320
+port 47 127 100 0 moveccw symbol 1 -32 128 0
+port 47 158 100 0 movecw symbol 1 -32 160 0
+port 45 254 100 0 login symbol 1 -32 256 0
+port 288 160 100 0 val symbol 2 416 160 0
+port 288 64 100 0 flnk symbol 2 416 64 0
+port 336 224 100 512 carMess symbol 2 416 224 0
+port 336 256 100 512 car symbol 2 416 256 0
+port 48 224 100 0 pcu2 symbol 1 -32 224 0
+port 48 192 100 0 power symbol 1 -32 192 0
+port 48 96 100 0 keys symbol 1 -32 96 0
+uniq 519
+[tools]
+[attributes]
+p 32 10 100 0 1 setc:cmd XXXX
+p 32 -13 100 0 1 sets:snam YYYY
+[layers]
+<symbol>
+l 100 0 0 46 47 deiceCmd
+l 100 7 0 192 304 Generic Command
+r 0 32 32 352 320
+v 0 -32 128
+32 128
+_
+v 0 -32 160
+32 160
+_
+v 0 -32 256
+32 256
+_
+v 0 352 160
+416 160
+_
+v 0 352 64
+416 64
+_
+v 0 32 288
+352 288
+_
+v 0 416 256
+352 256
+_
+v 0 416 224
+352 224
+_
+v 0 -32 224
+32 224
+_
+v 0 -32 192
+32 192
+_
+v 0 -32 96
+32 96
+_
+[comments]

@@ -1,0 +1,11 @@
+[symbol2]
+bbox -32 32 352 256
+uniq 251
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 150 7 0 176 160 Observatory Mode
+l 100 0 0 240 48 obsMode
+r 0 -32 32 352 256
+[comments]

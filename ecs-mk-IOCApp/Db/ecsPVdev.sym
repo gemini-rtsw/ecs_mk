@@ -1,0 +1,28 @@
+[symbol2]
+bbox 32 32 320 352
+port 48 224 100 0 Velocity symbol 1 32 224 0
+port 48 64 100 0 Slink symbol 1 32 64 0
+port 48 128 100 0 Simulation symbol 1 32 128 0
+port 48 192 100 0 Tolerance symbol 1 32 192 0
+port 256 64 100 0 Flink symbol 2 320 64 0
+port 48 256 100 0 Position symbol 1 32 256 0
+port 48 288 100 0 Mode symbol 1 32 288 0
+port 224 224 100 0 DevPosn symbol 2 320 224 0
+port 240 160 100 0 Status symbol 2 320 160 0
+port 224 256 100 0 Message symbol 2 320 256 0
+port 208 288 100 0 Response symbol 2 320 288 0
+port 240 192 100 0 InPosn symbol 2 320 192 0
+port 48 96 100 0 Debug symbol 1 32 96 0
+port 240 128 100 0 ULimit symbol 2 320 128 0
+port 240 96 100 0 LLimit symbol 2 320 96 0
+port 48 160 100 0 Fault symbol 1 32 160 0
+uniq 43
+[tools]
+[attributes]
+[layers]
+<symbol>
+l 100 7 0 176 336 Pos/Vel Device
+l 100 0 0 128 48 ecsPVdev
+r 0 32 320 320 352
+r 0 32 32 320 320
+[comments]
