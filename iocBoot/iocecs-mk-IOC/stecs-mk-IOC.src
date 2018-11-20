@@ -7,7 +7,6 @@ dbLoadDatabase("dbd/ecs-mk-IOC.dbd")
 ecs_mk_IOC_registerRecordDeviceDriver(pdbbase)
 
 ## Load records
-dbLoadRecords("db/ecs-mk-IOC.db", "user=mrippa")
 dbLoadRecords("db/ecs.db", "top=ec:, prtop=pr:, port=/dev/ttyS1 41")
 dbLoadRecords("db/ecsSad.db","sad=ec:sad:, ectop=ec:")
 dbLoadRecords("db/iocAdminRTEMS.db","IOC=ec:iocStats,TODFORMAT=%m/%d/%Y %H:%M:%S")
