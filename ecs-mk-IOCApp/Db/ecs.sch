@@ -108,12 +108,22 @@ p 880 -464 100 0 1 setpw9:wVgDrvSt 29 0
 p -320 -540 100 0 1 setq:OK 0
 p -320 -572 100 0 1 setr:m1 m1:
 p -320 -604 100 0 1 sets:gis gis:
+p 536 -919 100 0 1 setsv:shbrkpsv 86
 p -320 -636 100 0 1 sett:gws ws:
 p -320 -1024 100 0 1 settr1:motionInterlock 80 15
 p 256 -668 100 0 1 setts1w:ts1w 60
 p 256 -572 100 0 1 setts1x:ts1x 57
 p 256 -604 100 0 1 setts1y:ts1y 58
 p 256 -636 100 0 1 setts1z:ts1z 59
+p 256 -1088 100 0 1 settsbrk1w:tsbrk1w 84
+p 256 -992 100 0 1 settsbrk1x:tsbrk1x 81
+p 256 -1024 100 0 1 settsbrk1y:tsbrk1y 82
+p 256 -1056 100 0 1 settsbrk1z:tsbrk1z 83
+p 528 -816 100 0 1 settsbrkcmd:tsbrkcmd 85 0
+p 496 -720 100 0 1 settsbrkflt1w:tsbrkflt1w 85 4
+p 496 -624 100 0 1 settsbrkflt1x:tsbrkflt1x 85 1
+p 496 -656 100 0 1 settsbrkflt1y:tsbrkflt1y 85 2
+p 496 -688 100 0 1 settsbrkflt1z:tsbrkflt1z 85 3
 p -320 -668 100 0 1 setu:abC $(port)
 p -320 -732 100 0 1 setw:dm1Flts 2
 p 256 -540 100 0 1 setwv5w:wvg5w 56
