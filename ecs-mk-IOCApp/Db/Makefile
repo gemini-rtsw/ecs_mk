@@ -18,11 +18,6 @@ DB += ecsSim.db
 DB += deiceTop.db
 DB += ecsSad.db
 
-# not needed
-#DB += eecsmotors.sym
-#DB += memsource.db
-#DB += sadtop.db
-
 DB += iocAdminRTEMS.db
 
 include $(TOP)/configure/RULES
