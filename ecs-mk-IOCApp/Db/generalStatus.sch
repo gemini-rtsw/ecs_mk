@@ -1,28 +1,30 @@
 [schematic2]
-uniq 21
+uniq 23
 [tools]
 [detail]
-w 1380 203 100 0 n#1 egenSub.ecsCombine.OUTB 1280 320 1376 320 1376 96 1536 96 hwout.hwout#312.outp
-w -574 875 100 0 n#2 hwin.hwin#305.in -576 864 -512 864 esirs.esirs#253.INP
-w -4 955 100 0 n#3 esirs.esirs#256.FLNK -96 1312 0 1312 0 608 320 608 egenSub.sysCombine.SLNK
-w 962 -53 100 0 n#4 hwin.hwin#297.in 992 -64 992 -64 egenSub.ecsCombine.INPH
-w 962 11 100 0 n#5 hwin.hwin#295.in 992 0 992 0 egenSub.ecsCombine.INPG
-w 962 75 100 0 n#6 hwin.hwin#293.in 992 64 992 64 egenSub.ecsCombine.INPF
-w 962 139 100 0 n#7 hwin.hwin#291.in 992 128 992 128 egenSub.ecsCombine.INPE
-w 962 203 100 0 n#8 hwin.hwin#289.in 992 192 992 192 egenSub.ecsCombine.INPD
-w 962 267 100 0 n#9 hwin.hwin#287.in 992 256 992 256 egenSub.ecsCombine.INPC
-w 1348 939 100 0 n#10 esirs.esirs#267.OMSS 1312 1248 1344 1248 1344 640 864 640 864 320 992 320 egenSub.ecsCombine.INPB
-w 1412 -37 100 0 n#11 egenSub.ecsCombine.FLNK 1280 -320 1408 -320 1408 256 1536 256 esirs.esirs#239.SLNK
-w 1378 427 100 0 n#12 egenSub.ecsCombine.VALA 1280 416 1536 416 esirs.esirs#239.INP
-w 1404 923 100 0 n#13 esirs.esirs#267.VAL 1312 1280 1408 1280 1408 576 928 576 928 384 992 384 egenSub.ecsCombine.INPA
-w 764 859 100 0 n#14 esirs.esirs#267.SLNK 896 1152 768 1152 768 576 608 576 egenSub.sysCombine.FLNK
-w 658 1219 100 0 n#15 egenSub.sysCombine.OUTB 608 1216 768 1216 768 1280 896 1280 esirs.esirs#267.IMSS
-w 722 1315 100 0 n#16 egenSub.sysCombine.VALA 608 1312 896 1312 esirs.esirs#267.INP
-w 188 507 100 0 n#17 esirs.esirs#247.VAL -96 -64 192 -64 192 1088 320 1088 egenSub.sysCombine.INPD
-w 60 1019 100 0 n#18 esirs.esirs#253.VAL -96 832 64 832 64 1216 320 1216 egenSub.sysCombine.INPB
-w 82 1283 100 0 n#19 esirs.esirs#256.VAL -96 1280 320 1280 egenSub.sysCombine.INPA
-w -604 1371 100 0 n#20 esirs.esirs#256.INP -512 1312 -608 1312 -608 1440 junction
-w -862 1731 100 0 n#20 ecalcs.ecalcs#251.INPA -960 1632 -1056 1632 -1056 1728 -608 1728 -608 1440 -672 1440 ecalcs.ecalcs#251.VAL
+w 1328 323 100 0 n#1 egenSub.ecsCombine.OUTB 1280 320 1376 320 1376 96 1536 96 hwout.hwout#312.outp
+w -544 867 100 0 n#2 hwin.hwin#305.in -576 864 -512 864 esirs.esirs#253.INP
+w -48 1315 100 0 n#3 esirs.esirs#256.FLNK -96 1312 0 1312 0 608 320 608 egenSub.sysCombine.SLNK
+w 995 -61 100 0 n#4 hwin.hwin#297.in 992 -64 992 -64 egenSub.ecsCombine.INPH
+w 995 3 100 0 n#5 hwin.hwin#295.in 992 0 992 0 egenSub.ecsCombine.INPG
+w 995 67 100 0 n#6 hwin.hwin#293.in 992 64 992 64 egenSub.ecsCombine.INPF
+w 995 131 100 0 n#7 hwin.hwin#291.in 992 128 992 128 egenSub.ecsCombine.INPE
+w 995 195 100 0 n#8 hwin.hwin#289.in 992 192 992 192 egenSub.ecsCombine.INPD
+w 995 259 100 0 n#9 hwin.hwin#287.in 992 256 992 256 egenSub.ecsCombine.INPC
+w 1328 1251 100 0 n#10 esirs.esirs#267.OMSS 1312 1248 1344 1248 1344 640 864 640 864 320 992 320 egenSub.ecsCombine.INPB
+w 1344 -317 100 0 n#11 egenSub.ecsCombine.FLNK 1280 -320 1408 -320 1408 256 1536 256 esirs.esirs#239.SLNK
+w 1408 419 100 0 n#12 egenSub.ecsCombine.VALA 1280 416 1536 416 esirs.esirs#239.INP
+w 1360 1283 100 0 n#13 esirs.esirs#267.VAL 1312 1280 1408 1280 1408 576 928 576 928 384 992 384 egenSub.ecsCombine.INPA
+w 832 1155 100 0 n#14 esirs.esirs#267.SLNK 896 1152 768 1152 768 576 608 576 egenSub.sysCombine.FLNK
+w 688 1219 100 0 n#15 egenSub.sysCombine.OUTB 608 1216 768 1216 768 1280 896 1280 esirs.esirs#267.IMSS
+w 752 1315 100 0 n#16 egenSub.sysCombine.VALA 608 1312 896 1312 esirs.esirs#267.INP
+w 48 -61 100 0 n#17 esirs.esirs#247.VAL -96 -64 192 -64 192 1088 320 1088 egenSub.sysCombine.INPD
+w -16 835 100 0 n#18 esirs.esirs#253.VAL -96 832 64 832 64 1216 320 1216 egenSub.sysCombine.INPB
+w 112 1283 100 0 n#19 esirs.esirs#256.VAL -96 1280 320 1280 egenSub.sysCombine.INPA
+w -560 1315 100 0 n#20 esirs.esirs#256.INP -512 1312 -608 1312 -608 1440 junction
+w -1008 1635 100 0 n#20 ecalcs.ecalcs#251.INPA -960 1632 -1056 1632 -1056 1728 -608 1728 -608 1440 -672 1440 ecalcs.ecalcs#251.VAL
+w -638 458 -100 0 n#21 hwin.hwin#316.in -656 456 -520 456 esirs.esirs#314.INP
+w -99 424 -100 0 n#22 esirs.esirs#314.VAL -104 424 136 424 136 1152 320 1152 egenSub.sysCombine.INPC
 s 2160 -832 200 0 Enclosure Control System
 s 2224 -976 200 0 ECS General Status
 s 1584 -1168 150 0 May 26, 2014
@@ -142,4 +144,19 @@ p 97 293 100 0 0 FTVA:LONG
 p 97 293 100 0 0 FTVB:STRING
 p 320 448 100 0 1 SCAN:Passive
 p 320 480 100 0 1 SNAM:ecsSystemHealthProcess
+p 0 0 100 0 0 pproc(INPC):NPP
+p 0 0 100 0 0 palrm(INPC):NMS
+use esirs -520 207 100 0 esirs#314
+xform 0 -312 360
+p -360 296 100 0 1 FTVL:LONG
+p -292 140 100 0 0 HHSV:NO_ALARM
+p -420 168 100 0 0 HIGH:0.0
+p -420 140 100 0 0 HIHI:0.0
+p -296 172 100 0 0 HSV:NO_ALARM
+p -328 72 100 0 0 SCAN:1 second
+p -392 248 100 0 1 SNAM:
+p -312 488 100 1024 1 name:$(top)plantRoomPlcDead
+use hwin -848 415 100 0 hwin#316
+xform 0 -752 456
+p -848 456 100 512 -1 val(in):$(top)hbmonitor.VALB
 [comments]
