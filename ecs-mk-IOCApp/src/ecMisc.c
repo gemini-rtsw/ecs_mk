@@ -63,7 +63,7 @@
 #include "ecInterlocks.h"
 #include "ecMisc.h"
 
-extern int pvload (char *file, char *macros, int flags);
+extern int pvload (char *file, char *macros, int flags) ;
 int ecsPvload ();
 
 static epicsThreadId	ecsInitTaskId = 0;
