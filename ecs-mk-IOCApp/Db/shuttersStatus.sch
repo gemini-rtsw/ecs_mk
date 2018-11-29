@@ -2,64 +2,64 @@
 uniq 56
 [tools]
 [detail]
-w -284 1899 100 2 n#1 hwin.hwin#478.in -288 1904 -288 1904 ebis.ebis#477.INP
-w -190 1435 100 0 n#2 ebis.ebis#460.FLNK -224 1424 -96 1424 junction
-w -190 1659 100 0 n#2 ebis.ebis#457.FLNK -224 1648 -96 1648 -96 1232 -64 1232 junction
-w -174 1211 100 0 n#2 ebis.ebis#464.FLNK -224 1200 -64 1200 junction
-w -174 987 100 0 n#2 ebis.ebis#466.FLNK -224 976 -64 976 -64 1232 0 1232 ecalcs.ecalcs#471.SLNK
-w -94 1531 100 0 n#3 ecalcs.ecalcs#471.INPD 0 1520 -128 1520 -128 944 -224 944 ebis.ebis#466.VAL
-w -110 1563 100 0 n#4 ecalcs.ecalcs#471.INPC 0 1552 -160 1552 -160 1168 -224 1168 ebis.ebis#464.VAL
-w -126 1595 100 0 n#5 ecalcs.ecalcs#471.INPB 0 1584 -192 1584 -192 1392 -224 1392 ebis.ebis#460.VAL
-w -142 1627 100 0 n#6 ecalcs.ecalcs#471.INPA 0 1616 -224 1616 ebis.ebis#457.VAL
-w 628 459 100 2 n#7 ecalcs.ecalcs#286.INPB 624 464 624 464 hwin.hwin#292.in
-w 628 491 100 2 n#8 ecalcs.ecalcs#286.INPA 624 496 624 496 hwin.hwin#290.in
-w -476 987 100 2 n#9 hwin.hwin#467.in -480 992 -480 992 ebis.ebis#466.INP
-w -476 1211 100 2 n#10 ebis.ebis#464.INP -480 1216 -480 1216 hwin.hwin#463.in
-w -476 1435 100 2 n#11 hwin.hwin#461.in -480 1440 -480 1440 ebis.ebis#460.INP
-w -469 1694 100 2 n#12 hwin.hwin#458.in -480 1664 -480 1664 ebis.ebis#457.INP
-w -764 -853 100 2 n#13 hwin.hwin#445.in -768 -848 -768 -848 ecalcs.ecalcs#295.SDIS
-w 628 75 100 2 n#14 hwin.hwin#443.in 624 80 624 80 ecalcs.ecalcs#286.SDIS
-w 1346 59 100 0 n#15 abWordGet.abWordGet#435.flnk 1296 48 1456 48 1456 -176 1584 -176 ecalcs.ecalcs#436.SLNK
-w 1410 123 100 0 n#16 abWordGet.abWordGet#435.wordOut 1296 112 1584 112 ecalcs.ecalcs#436.INPD
-w 1588 171 100 2 n#17 hwin.hwin#439.in 1584 176 1584 176 ecalcs.ecalcs#436.INPB
-w 1588 203 100 2 n#18 hwin.hwin#437.in 1584 208 1584 208 ecalcs.ecalcs#436.INPA
-w 1588 811 100 2 n#19 hwin.hwin#433.in 1584 816 1584 816 ecalcs.ecalcs#429.INPA
-w 1410 731 100 0 n#20 abWordGet.abWordGet#427.wordOut 1296 720 1584 720 ecalcs.ecalcs#429.INPD
-w 1458 443 100 0 n#21 abWordGet.abWordGet#427.flnk 1296 656 1392 656 1392 432 1584 432 ecalcs.ecalcs#429.SLNK
-w 1012 1915 100 2 n#22 hwin.hwin#412.in 1008 1920 1008 1920 ecalcs.ecalcs#400.INPA
-w 388 -581 100 2 n#23 hwin.hwin#423.in 384 -576 384 -576 ecalcs.ecalcs#401.INPA
-w 1012 1883 100 2 n#24 hwin.hwin#409.in 1008 1888 1008 1888 ecalcs.ecalcs#400.INPB
-w 1346 1739 100 0 n#25 ecalcs.ecalcs#400.VAL 1296 1728 1456 1728 esirs.esirs#263.INP
-w 388 -613 100 2 n#26 hwin.hwin#405.in 384 -608 384 -608 ecalcs.ecalcs#401.INPB
-w 722 -757 100 0 n#27 ecalcs.ecalcs#401.VAL 672 -768 832 -768 esirs.esirs#264.INP
-w 2434 59 100 0 n#28 ecalcs.ecalcs#364.FLNK 2704 352 2736 352 2736 48 2192 48 2192 -224 2320 -224 esirs.esirs#367.SLNK
-w 2306 1315 100 0 n#29 hwin.hwin#396.in 2288 1312 2384 1312 2384 1376 2480 1376 ecalcs.ecalcs#386.INPC
-w 2498 979 100 0 n#30 ecalcs.ecalcs#386.FLNK 2768 1280 2800 1280 2800 976 2256 976 2256 704 2384 704 esirs.esirs#389.SLNK
-w 2530 947 100 0 n#31 ecalcs.ecalcs#386.VAL 2768 1248 2832 1248 2832 944 2288 944 2288 864 2384 864 esirs.esirs#389.INP
-w 2354 1411 100 0 n#32 hwin.hwin#388.in 2288 1408 2480 1408 ecalcs.ecalcs#386.INPB
-w 2306 1507 100 0 n#33 hwin.hwin#387.in 2288 1504 2384 1504 2384 1440 2480 1440 ecalcs.ecalcs#386.INPA
-w 2466 19 100 0 n#34 ecalcs.ecalcs#364.VAL 2704 320 2768 320 2768 16 2224 16 2224 -64 2320 -64 esirs.esirs#367.INP
-w 2290 491 100 0 n#35 hwin.hwin#365.in 2224 480 2416 480 ecalcs.ecalcs#364.INPB
-w 2338 523 100 0 n#36 hwin.hwin#366.in 2288 576 2320 576 2320 512 2416 512 ecalcs.ecalcs#364.INPA
-w -300 11 100 0 n#37 egenSub.egenSub#326.FLNK -432 -128 -304 -128 -304 160 -144 160 esirs.esirs#346.SLNK
-w -308 395 100 0 n#38 egenSub.egenSub#326.OUTB -432 512 -304 512 -304 288 -144 288 esirs.esirs#346.IMSS
-w -276 459 100 0 n#39 egenSub.egenSub#326.VALA -432 608 -272 608 -272 320 -144 320 esirs.esirs#346.INP
-w -1140 -229 100 0 n#40 esirs.esirs#309.VAL -1296 -704 -1136 -704 -1136 256 -720 256 egenSub.egenSub#326.INPF
-w -1172 -21 100 0 n#41 esirs.esirs#306.VAL -1296 -352 -1168 -352 -1168 320 -720 320 egenSub.egenSub#326.INPE
-w -990 387 100 0 n#42 esirs.esirs#273.VAL -1296 0 -1200 0 -1200 384 -720 384 egenSub.egenSub#326.INPD
-w -1006 451 100 0 n#43 esirs.esirs#303.VAL -1296 352 -1232 352 -1232 448 -720 448 egenSub.egenSub#326.INPC
-w -1006 515 100 0 n#44 esirs.esirs#259.VAL -1296 704 -1232 704 -1232 512 -720 512 egenSub.egenSub#326.INPB
-w -1204 811 100 0 n#45 esirs.esirs#242.VAL -1296 1056 -1200 1056 -1200 576 -720 576 egenSub.egenSub#326.INPA
-w -798 -421 100 0 n#46 hwin.hwin#296.in -768 -432 -768 -432 ecalcs.ecalcs#295.INPA
-w 802 -341 100 0 n#47 hwin.hwin#283.in 832 -352 832 -352 esirs.esirs#258.INP
-w 1426 1323 100 0 n#48 hwin.hwin#284.in 1456 1312 1456 1312 esirs.esirs#262.INP
-w -1742 -661 100 0 n#49 hwin.hwin#311.in -1712 -672 -1712 -672 esirs.esirs#309.INP
-w -1742 -309 100 0 n#50 hwin.hwin#308.in -1712 -320 -1712 -320 esirs.esirs#306.INP
-w -1742 43 100 0 n#51 hwin.hwin#279.in -1712 32 -1712 32 esirs.esirs#273.INP
-w -1742 747 100 0 n#52 hwin.hwin#302.in -1712 736 -1712 736 esirs.esirs#259.INP
-w -1742 395 100 0 n#53 hwin.hwin#305.in -1712 384 -1712 384 esirs.esirs#303.INP
-w -1742 1099 100 0 n#54 hwin.hwin#274.in -1712 1088 -1712 1088 esirs.esirs#242.INP
-w -798 -461 100 0 n#55 ecalcs.ecalcs#295.INPB -768 -464 -768 -464 hwin.hwin#298.in
+w -285 1907 100 2 n#1 hwin.hwin#478.in -288 1904 -288 1904 ebis.ebis#477.INP
+w -160 1427 100 0 n#2 ebis.ebis#460.FLNK -224 1424 -96 1424 junction
+w -160 1651 100 0 n#2 ebis.ebis#457.FLNK -224 1648 -96 1648 -96 1232 -64 1232 junction
+w -144 1203 100 0 n#2 ebis.ebis#464.FLNK -224 1200 -64 1200 junction
+w -144 979 100 0 n#2 ebis.ebis#466.FLNK -224 976 -64 976 -64 1232 0 1232 ecalcs.ecalcs#471.SLNK
+w -64 1523 100 0 n#3 ecalcs.ecalcs#471.INPD 0 1520 -128 1520 -128 944 -224 944 ebis.ebis#466.VAL
+w -80 1555 100 0 n#4 ecalcs.ecalcs#471.INPC 0 1552 -160 1552 -160 1168 -224 1168 ebis.ebis#464.VAL
+w -96 1587 100 0 n#5 ecalcs.ecalcs#471.INPB 0 1584 -192 1584 -192 1392 -224 1392 ebis.ebis#460.VAL
+w -112 1619 100 0 n#6 ecalcs.ecalcs#471.INPA 0 1616 -224 1616 ebis.ebis#457.VAL
+w 627 467 100 2 n#7 ecalcs.ecalcs#286.INPB 624 464 624 464 hwin.hwin#292.in
+w 627 499 100 2 n#8 ecalcs.ecalcs#286.INPA 624 496 624 496 hwin.hwin#290.in
+w -477 995 100 2 n#9 hwin.hwin#467.in -480 992 -480 992 ebis.ebis#466.INP
+w -477 1219 100 2 n#10 ebis.ebis#464.INP -480 1216 -480 1216 hwin.hwin#463.in
+w -477 1443 100 2 n#11 hwin.hwin#461.in -480 1440 -480 1440 ebis.ebis#460.INP
+w -477 1667 100 2 n#12 hwin.hwin#458.in -480 1664 -480 1664 ebis.ebis#457.INP
+w -765 -845 100 2 n#13 hwin.hwin#445.in -768 -848 -768 -848 ecalcs.ecalcs#295.SDIS
+w 627 83 100 2 n#14 hwin.hwin#443.in 624 80 624 80 ecalcs.ecalcs#286.SDIS
+w 1376 51 100 0 n#15 abWordGet.abWordGet#435.flnk 1296 48 1456 48 1456 -176 1584 -176 ecalcs.ecalcs#436.SLNK
+w 1440 115 100 0 n#16 abWordGet.abWordGet#435.wordOut 1296 112 1584 112 ecalcs.ecalcs#436.INPD
+w 1587 179 100 2 n#17 hwin.hwin#439.in 1584 176 1584 176 ecalcs.ecalcs#436.INPB
+w 1587 211 100 2 n#18 hwin.hwin#437.in 1584 208 1584 208 ecalcs.ecalcs#436.INPA
+w 1587 819 100 2 n#19 hwin.hwin#433.in 1584 816 1584 816 ecalcs.ecalcs#429.INPA
+w 1440 723 100 0 n#20 abWordGet.abWordGet#427.wordOut 1296 720 1584 720 ecalcs.ecalcs#429.INPD
+w 1344 659 100 0 n#21 abWordGet.abWordGet#427.flnk 1296 656 1392 656 1392 432 1584 432 ecalcs.ecalcs#429.SLNK
+w 1011 1923 100 2 n#22 hwin.hwin#412.in 1008 1920 1008 1920 ecalcs.ecalcs#400.INPA
+w 387 -573 100 2 n#23 hwin.hwin#423.in 384 -576 384 -576 ecalcs.ecalcs#401.INPA
+w 1011 1891 100 2 n#24 hwin.hwin#409.in 1008 1888 1008 1888 ecalcs.ecalcs#400.INPB
+w 1376 1731 100 0 n#25 ecalcs.ecalcs#400.VAL 1296 1728 1456 1728 esirs.esirs#263.INP
+w 387 -605 100 2 n#26 hwin.hwin#405.in 384 -608 384 -608 ecalcs.ecalcs#401.INPB
+w 752 -765 100 0 n#27 ecalcs.ecalcs#401.VAL 672 -768 832 -768 esirs.esirs#264.INP
+w 2720 355 100 0 n#28 ecalcs.ecalcs#364.FLNK 2704 352 2736 352 2736 48 2192 48 2192 -224 2320 -224 esirs.esirs#367.SLNK
+w 2336 1315 100 0 n#29 hwin.hwin#396.in 2288 1312 2384 1312 2384 1376 2480 1376 ecalcs.ecalcs#386.INPC
+w 2784 1283 100 0 n#30 ecalcs.ecalcs#386.FLNK 2768 1280 2800 1280 2800 976 2256 976 2256 704 2384 704 esirs.esirs#389.SLNK
+w 2800 1251 100 0 n#31 ecalcs.ecalcs#386.VAL 2768 1248 2832 1248 2832 944 2288 944 2288 864 2384 864 esirs.esirs#389.INP
+w 2384 1411 100 0 n#32 hwin.hwin#388.in 2288 1408 2480 1408 ecalcs.ecalcs#386.INPB
+w 2336 1507 100 0 n#33 hwin.hwin#387.in 2288 1504 2384 1504 2384 1440 2480 1440 ecalcs.ecalcs#386.INPA
+w 2736 323 100 0 n#34 ecalcs.ecalcs#364.VAL 2704 320 2768 320 2768 16 2224 16 2224 -64 2320 -64 esirs.esirs#367.INP
+w 2320 483 100 0 n#35 hwin.hwin#365.in 2224 480 2416 480 ecalcs.ecalcs#364.INPB
+w 2304 579 100 0 n#36 hwin.hwin#366.in 2288 576 2320 576 2320 512 2416 512 ecalcs.ecalcs#364.INPA
+w -368 -125 100 0 n#37 egenSub.egenSub#326.FLNK -432 -128 -304 -128 -304 160 -144 160 esirs.esirs#346.SLNK
+w -368 515 100 0 n#38 egenSub.egenSub#326.OUTB -432 512 -304 512 -304 288 -144 288 esirs.esirs#346.IMSS
+w -352 611 100 0 n#39 egenSub.egenSub#326.VALA -432 608 -272 608 -272 320 -144 320 esirs.esirs#346.INP
+w -1216 -701 100 0 n#40 esirs.esirs#309.VAL -1296 -704 -1136 -704 -1136 256 -720 256 egenSub.egenSub#326.INPF
+w -1232 -349 100 0 n#41 esirs.esirs#306.VAL -1296 -352 -1168 -352 -1168 320 -720 320 egenSub.egenSub#326.INPE
+w -1248 3 100 0 n#42 esirs.esirs#273.VAL -1296 0 -1200 0 -1200 384 -720 384 egenSub.egenSub#326.INPD
+w -1264 355 100 0 n#43 esirs.esirs#303.VAL -1296 352 -1232 352 -1232 448 -720 448 egenSub.egenSub#326.INPC
+w -1264 707 100 0 n#44 esirs.esirs#259.VAL -1296 704 -1232 704 -1232 512 -720 512 egenSub.egenSub#326.INPB
+w -1248 1059 100 0 n#45 esirs.esirs#242.VAL -1296 1056 -1200 1056 -1200 576 -720 576 egenSub.egenSub#326.INPA
+w -765 -429 100 0 n#46 hwin.hwin#296.in -768 -432 -768 -432 ecalcs.ecalcs#295.INPA
+w 835 -349 100 0 n#47 hwin.hwin#283.in 832 -352 832 -352 esirs.esirs#258.INP
+w 1459 1315 100 0 n#48 hwin.hwin#284.in 1456 1312 1456 1312 esirs.esirs#262.INP
+w -1709 -669 100 0 n#49 hwin.hwin#311.in -1712 -672 -1712 -672 esirs.esirs#309.INP
+w -1709 -317 100 0 n#50 hwin.hwin#308.in -1712 -320 -1712 -320 esirs.esirs#306.INP
+w -1709 35 100 0 n#51 hwin.hwin#279.in -1712 32 -1712 32 esirs.esirs#273.INP
+w -1709 739 100 0 n#52 hwin.hwin#302.in -1712 736 -1712 736 esirs.esirs#259.INP
+w -1709 387 100 0 n#53 hwin.hwin#305.in -1712 384 -1712 384 esirs.esirs#303.INP
+w -1709 1091 100 0 n#54 hwin.hwin#274.in -1712 1088 -1712 1088 esirs.esirs#242.INP
+w -765 -461 100 0 n#55 ecalcs.ecalcs#295.INPB -768 -464 -768 -464 hwin.hwin#298.in
 s -592 1984 100 0 Top Shutter Galil Brake Release Command Active
 s 2576 -1104 200 0 shutterStatus.sch
 s 1504 -1104 200 0 Mar 13, 1998
@@ -445,4 +445,10 @@ p -943 -411 100 0 0 FTVB:STRING
 p -656 -192 100 0 1 SCAN:1 second
 p -656 -224 100 0 1 SNAM:ecsShutterHealthProcess
 p -576 656 100 1024 -1 name:$(top)shutterCombine
+use abWordGetScale -1088 1183 100 0 abWordGetScale#480
+xform 0 -976 1272
+p -1088 1144 100 0 1 setAb:ab $(abC)
+p -1088 1080 100 0 1 setCalc:calc A/10
+p -1088 1112 100 0 1 setDev:dev shBrkPSV
+p -1088 1176 100 0 1 setWord:word $(shbrkpsv)
 [comments]
