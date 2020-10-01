@@ -35,52 +35,52 @@ use bb200tr -544 -440 -100 0 frame
 xform 0 736 384
 use hwin -384 -457 100 0 hwin#43
 xform 0 -288 -416
-p -496 -416 100 0 -1 val(in):$(top)t1w NPP NMS
+p -496 -416 100 0 -1 val(in):$(top)sh:t1w NPP NMS
 use hwin -384 -489 100 0 hwin#45
 xform 0 -288 -448
-p -496 -448 100 0 -1 val(in):$(top)t1z NPP NMS
+p -496 -448 100 0 -1 val(in):$(top)sh:t1z NPP NMS
 use hwin 192 -457 100 0 hwin#47
 xform 0 288 -416
-p 80 -416 100 0 -1 val(in):$(top)t1x NPP NMS
+p 80 -416 100 0 -1 val(in):$(top)sh:t1x NPP NMS
 use hwin 192 -489 100 0 hwin#49
 xform 0 288 -448
-p 80 -448 100 0 -1 val(in):$(top)t1y NPP NMS
+p 80 -448 100 0 -1 val(in):$(top)sh:t1y NPP NMS
 use hwin 768 -457 100 0 hwin#59
 xform 0 864 -416
-p 656 -416 100 0 -1 val(in):$(top)t1w NPP NMS
+p 656 -416 100 0 -1 val(in):$(top)sh:t1w NPP NMS
 use hwin 768 -489 100 0 hwin#61
 xform 0 864 -448
-p 656 -448 100 0 -1 val(in):$(top)t1x NPP NMS
+p 656 -448 100 0 -1 val(in):$(top)sh:t1x NPP NMS
 use hwin 1312 -457 100 0 hwin#67
 xform 0 1408 -416
-p 1200 -416 100 0 -1 val(in):$(top)t1z NPP NMS
+p 1200 -416 100 0 -1 val(in):$(top)sh:t1z NPP NMS
 use hwin 1312 -489 100 0 hwin#69
 xform 0 1408 -448
-p 1200 -448 100 0 -1 val(in):$(top)t1y NPP NMS
+p 1200 -448 100 0 -1 val(in):$(top)sh:t1y NPP NMS
 use hwin -384 -1001 100 0 hwin#79
 xform 0 -288 -960
-p -496 -960 100 0 -1 val(in):$(top)b2w NPP NMS
+p -496 -960 100 0 -1 val(in):$(top)sh:b2w NPP NMS
 use hwin -384 -1033 100 0 hwin#81
 xform 0 -288 -992
-p -496 -992 100 0 -1 val(in):$(top)b2z NPP NMS
+p -496 -992 100 0 -1 val(in):$(top)sh:b2z NPP NMS
 use hwin 192 -1001 100 0 hwin#83
 xform 0 288 -960
-p 80 -960 100 0 -1 val(in):$(top)b2x NPP NMS
+p 80 -960 100 0 -1 val(in):$(top)sh:b2x NPP NMS
 use hwin 192 -1033 100 0 hwin#85
 xform 0 288 -992
-p 80 -992 100 0 -1 val(in):$(top)b2y NPP NMS
+p 80 -992 100 0 -1 val(in):$(top)sh:b2y NPP NMS
 use hwin 768 -1001 100 0 hwin#87
 xform 0 864 -960
-p 656 -960 100 0 -1 val(in):$(top)b2w NPP NMS
+p 656 -960 100 0 -1 val(in):$(top)sh:b2w NPP NMS
 use hwin 768 -1033 100 0 hwin#89
 xform 0 864 -992
-p 656 -992 100 0 -1 val(in):$(top)b2x NPP NMS
+p 656 -992 100 0 -1 val(in):$(top)sh:b2x NPP NMS
 use hwin 1312 -1001 100 0 hwin#91
 xform 0 1408 -960
-p 1200 -960 100 0 -1 val(in):$(top)b2z NPP NMS
+p 1200 -960 100 0 -1 val(in):$(top)sh:b2z NPP NMS
 use hwin 1312 -1033 100 0 hwin#93
 xform 0 1408 -992
-p 1200 -992 100 0 -1 val(in):$(top)b2y NPP NMS
+p 1200 -992 100 0 -1 val(in):$(top)sh:b2y NPP NMS
 use ecalcs 1504 -89 100 0 ecalcs#22
 xform 0 1648 176
 p 1664 0 100 0 -1 CALC:A+B+C+D
