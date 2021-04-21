@@ -2,6 +2,8 @@ $(LINUX_ONLY)#!${INSTALL}/bin/${ARCH}/ecs-mk-IOC
 
 cd ${INSTALL}
 
+nfsMount("$(CFGSERVER)", "$(CFGREMOTE)", "$(CFGLOCAL")
+
 ## Register all support components
 dbLoadDatabase("dbd/ecs-mk-IOC.dbd")
 ecs_mk_IOC_registerRecordDeviceDriver(pdbbase)
