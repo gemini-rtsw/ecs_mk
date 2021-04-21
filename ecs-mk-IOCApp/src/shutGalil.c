@@ -24,19 +24,32 @@
 
 #include "ecs.h"
 #include "genSubRecord.h"
-#include "vxWorks.h"
-#include "ioLib.h" 
-#include "sockLib.h" 
-#include "inetLib.h"
-#include "taskLib.h"
-#include "hostLib.h"
-#include "tickLib.h"
-#include "errnoLib.h"
+#include "epicsStdlib.h"
+#include "epicsThread.h"
 #include "dbFldTypes.h"
 #include "dbEvent.h"
 #include "dbScan.h"
 #include "recSup.h"
-
+#include "arpa/inet.h"
+#include "sys/errno.h"
+#include "sys/socket.h"
+#include "unistd.h"
+#include "strings.h"
+#include "caeventmask.h"
+#include "sys/types.h"
+#include "netinet/in.h"
+#include "netdb.h"
+#include "signal.h"
+#include "stdio.h"
+#include "string.h"
+#include "fcntl.h"
+#include "errno.h"
+#include "sys/time.h"
+#include "stdlib.h"
+#include "memory.h"
+#include "ifaddrs.h"
+#include "net/if.h"
+#include "stdarg.h"
 
 /*
  * 
@@ -120,16 +133,18 @@
  */
 
 #define GALIL_TASK_PRI	3
-#define GALIL_TASK_OPT	(VX_SUPERVISOR_MODE | VX_UNBREAKABLE | VX_STDIO | VX_FP_TASK)
+// #define GALIL_TASK_OPT	(VX_SUPERVISOR_MODE | VX_UNBREAKABLE | VX_STDIO | VX_FP_TASK)
 
+#define IPPORT_RESERVED		1024
 
-static int shutGalilTask(int ipaddr, int port, int fakeGenSubPointer);
+//static int shutGalilTask(int ipaddr, int port, int fakeGenSubPointer);
 static long shutGalilInit(struct genSubRecord *pgsub, int which);
 
-char *shutGalilTopHost = NULL;
-int   shutGalilTopPort = 0;
-char *shutGalilBotHost = NULL;
-int   shutGalilBotPort = 0;
+typedef struct{ int ipaddr; int port; int pgsub; } thread_args;
+
+static int shutGalilTask(thread_args *targs);
+//static struct thread_args *targs; // = {int ipaddr, int port, int pgsub};
+
 
 #define GALIL_TOP	1
 #define GALIL_BOT	2
@@ -139,15 +154,16 @@ long shutGalilBotInit(struct genSubRecord *pgSub) { return shutGalilInit(pgSub, 
 
 static long shutGalilInit (struct genSubRecord *pgsub, int which)
 {
-    int tid;
+    epicsThreadId tid;
     int ipaddr;
     int port;
     char *hostname;
     char *galiltask;
+    thread_args *targs = malloc(sizeof(thread_args));
 
     switch(which) {
-        case GALIL_BOT: port = shutGalilBotPort, hostname = shutGalilBotHost, galiltask = "GalilBot"; break;
-        case GALIL_TOP: port = shutGalilTopPort, hostname = shutGalilTopHost, galiltask = "GalilTop"; break;
+        case GALIL_BOT: port = atoi(getenv("shutGalilBotPort")), hostname = getenv("shutGalilBotHost"), galiltask = "GalilBot"; break;
+        case GALIL_TOP: port = atoi(getenv("shutGalilTopPort")), hostname = getenv("shutGalilTopHost"), galiltask = "GalilTop"; break;
         default: printf("shutGalil init badly broke.\n"); return ERROR;
     }
 
@@ -158,18 +174,19 @@ static long shutGalilInit (struct genSubRecord *pgsub, int which)
 
     printf("shutGalil task %s using %s:%d\n", galiltask, hostname, port);
 
-    if ((ipaddr = inet_addr (hostname)) == ERROR) {
-        if ((ipaddr = hostGetByName (hostname)) == ERROR) {
-            errnoSet (S_hostLib_UNKNOWN_HOST);
+    if ((ipaddr = inet_addr(hostname)) == 0) {
+     //   if ((ipaddr =  (int)gethostbyname(hostname)) == ERROR) {
             printf("shutGalil: Unknown host \"%s\"\n", hostname);
             return ERROR;
-        }
+     //   }
     }
 
-    if ((tid = taskSpawn (galiltask, GALIL_TASK_PRI, GALIL_TASK_OPT,
-        10000, (FUNCPTR) shutGalilTask, ipaddr, port, (int)pgsub,
-        NULL, NULL, NULL, NULL, NULL, NULL, NULL)) == ERROR) {
-        printf("shutGalil: Unable to spawn %s (0x%x)\n", galiltask, errnoGet());
+    targs->ipaddr = ipaddr;
+    targs->port = port;
+    targs->pgsub = (int)pgsub;
+    if (!(tid = epicsThreadCreate( galiltask, GALIL_TASK_PRI, 10000,
+	 (EPICSTHREADFUNC)shutGalilTask, (void *) targs))) {
+        printf("shutGalil: Unable to spawn %s\n", galiltask);
         return ERROR;
     }
 
@@ -188,12 +205,15 @@ static char *fmt = "%9ld%5ld%5ld%5ld%5ld%4ld%9ld%4lf%4lf%4lf%4lf";
 #define NORM_LINE_LEN	58
 #define MAX_LINE_LEN	124
 
-static int shutGalilTask(int ipaddr, int port, int p) {
-    struct genSubRecord *pgsub = (genSubRecord *)p;
+//static int shutGalilTask(int ipaddr, int port, int p) {
+static int shutGalilTask(thread_args *targs) {
+    struct genSubRecord *pgsub = (genSubRecord *)targs->pgsub;
     int    sd = 0xdeadbeaf;	/* Make sure it starts out w/ garbage value */
     char   buf[MAX_LINE_LEN];
+    int ipaddr = targs->ipaddr;
+    int port = targs->port;
 
-    if (!p) {
+    if (!targs->pgsub) {
         printf("shutGalilTask genSubRecord pointer is NULL\n");
         return ERROR;
     }
@@ -202,8 +222,8 @@ static int shutGalilTask(int ipaddr, int port, int p) {
 
     while (1) {
         galilRead(&sd, ipaddr, port, buf);	/* Worries forever on sd, ipaddr, port until it gets data */ 
-
-        recGblGetTimeStamp(pgsub);		/* Set timestamp.					  */
+ 
+        //recGblGetTimeStamp(pgsub);		/* Set timestamp.					  */
 
         if (*IN_DEBUG) {
             printf("shutGalil line: \"%s\"\n", buf);
@@ -254,6 +274,7 @@ static void galilRead(int *psd, int ipaddr, int port, char *buf) {
     int sd = *psd;
     int len;
 
+
     if ((len = read(sd, buf, NORM_LINE_LEN - 2)) < 0) len = 0;
     buf[len] = '\0';
 
@@ -263,11 +284,11 @@ static void galilRead(int *psd, int ipaddr, int port, char *buf) {
          */
         if (read(sd, buf + len, 1) <= 0) {
             if (sd != 0xdeadbeaf)
-                printf("shutGalilTask: read failed: 0x%x %d (0x%x)\n", ipaddr, port, errnoGet()); 
+                printf("shutGalilTask: read failed: 0x%x %d\n", ipaddr, port); 
             while(1) {
                 int one = 1;
                 close(sd); /* Ignore the error returned */
-                (void)taskDelay(sysClkRateGet () * 10);	/* Retry every 10 seconds */
+		rtems_task_wake_after( rtems_clock_get_ticks_per_second() * 5); /* Retry every 10 seconds */
                 if ((*psd = sd = socket (AF_INET, SOCK_STREAM, 0)) == ERROR) continue; 
                 setsockopt (sd, SOL_SOCKET, SO_KEEPALIVE, (char *) &one, sizeof (one)); 
                 bzero ((char *) &sin, sizeof (sin));
@@ -276,7 +297,7 @@ static void galilRead(int *psd, int ipaddr, int port, char *buf) {
                 sin.sin_port        = htons(port);
 
                 if (connect (sd, (struct sockaddr *) &sin, sizeof (sin)) == ERROR) {
-                    printf("shutGalil: Cannot connect to 0x%x %d (0x%x)\n", ipaddr, port, errnoGet());
+                    printf("shutGalil: Cannot connect to 0x%x %d\n", ipaddr, port);
                     continue;
                 }
                 break;

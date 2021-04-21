@@ -52,7 +52,7 @@ ecs-mk-IOC_SRCS += ecsDriveStatus.c
 ecs-mk-IOC_SRCS += ecsFault.c
 ecs-mk-IOC_SRCS += ecSIR.c
 ecs-mk-IOC_SRCS += fakeDevice.c
-ecs-mk-IOC_SRCS += shutGalilDummy.c	# PGX: temporary solution for GS
+ecs-mk-IOC_SRCS += shutGalil.c	# PGX: temporary solution for GS
 
 # Build the main IOC entry point on workstation OSs.
 ecs-mk-IOC_SRCS_DEFAULT += ecs-mk-IOCMain.cpp

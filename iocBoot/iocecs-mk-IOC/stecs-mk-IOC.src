@@ -30,10 +30,11 @@ var drvAbDf1SrcStationNumber 11
 # Host and port for shutter Galil controller. Must be before iocInit
 
 # hostAdd "ShutterGalil", "10.2.60.50"
-shutGalilTopHost = "10.2.60.50"
-shutGalilTopPort = 4000
-shutGalilBotHost = "10.2.60.50"
-shutGalilBotPort = 4001
+#epicsEnvSet("ShutterGalil", "10.2.60.50")
+epicsEnvSet("shutGalilTopHost", "10.2.60.50")
+epicsEnvSet("shutGalilTopPort" , "4000")
+epicsEnvSet("shutGalilBotHost", "10.2.60.50")
+epicsEnvSet("shutGalilBotPort" , "4001")
 
 
 # The following variables are used by the INIT command.
