@@ -302,7 +302,7 @@ p 1584 272 100 0 1 EGU:mm
 p 1696 336 100 1024 -1 name:$(top)botShtrSkew
 use ecalcs 1584 -265 100 0 ecalcs#436
 xform 0 1728 0
-p 1584 -304 100 0 1 CALC:(D-B)/A
+p 1584 -304 100 0 1 CALC:((D>32767?D-65536:D)/320.84)
 p 1584 -336 100 0 1 EGU:degrees
 p 1680 -80 100 0 1 PREC:2
 p 1696 -272 100 1024 -1 name:$(top)botShtrSkewEnc
