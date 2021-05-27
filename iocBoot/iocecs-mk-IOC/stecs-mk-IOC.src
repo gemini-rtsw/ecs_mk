@@ -33,10 +33,10 @@ var drvAbDf1SrcStationNumber 11
 
 # hostAdd "ShutterGalil", "10.2.60.50"
 #epicsEnvSet("ShutterGalil", "10.2.60.50")
-epicsEnvSet("shutGalilTopHost", "10.1.71.12")
-epicsEnvSet("shutGalilTopPort" , "8000")
-epicsEnvSet("shutGalilBotHost", "10.1.71.12")
-epicsEnvSet("shutGalilBotPort" , "8000")
+epicsEnvSet("shutGalilTopHost", "10.2.60.50")
+epicsEnvSet("shutGalilTopPort" , "4000")
+epicsEnvSet("shutGalilBotHost", "10.2.60.50")
+epicsEnvSet("shutGalilBotPort" , "4001")
 
 # The following variables are used by the INIT command.
 # They should be initialized before calling iocInit.
