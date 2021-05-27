@@ -50,6 +50,7 @@
 #include "ifaddrs.h"
 #include "net/if.h"
 #include "stdarg.h"
+#include "recGbl.h"
 
 /*
  * 
@@ -223,7 +224,7 @@ static int shutGalilTask(thread_args *targs) {
     while (1) {
         galilRead(&sd, ipaddr, port, buf);	/* Worries forever on sd, ipaddr, port until it gets data */ 
  
-        //recGblGetTimeStamp(pgsub);		/* Set timestamp.					  */
+        recGblGetTimeStamp(pgsub);		/* Set timestamp.					  */
 
         if (*IN_DEBUG) {
             printf("shutGalil line: \"%s\"\n", buf);
@@ -240,6 +241,8 @@ static int shutGalilTask(thread_args *targs) {
 
             *OUT_HEALTH = HEALTH_GOOD;
             strncpy (OUT_ERRMSG, "OK", SZ_EPICS_STRING);
+
+
             db_post_events(pgsub, OUT_RPX,    DBE_VALUE|DBE_LOG);
             db_post_events(pgsub, OUT_TEX,    DBE_VALUE|DBE_LOG);
             db_post_events(pgsub, OUT_TEY,    DBE_VALUE|DBE_LOG);
