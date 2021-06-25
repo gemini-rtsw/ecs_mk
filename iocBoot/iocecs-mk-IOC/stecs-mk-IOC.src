@@ -2,7 +2,7 @@ $(LINUX_ONLY)#!${INSTALL}/bin/${ARCH}/ecs-mk-IOC
 
 cd ${INSTALL}
 
-nfsMount("$(CFGSERVER)", "$(CFGREMOTE)", "$(CFGLOCAL")
+nfsMount("$(CFGSERVER)", "$(CFGREMOTE)", "$(CFGLOCAL)")
 
 ## Register all support components
 dbLoadDatabase("dbd/ecs-mk-IOC.dbd")
