@@ -644,7 +644,12 @@ long moveDomeCad( struct cadRecord *pcad )
       else             
       {                                            /* valid position demand */
         ret = CAD_ACCEPT;
-        *(long *)pcad->vala = MOVE;       /* Write MOVE demand state out */
+	if (*(long *)pcad->vala == MOVE)
+	{
+		*(long *)pcad->vala = STOP;     /* if dome is already moving, we need to stop it so it can process the new demand */
+		errlogSevPrintf(errlogInfo, "moveDome: dome still moving, applying stop before next move\n");
+        }
+	*(long *)pcad->vala = MOVE;       /* Write MOVE demand state out */
         *(double *)pcad->valb = dmdPos;     /* Write current demand pos out */
         if (debug)
           errlogSevPrintf(errlogInfo, "moveDomeCad: ACCEPTED azimuth position = %f\n", dmdPos );
@@ -885,12 +890,22 @@ errlogSevPrintf(errlogInfo, "moveShtrs: tsDmdPos=%g, bsDmdPos=%g, tsOff=%g, bsOf
         {                                            /* bottom is below top */
           if (tsType != ALL_BLANKS)
           {                                         /* don't write if blank */
+	    if (*(long *)pcad->vala == MOVE)
+	    {
+		*(long *)pcad->vala = STOP;         /* if it is already moving, we need to stop it so it can process the new demand */ 
+	        errlogSevPrintf(errlogInfo, "moveShtrs: top shutter still moving, applying stop before next move\n");
+	    }
             fanSel = (fanSel + 1);                        /* enable ts FLNK */
             *(long *)pcad->vala = MOVE;  /* Write tsh MOVE demand state out */
             *(double *)pcad->valb = tsDmdPos - tsOff; /* Write tsh demand pos out */
           }
           if (bsType != ALL_BLANKS)
           {                                         /* don't write if blank */
+	    if (*(long *)pcad->valc == MOVE)
+	    {
+		*(long *)pcad->valc = STOP; /* if it is already moving, we need to stop it so it can process the new demand */
+	        errlogSevPrintf(errlogInfo, "moveShtrs: bottom shutter still moving, applying stop before next move\n");
+	    }
             fanSel = (fanSel + 2);                        /* enable bs FLNK */
             *(long *)pcad->valc = MOVE;  /* Write bsh MOVE demand state out */
             *(double *)pcad->vald = bsDmdPos - bsOff; /* Write bsh demand pos out */
@@ -1110,12 +1125,20 @@ long moveVgatesCad( struct cadRecord *pcad )
       {  
         if (evgType != ALL_BLANKS)
         {                                           /* don't write if blank */
+	  if (*(long *)pcad->vala == MOVE)
+	  {
+		*(long *)pcad->vala = STOP;     /* if vent gate is already moving, we need to stop it so it can process the new demand */
+	  }
           fanSel = (fanSel + 1);                         /* enable evg FLNK */
           *(long *)pcad->vala = MOVE;    /* Write evg MOVE demand state out */
           *(double *)pcad->valb = evgDmdPos;    /* Write evg demand pos out */
         }
         if (wvgType != ALL_BLANKS)
         {                                           /* don't write if blank */
+	  if (*(long *)pcad->valc == MOVE)
+          {     
+                *(long *)pcad->valc = STOP;     /* if vent gate is already moving, we need to stop it so it can process the new demand */
+	  }
           fanSel = (fanSel + 2);                         /* enable wvg FLNK */
           *(long *)pcad->valc = MOVE;    /* Write wvg MOVE demand state out */
           *(double *)pcad->vald = wvgDmdPos;    /* Write wvg demand pos out */
