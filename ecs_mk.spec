@@ -38,7 +38,7 @@ This is the module %{name}.
 %package devel
 Summary: %{name}-devel Package
 Group: Development/Gemini
-BuildRequires: tdct sequencer-devel geminiRec-devel xycom-devel gemUtil-devel pvload-devel ecsMotorRecord-devel AbDf1-devel drvSerial-devel 
+BuildRequires: tdct sequencer-devel geminiRec-devel xycom-devel gemUtil-devel pvload-devel ecsmotorrecord-devel abdf1-devel drvSerial-devel 
 %description devel
 This is the module %{name}.
 
