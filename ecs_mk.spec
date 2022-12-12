@@ -26,8 +26,8 @@ Source0: %{name}-%{version}.tar.gz
 ExclusiveArch: %{arch}
 Prefix: %{_prefix}
 ## You may specify dependencies here
-BuildRequires: epics-base-devel re2c tdct sequencer-devel geminiRec-devel xycom-devel gemUtil-devel pvload-devel ecsMotorRecord-devel AbDf1-devel drvSerial-devel 
-Requires: epics-base sequencer geminiRec xycom gemUtil pvload ecsMotorRecord AbDf1 drvSerial
+BuildRequires: epics-base-devel re2c tdct sequencer-devel geminiRec-devel xycom-devel gemUtil-devel pvload-devel ecsmotorrecord-devel abdf1-devel drvSerial-devel 
+Requires: epics-base sequencer geminiRec xycom gemUtil pvload ecsmotorrecord abdf1 drvSerial
 ## Switch dependency checking off
 AutoReqProv: no
 
