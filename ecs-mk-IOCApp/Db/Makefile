@@ -18,7 +18,7 @@ DB += ecsSim.db
 DB += deiceTop.db
 DB += ecsSad.db
 
-DB += iocAdminRTEMS.db
+# DB += iocAdminRTEMS.db
 
 include $(TOP)/configure/RULES
 #----------------------------------------

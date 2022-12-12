@@ -79,7 +79,7 @@ static long     readInputLinks(struct ecsMotorRecord * pmr);
 static long            init_record(struct ecsMotorRecord * pmr, int pass);
 static long            process(struct ecsMotorRecord * pmr);
 static long            special(struct dbAddr * paddr, int after);
-static long            get_value(struct ecsMotorRecord * pmr, struct valueDes * pvdes);
+//static long            get_value(struct ecsMotorRecord * pmr, struct valueDes * pvdes);
 #define cvt_dbaddr     NULL
 #define get_array_info NULL
 #define put_array_info NULL
@@ -102,7 +102,7 @@ struct rset     ecsMotorRSET = {
 	init_record,
 	process,
 	special,
-	get_value,
+	/* get_value,*/
 	cvt_dbaddr,
 	get_array_info,
 	put_array_info,
@@ -348,6 +348,7 @@ special(struct dbAddr *paddr, int after) {
 /******************************************************************************
 	get_value()
 *******************************************************************************/
+#if 0
 static long
 get_value(struct ecsMotorRecord * pmr, struct valueDes * pvdes)
 {
@@ -357,7 +358,7 @@ get_value(struct ecsMotorRecord * pmr, struct valueDes * pvdes)
 	pvdes->pvalue = &pmr->val;
 	return (0);
 }
-
+#endif
 /******************************************************************************
 	get_units()
 *******************************************************************************/

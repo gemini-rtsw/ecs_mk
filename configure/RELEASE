@@ -19,29 +19,41 @@
 # Build settings that are NOT module paths should appear in a
 # CONFIG_SITE file.
 
-EPICS_RELEASE=R3.14.12.8
 
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
-PROD_SUPP=/gem_sw/prod/$(EPICS_RELEASE)/support
-WORK_SUPP=/gem_sw/work/$(EPICS_RELEASE)/support
+PROD_SUPP=/gem_base/epics/support
+WORK_SUPP=/gem_base/epics/support
 
 # If using the sequencer, point SNCSEQ at its top directory:
 #SNCSEQ=$(EPICS_BASE)/../modules/soft/seq
 
-SERIAL=$(PROD_SUPP)/drvSerial/2-0-7
-ABDF1=$(PROD_SUPP)/AbDf1/2-0-3
-ECSMOTOR=$(PROD_SUPP)/ecsMotorRecord/1-0-1
-GEMREC=$(PROD_SUPP)/geminiRec/4-1-11
-PVLOAD=$(PROD_SUPP)/pvload/1-1-4
-IOCSTATS=$(PROD_SUPP)/iocStats/3-1-16-5
-XYCOM=$(PROD_SUPP)/xycom/2-1-8
-SNCSEQ=$(PROD_SUPP)/seq/2-2-5-3
-GEMUTILS=$(PROD_SUPP)/gemUtil/1-13
+SERIAL=$(PROD_SUPP)/drvSerial
+ABDF1=$(PROD_SUPP)/abdf1
+ECSMOTOR=$(PROD_SUPP)/ecsmotorrecord
+GEMREC=$(PROD_SUPP)/geminiRec
+PVLOAD=$(PROD_SUPP)/pvload
+# IOCSTATS=$(PROD_SUPP)/iocStats/3-1-16-5
+XYCOM=$(PROD_SUPP)/xycom
+SNCSEQ=$(PROD_SUPP)/seq
+GEMUTILS=$(PROD_SUPP)/gemUtil
 
 # EPICS_BASE usually appears last so other apps can override stuff:
-EPICS_BASE=/gem_sw/epics/$(EPICS_RELEASE)/base
+EPICS_BASE=/gem_base/epics/epics-base
 
 # Set RULES here if you want to take build rules from somewhere
 # other than EPICS_BASE:
 #RULES=/path/to/epics/support/module/rules/x-y
+
+# include local RELEASE configuration file (this will be ignored by with
+# .gitignore to keep it local and prevent poisoning the default build 
+# scheme)
+# overwrite configuration from above with this file and do not edit
+# this one
+#
+# These lines allow developers to override these RELEASE settings
+# without having to modify this file directly.
+-include $(TOP)/../RELEASE.local
+-include $(TOP)/../RELEASE.$(EPICS_HOST_ARCH).local
+-include $(TOP)/configure/RELEASE.local
+

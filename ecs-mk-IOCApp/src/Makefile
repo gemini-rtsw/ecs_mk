@@ -16,7 +16,7 @@ DBD += ecs-mk-IOC.dbd
 # ecs-mk-IOC.dbd will be made up from these files:
 # Include dbd files from all support modules
 ecs-mk-IOC_DBD += base.dbd
-ecs-mk-IOC_DBD += iocAdmin.dbd
+# ecs-mk-IOC_DBD += iocAdmin.dbd
 ecs-mk-IOC_DBD += geminiRecords.dbd
 ecs-mk-IOC_DBD += pvload.dbd
 ecs-mk-IOC_DBD += xy240.dbd
@@ -38,7 +38,7 @@ ecs-mk-IOC_LIBS += seq pv
 ecs-mk-IOC_LIBS += listAlarmRecords
 ecs-mk-IOC_LIBS += systemTickTools
 ecs-mk-IOC_LIBS += initTrace
-ecs-mk-IOC_LIBS += devIocStats
+# ecs-mk-IOC_LIBS += devIocStats
 ecs-mk-IOC_LIBS += ecsMotorRecord
 
 # Source files

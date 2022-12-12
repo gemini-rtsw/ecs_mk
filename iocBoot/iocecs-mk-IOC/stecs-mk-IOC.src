@@ -1,6 +1,6 @@
 $(LINUX_ONLY)#!${INSTALL}/bin/${ARCH}/ecs-mk-IOC
 
-cd ${INSTALL}
+cd ../..
 
 nfsMount("$(CFGSERVER)", "$(CFGREMOTE)", "$(CFGLOCAL)")
 
@@ -11,7 +11,7 @@ ecs_mk_IOC_registerRecordDeviceDriver(pdbbase)
 ## Load records
 dbLoadRecords("db/ecs.db", "top=ec:, prtop=pr:, port=/dev/ttyS1 41")
 dbLoadRecords("db/ecsSad.db","sad=ec:sad:, ectop=ec:")
-dbLoadRecords("db/iocAdminRTEMS.db","IOC=ec:iocStats,TODFORMAT=%m/%d/%Y %H:%M:%S")
+# dbLoadRecords("db/iocAdminRTEMS.db","IOC=ec:iocStats,TODFORMAT=%m/%d/%Y %H:%M:%S")
 
 ## Run this to trace the stages of iocInit
 #traceIocInit
