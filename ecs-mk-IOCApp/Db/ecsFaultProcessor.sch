@@ -40,43 +40,43 @@ xform 0 1920 -1312
 p 1792 -1408 100 0 1 setWord:word $(galFlts)
 use abWordRead 1792 -1113 100 0 abWordRead#1013
 xform 0 1904 -1024
-p 1792 -1152 100 0 1 setAb:
+p 1792 -1152 100 0 1 setAb:ab /tyCo/1 41
 p 1792 -1120 100 0 1 setWord:word $(galFlts)
 use abWordRead 928 -1433 100 0 abWordRead#798
 xform 0 1040 -1344
-p 928 -1472 100 0 1 setAb:
+p 928 -1472 100 0 1 setAb:ab /tyCo/1 41
 p 928 -1440 100 0 1 setWord:word $(encFlts)
 use abWordRead 928 -1177 100 0 abWordRead#797
 xform 0 1040 -1088
-p 928 -1216 100 0 1 setAb:
+p 928 -1216 100 0 1 setAb:ab /tyCo/1 41
 p 928 -1184 100 0 1 setWord:word $(limFlts)
 use abWordRead 928 -921 100 0 abWordRead#796
 xform 0 1040 -832
-p 928 -960 100 0 1 setAb:
+p 928 -960 100 0 1 setAb:ab /tyCo/1 41
 p 928 -928 100 0 1 setWord:word $(swFlts)
 use abWordRead 928 -665 100 0 abWordRead#795
 xform 0 1040 -576
-p 928 -704 100 0 1 setAb:
+p 928 -704 100 0 1 setAb:ab /tyCo/1 41
 p 928 -672 100 0 1 setWord:word $(wvFlts)
 use abWordRead 928 -409 100 0 abWordRead#794
 xform 0 1040 -320
-p 928 -448 100 0 1 setAb:
+p 928 -448 100 0 1 setAb:ab /tyCo/1 41
 p 928 -416 100 0 1 setWord:word $(evFlts)
 use abWordRead 928 -153 100 0 abWordRead#793
 xform 0 1040 -64
-p 928 -192 100 0 1 setAb:
+p 928 -192 100 0 1 setAb:ab /tyCo/1 41
 p 928 -160 100 0 1 setWord:word $(dm2Flts)
 use abWordRead 928 103 100 0 abWordRead#792
 xform 0 1040 192
-p 928 64 100 0 1 setAb:
+p 928 64 100 0 1 setAb:ab /tyCo/1 41
 p 928 96 100 0 1 setWord:word $(dm1Flts)
 use abWordRead 928 359 100 0 abWordRead#791
 xform 0 1040 448
-p 928 320 100 0 1 setAb:
+p 928 320 100 0 1 setAb:ab /tyCo/1 41
 p 928 352 100 0 1 setWord:word $(bsFlts)
 use abWordRead 928 583 100 0 abWordRead#790
 xform 0 1040 672
-p 928 544 100 0 1 setAb:
+p 928 544 100 0 1 setAb:ab /tyCo/1 41
 p 928 576 100 0 1 setWord:word $(tsFlts)
 use egenSubD 2144 -345 100 0 analyze
 xform 0 2288 80
