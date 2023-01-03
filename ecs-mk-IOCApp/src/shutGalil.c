@@ -291,7 +291,7 @@ static void galilRead(int *psd, int ipaddr, int port, char *buf) {
             while(1) {
                 int one = 1;
                 close(sd); /* Ignore the error returned */
-		rtems_task_wake_after( rtems_clock_get_ticks_per_second() * 5); /* Retry every 10 seconds */
+		epicsThreadSleep( 10 ); /* Retry every 10 seconds */
                 if ((*psd = sd = socket (AF_INET, SOCK_STREAM, 0)) == ERROR) continue; 
                 setsockopt (sd, SOL_SOCKET, SO_KEEPALIVE, (char *) &one, sizeof (one)); 
                 bzero ((char *) &sin, sizeof (sin));

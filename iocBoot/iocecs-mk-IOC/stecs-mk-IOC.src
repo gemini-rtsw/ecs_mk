@@ -2,6 +2,7 @@ $(LINUX_ONLY)#!${INSTALL}/bin/${ARCH}/ecs-mk-IOC
 
 cd ../..
 
+epicsEnvSet("IOCSH_PS1","ecs-mk-IOC> ")
 nfsMount("$(CFGSERVER)", "$(CFGREMOTE)", "$(CFGLOCAL)")
 
 ## Register all support components

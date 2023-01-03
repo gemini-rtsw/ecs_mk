@@ -35,7 +35,7 @@ GEMREC=$(PROD_SUPP)/geminiRec
 PVLOAD=$(PROD_SUPP)/pvload
 # IOCSTATS=$(PROD_SUPP)/iocStats/3-1-16-5
 XYCOM=$(PROD_SUPP)/xycom
-SNCSEQ=$(PROD_SUPP)/seq
+SNCSEQ=$(PROD_SUPP)/sequencer
 GEMUTILS=$(PROD_SUPP)/gemUtil
 
 # EPICS_BASE usually appears last so other apps can override stuff:
