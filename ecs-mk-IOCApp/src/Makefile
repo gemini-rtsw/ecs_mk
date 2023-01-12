@@ -25,6 +25,7 @@ ecs-mk-IOC_DBD += systemTickTools.dbd
 ecs-mk-IOC_DBD += initTrace.dbd
 ecs-mk-IOC_DBD += menuScan.dbd
 ecs-mk-IOC_DBD += AbDf1.dbd
+ecs-mk-IOC_DBD += drvSerial.dbd
 ecs-mk-IOC_DBD += ecsMotorRecord.dbd
 ecs-mk-IOC_DBD += ecsFunc.dbd
 

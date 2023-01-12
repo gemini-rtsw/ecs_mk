@@ -39,19 +39,19 @@ s 208 1216 100 0 C: activeC state
 [cell use]
 use hwout 2656 1015 100 0 hwout#204
 xform 0 2752 1056
-p 2864 1056 80 0 -1 val(outp):$(top)westVentGatemotor
+p 2864 1056 80 0 -1 val(outp):$(top)westVentGatemotor.PROC
 use hwout 2656 1047 100 0 hwout#201
 xform 0 2752 1088
-p 2864 1088 80 0 -1 val(outp):$(top)eastVentGatemotor
+p 2864 1088 80 0 -1 val(outp):$(top)eastVentGatemotor.PROC
 use hwout 2656 1079 100 0 hwout#200
 xform 0 2752 1120
-p 2864 1120 80 0 -1 val(outp):$(top)botShtrmotor
+p 2864 1120 80 0 -1 val(outp):$(top)botShtrmotor.PROC
 use hwout 2656 1111 100 0 hwout#197
 xform 0 2752 1152
-p 2864 1152 80 0 -1 val(outp):$(top)topShtrmotor
+p 2864 1152 80 0 -1 val(outp):$(top)topShtrmotor.PROC
 use hwout 2656 1143 100 0 hwout#196
 xform 0 2752 1184
-p 2864 1184 80 0 -1 val(outp):$(top)domemotor
+p 2864 1184 80 0 -1 val(outp):$(top)domemotor.PROC
 use efanouts 2352 999 100 0 efanouts#193
 xform 0 2472 1152
 p 2336 1088 100 0 1 SELM:All

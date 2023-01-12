@@ -644,6 +644,7 @@ post_MARKed_fields(struct ecsMotorRecord * pmr, unsigned short mask)
 static long
 initLinks (struct ecsMotorRecord * pmr) {
   long status = 0;
+printf("in initLinks\n");
 
 	Debug(DBUG_MAX, "<%d> %s:initLinks: entry%c\n", ' ');
 

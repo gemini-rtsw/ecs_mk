@@ -370,6 +370,10 @@ long initCAD( struct cadRecord *pcad )
   long interlockType;
   char interlockMess[40];
 
+
+printf("In initCad\n");
+
+
   debug = atoi(pcad->a);
 
       /* Check for interlocks */

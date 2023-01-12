@@ -253,11 +253,11 @@ long checkBuffer( char *buf )
 
 void ecsSystemInitializeTask (void *p)
 {
-
+printf("in ecsSystemInitializeTask\n");
 	while (TRUE) {
-
+printf("before epicsEventMustWait\n");
       epicsEventMustWait(ecsInitSemId); 
-
+printf("after epicsEventMustWait\n");
       errlogPrintf ("Initializing ECS (%s) (%s)\n",
         ecsInitFileName, ecsInitArgs);
 
@@ -290,6 +290,10 @@ void ecsSystemInitializeTask (void *p)
 
 long initInitialise( struct subRecord *psub )
 {
+
+printf("In inintInitialise\n");
+
+
 
   /* create an initialization task for pvLoad .. lower than AB and ECS tasks */
   ecsInitTaskId = epicsThreadCreate (
@@ -334,6 +338,7 @@ long initInitialise( struct subRecord *psub )
 
 long initialiseSub( struct subRecord *psub )
 {
+printf("initialiseSub: reloading initializing data\n");
   long debug = (long)psub->a;
 
   if (debug)

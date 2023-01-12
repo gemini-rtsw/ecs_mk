@@ -2,7 +2,6 @@ $(LINUX_ONLY)#!${INSTALL}/bin/${ARCH}/ecs-mk-IOC
 
 cd ../..
 
-epicsEnvSet("IOCSH_PS1","ecs-mk-IOC> ")
 nfsMount("$(CFGSERVER)", "$(CFGREMOTE)", "$(CFGLOCAL)")
 
 ## Register all support components
@@ -41,10 +40,12 @@ epicsEnvSet("shutGalilBotPort" , "4001")
 
 # The following variables are used by the INIT command.
 # They should be initialized before calling iocInit.
-initSetParameters ("$(CFGFILE)/ecsInitMK.pv", "top=$(ECSTOP):")
-# pvload, "$(CFGFILE)/ecsInitMK.pv", "top=$(ECSTOP):,version=."
+initSetParameters ("ecsInitMK.pv", "top=$(ECSTOP):")
+
 
 iocInit
+
+# pvload, "ecsInitMK.pv", "top=$(ECSTOP):,version=."
 
 # Initialise the ECS database (no args, they were already set)
 ecsPvload
