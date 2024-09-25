@@ -15,6 +15,7 @@
 #include <recSup.h>
 #include <ecsMotor.h>
 
+#include <rtems.h>
 
 /*
  * Gemini enclosure control system 
@@ -194,6 +195,7 @@ long getSecondsOSI() //TODO: This function should be under ecsMisc.c
  */
 long ecsFaultInit (struct genSubRecord *psr) {
 
+printf("in ecsFaultInit\n");
   /* clear the device status words */
   ECS_DOME_FAULT = 0;
   ECS_EVG_FAULT = 0;
@@ -211,6 +213,11 @@ long ecsFaultInit (struct genSubRecord *psr) {
  *
  */
 long ecsFaultHbInit (struct genSubRecord *psr) {
+
+printf("in ecsFaultHbInit\n");
+rtems_interrupt_level level;
+//rtems_interrupt_disable(level);
+//printf("Disabled interrupts\n");
 
   /* reset the heartbeat monitor */
   deadTime = 0;
