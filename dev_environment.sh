@@ -31,14 +31,9 @@ FULL_IMAGE_PATH="${GITLAB_REGISTRY}/${IMAGE_NAME}"
 echo "Detected repository path: ${REPO_PATH}"
 echo "Using image: ${FULL_IMAGE_PATH}"
 
-# Check if the image exists locally first
-if docker image inspect ${FULL_IMAGE_PATH} >/dev/null 2>&1; then
-    echo "Using existing local image: ${FULL_IMAGE_PATH}"
-else
-    # Pull the latest image only if it doesn't exist locally
-    echo "Pulling latest image..."
-    docker pull ${FULL_IMAGE_PATH}
-fi
+# Check if the image exists locally and check for updates
+echo "Checking for newer image version..."
+docker pull ${FULL_IMAGE_PATH}
 
 # Check if running on macOS
 if [[ "$(uname)" == "Darwin" ]]; then
