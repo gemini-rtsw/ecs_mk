@@ -46,7 +46,6 @@ else
     if [ ! -d "/gem_test" ]; then
         echo "Creating /gem_test directory..."
         sudo mkdir -p /gem_test
-        sudo chown $(whoami):$(whoami) /gem_test
     fi
     MOUNT_GEM_TEST="-v /gem_test:/gem_test"
     STARTUP_CMD="bash -l"
