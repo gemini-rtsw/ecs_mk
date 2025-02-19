@@ -38,10 +38,20 @@ This is the module %{name}.
 %package devel
 Summary: %{name}-devel Package
 Group: Development/Gemini
-BuildRequires: tdct epics-base-devel sequencer-devel geminiRec-devel xycom-devel gemUtil-devel pvload-devel ecsmotorrecord-devel abdf1-devel drvSerial-devel 
+Requires: %{name} = %{version}-%{release}
+Requires: tdct 
+Requires: epics-base-devel 
+Requires: sequencer-devel 
+Requires: geminiRec-devel 
+Requires: xycom-devel 
+Requires: gemUtil-devel 
+Requires: pvload-devel 
+Requires: ecsmotorrecord-devel 
+Requires: abdf1-devel 
+Requires: drvSerial-devel 
+
 %description devel
 This is the module %{name}.
-Requires: tdct epics-base-devel sequencer-devel geminiRec-devel xycom-devel gemUtil-devel pvload-devel ecsmotorrecord-devel abdf1-devel drvSerial-devel 
 
 %prep
 %setup -q 
