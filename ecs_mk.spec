@@ -38,9 +38,10 @@ This is the module %{name}.
 %package devel
 Summary: %{name}-devel Package
 Group: Development/Gemini
-BuildRequires: tdct sequencer-devel geminiRec-devel xycom-devel gemUtil-devel pvload-devel ecsmotorrecord-devel abdf1-devel drvSerial-devel 
+BuildRequires: tdct epics-base-devel sequencer-devel geminiRec-devel xycom-devel gemUtil-devel pvload-devel ecsmotorrecord-devel abdf1-devel drvSerial-devel 
 %description devel
 This is the module %{name}.
+Requires: tdct epics-base-devel sequencer-devel geminiRec-devel xycom-devel gemUtil-devel pvload-devel ecsmotorrecord-devel abdf1-devel drvSerial-devel 
 
 %prep
 %setup -q 
@@ -84,8 +85,8 @@ rm -rf $RPM_BUILD_ROOT
 #   /%{_prefix}/%{name}/include
    /%{_prefix}/%{name}/configure
 
-# %files devel
-# %defattr(-,root,root)
+%files devel
+%defattr(-,root,root)
 #   /%{_prefix}/%{name}/include
 
 %changelog
