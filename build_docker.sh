@@ -19,7 +19,7 @@ if [ -z "$CI_REGISTRY_IMAGE" ]; then
     if [ -n "$GITLAB_URL" ]; then
         CI_REGISTRY_IMAGE="registry.gitlab.com/${GITLAB_URL}"
     else
-        CI_REGISTRY_IMAGE="local/$(basename $(pwd))"
+        CI_REGISTRY_IMAGE="local/$(basename $(pwd) | tr '[:upper:]' '[:lower:]')"
         echo "Warning: Could not determine GitLab registry URL, using default: ${CI_REGISTRY_IMAGE}"
     fi
 fi
@@ -34,23 +34,57 @@ echo "PACKAGE_NAME before: ${PACKAGE_NAME}"
 echo "Current directory: $(pwd)"
 echo "Basename: $(basename $(pwd))"
 
-# Build the development image
+# Convert CI_REGISTRY_IMAGE to lowercase for Docker compatibility
+CI_REGISTRY_IMAGE=$(echo "$CI_REGISTRY_IMAGE" | tr '[:upper:]' '[:lower:]')
+
+# Create rpms directory if it doesn't exist
+# This ensures the COPY instruction in Dockerfile doesn't fail
+mkdir -p rpms
+
+# Create a temporary file to store the token
+TOKEN_FILE=$(mktemp)
+echo "${TOKEN}" > "${TOKEN_FILE}"
+
+# Enable BuildKit for Docker
+export DOCKER_BUILDKIT=1
+
+# Build the development image using BuildKit secrets
 docker build \
     --build-arg IN_PIPELINE="${IN_PIPELINE}" \
-    --build-arg TOKEN="${TOKEN}" \
     --build-arg PACKAGE_NAME="${PACKAGE_NAME}" \
+    --secret id=gitlab_token,src="${TOKEN_FILE}" \
     -t "${CI_REGISTRY_IMAGE}:latest-devel" \
     -t "${CI_REGISTRY_IMAGE}:latest" .
 
-# Show the built images
-docker images | grep "${PACKAGE_NAME:-$(basename $(pwd))}"
+# Remove the temporary token file - don't fail if it's already gone
+if [ -f "${TOKEN_FILE}" ]; then
+    rm -f "${TOKEN_FILE}" || true
+fi
+
+echo "DEBUG: Docker build completed"
+
 
 # Push the images if in pipeline
 if [ -n "$CI_REGISTRY" ]; then
-    # In pipeline - use REGISTRY_TOKEN for pushing
-    docker login -u oauth2 -p "${REGISTRY_TOKEN}" "${CI_REGISTRY}"
-    docker push "${CI_REGISTRY_IMAGE}:latest"
-    docker push "${CI_REGISTRY_IMAGE}:latest-devel"
+    echo "Running in CI pipeline, attempting to push images..."
+    
+    # We're already logged in via .docker-login in .gitlab-ci.yml
+    # No need to login again
+    
+    # Push the images
+    echo "Pushing image: ${CI_REGISTRY_IMAGE}:latest"
+    if ! docker push "${CI_REGISTRY_IMAGE}:latest"; then
+        echo "ERROR: Failed to push ${CI_REGISTRY_IMAGE}:latest"
+        exit 1
+    fi
+    
+    echo "Pushing image: ${CI_REGISTRY_IMAGE}:latest-devel"
+    if ! docker push "${CI_REGISTRY_IMAGE}:latest-devel"; then
+        echo "ERROR: Failed to push ${CI_REGISTRY_IMAGE}:latest-devel"
+        exit 1
+    fi
+    
+    echo "Successfully pushed all images"
 else
     # Local push - make it optional
     echo

@@ -10,8 +10,11 @@ if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
 fi
 
 # Get the full repository path from git remote URL (excluding .git and the domain)
-REPO_PATH=$(git config --get remote.origin.url | sed 's/.*gitlab.com[:\/]\(.*\)\.git/\1/')
+REPO_PATH=$(git config --get remote.origin.url | sed -E 's#^(https?://gitlab\.com/|git@gitlab\.com:)(.*)\.git$#\2#')
 REPO_NAME=$(basename ${REPO_PATH})
+
+# Convert repository path to lowercase for Docker compatibility
+REPO_PATH_LOWERCASE=$(echo ${REPO_PATH} | tr '[:upper:]' '[:lower:]')
 
 # Get the git root directory
 GIT_ROOT=$(git rev-parse --show-toplevel)
@@ -24,14 +27,14 @@ fi
 
 # Get the GitLab registry URL from the environment or use a default
 GITLAB_REGISTRY=${CI_REGISTRY:-"registry.gitlab.com"}
-# Use the repository's own image with full path
-IMAGE_NAME="${REPO_PATH}:latest-devel"
+# Use the repository's own image with full path - ensure lowercase for Docker
+IMAGE_NAME="${REPO_PATH_LOWERCASE}:latest-devel"
 FULL_IMAGE_PATH="${GITLAB_REGISTRY}/${IMAGE_NAME}"
 
 echo "Detected repository path: ${REPO_PATH}"
 echo "Using image: ${FULL_IMAGE_PATH}"
 
-# Check if the image exists locally and check for updates
+# Check for newer image version
 echo "Checking for newer image version..."
 docker pull ${FULL_IMAGE_PATH}
 
@@ -61,4 +64,4 @@ docker run -it --rm \
     -v ${HOME}/.docker:/root/.docker \
     -w /repo \
     ${FULL_IMAGE_PATH} \
-    bash -c "${STARTUP_CMD}" 
+    bash -c "${STARTUP_CMD}"

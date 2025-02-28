@@ -2,7 +2,6 @@ FROM rockylinux:8
 
 # Build arguments
 ARG IN_PIPELINE=false
-ARG TOKEN
 ARG PACKAGE_NAME
 
 # Enable PowerTools and EPEL
@@ -20,39 +19,39 @@ RUN dnf install -y gcc-c++ \
     conserver \
     conserver-client
 
-# Configure GitLab repository for dependencies
-RUN echo $'\n\
+# Configure GitLab repository for dependencies using BuildKit secret
+# This RUN command will only have access to the secret during build time
+# The secret won't be stored in any layer of the final image
+RUN --mount=type=secret,id=gitlab_token \
+    if [ ! -f /run/secrets/gitlab_token ]; then \
+        echo "ERROR: gitlab_token secret is required" && exit 1; \
+    fi && \
+    TOKEN=$(cat /run/secrets/gitlab_token) && \
+    echo -e "\n\
 [gitlab-rpm-repo]\n\
 name=GitLab RPM Repository\n\
-baseurl=https://oauth2:***REMOVED-GITLAB-TOKEN***@gitlab.com/api/v4/projects/66226575/packages/generic/rpm-repo/1.0/\n\
+baseurl=https://oauth2:${TOKEN}@gitlab.com/api/v4/projects/66226575/packages/generic/rpm-repo/1.0/\n\
 enabled=1\n\
 gpgcheck=0\n\
-' > /etc/yum.repos.d/gitlab-rpm-repo.repo && \
+" > /etc/yum.repos.d/gitlab-rpm-repo.repo && \
     dnf makecache --refresh
 
 # Create directory for RPMs
 RUN mkdir -p /tmp/rpms/
 
-# Copy RPMs if they exist (in pipeline mode)
+# Copy RPMs if they exist
 COPY rpms/ /tmp/rpms/
 
-# Install local RPM if in pipeline mode, otherwise from repo
-RUN if [ "$IN_PIPELINE" = "true" ] ; then \
-        if [ "$(ls -A /tmp/rpms/)" ] ; then \
-            if ls /tmp/rpms/*-devel*.rpm 1> /dev/null 2>&1; then \
-                dnf install -y /tmp/rpms/*-devel*.rpm /tmp/rpms/*.rpm ; \
-            else \
-                dnf install -y /tmp/rpms/*.rpm ; \
-            fi \
+# Install local RPM if available, otherwise from repo
+RUN if [ "$(ls -A /tmp/rpms/ 2>/dev/null)" ]; then \
+        echo "Found RPMs in /tmp/rpms, installing locally" && \
+        if ls /tmp/rpms/*-devel*.rpm 1> /dev/null 2>&1; then \
+            dnf install -y /tmp/rpms/*-devel*.rpm /tmp/rpms/*.rpm ; \
         else \
-            echo "No RPMs found in /tmp/rpms, falling back to repo install" && \
-            if dnf list ${PACKAGE_NAME}-devel &>/dev/null; then \
-                dnf install -y ${PACKAGE_NAME}-devel ${PACKAGE_NAME} ; \
-            else \
-                dnf install -y ${PACKAGE_NAME} ; \
-            fi \
+            dnf install -y /tmp/rpms/*.rpm ; \
         fi \
     else \
+        echo "No RPMs found in /tmp/rpms, falling back to repo install" && \
         if dnf list ${PACKAGE_NAME}-devel &>/dev/null; then \
             dnf install -y ${PACKAGE_NAME}-devel ${PACKAGE_NAME} ; \
         else \

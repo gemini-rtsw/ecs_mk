@@ -30,33 +30,71 @@ fi
 echo "Building package: $PACKAGE_NAME"
 
 # Pull the container
-echo "Pulling Rocky 8 packages container..."
-docker pull registry.gitlab.com/nsf-noirlab/gemini/rtsw/gemini-rtsw-repo/rocky8-packages:latest
+echo "Pulling Rocky 8 base image..."
+docker pull rockylinux:8
 
 # Run the build in container
 echo "Running build in container..."
 docker run --rm -v $(pwd):/work -w /work \
-    registry.gitlab.com/nsf-noirlab/gemini/rtsw/gemini-rtsw-repo/rocky8-packages:latest \
-    /bin/bash -l -c '
+    rockylinux:8 \
+    /bin/bash -c 'set -ex && \
+        # Configure GitLab repository first
+        echo "[gitlab-rpm-repo]
+name=GitLab RPM Repository
+baseurl=https://oauth2:***REMOVED-GITLAB-TOKEN***@gitlab.com/api/v4/projects/66226575/packages/generic/rpm-repo/1.0/
+enabled=1
+gpgcheck=0" > /etc/yum.repos.d/gitlab-rpm-repo.repo && \
+        
+        # Enable PowerTools and EPEL repositories
+        dnf install -y epel-release && \
+        dnf install -y dnf-plugins-core && \
+        dnf config-manager --set-enabled powertools && \
+        dnf makecache --refresh && \
+
+        # Install gemini-ade package
+        dnf install -y gemini-ade && \
+        
+        # Now we can source the ADE environment
+        source /etc/profile.d/ade.sh && \
+        
+        # Install minimal build requirements
+        dnf install -y rpm-build make gcc gcc-c++ re2c && \
+        
         # Find the spec file
-        SPEC_FILE=$(ls *.spec)
+        SPEC_FILE=$(ls *.spec) &&
+        echo "Found spec file: $SPEC_FILE" &&
         if [ -z "$SPEC_FILE" ]; then
-            echo "No .spec file found in repository"
+            echo "No .spec file found in repository" &&
             exit 1
-        fi
+        fi &&
+
+        # Install build dependencies from spec file
+        dnf builddep -y $SPEC_FILE &&
 
         # Extract version from spec file
-        PACKAGE_VERSION=$(grep "^Version:" $SPEC_FILE | awk "{print \$2}")
+        PACKAGE_VERSION=$(grep "^Version:" $SPEC_FILE | awk "{print \$2}") &&
+        echo "Package version: $PACKAGE_VERSION" &&
 
         # Create source directory and tarball with correct structure
         mkdir -p /root/rpmbuild/SOURCES &&
         dir_name="'$PACKAGE_NAME'-${PACKAGE_VERSION}" &&
+        echo "Creating tarball with name: $dir_name" &&
         tar --transform "s,^,${dir_name}/," -czf /root/rpmbuild/SOURCES/${dir_name}.tar.gz . &&
+        ls -l /root/rpmbuild/SOURCES/ &&
+        
         make &&
         rpmbuild -ba $SPEC_FILE &&
+        
+        # Show what was built
+        ls -l /root/rpmbuild/RPMS/x86_64/ &&
+        
         # Copy RPMs to mounted volume
         mkdir -p /work/rpms &&
-        cp /root/rpmbuild/RPMS/x86_64/*.rpm /work/rpms/
+        cp /root/rpmbuild/RPMS/x86_64/*.rpm /work/rpms/ &&
+        
+        # Verify the copy worked
+        echo "Contents of /work/rpms:" &&
+        ls -l /work/rpms/
     '
 
 echo "RPM build complete! RPMs can be found in the rpms/ directory:"

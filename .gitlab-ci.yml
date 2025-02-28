@@ -10,7 +10,7 @@ services:
 
 .docker-login: &docker_login
   before_script:
-    - docker login -u oauth2 -p ${TOKEN} ${CI_REGISTRY}
+    - docker login -u oauth2 -p ${REGISTRY_TOKEN} ${CI_REGISTRY}
 
 build:
   image: docker:latest
@@ -18,7 +18,7 @@ build:
   <<: *docker_login
   script:
     # Pull the container
-    - docker pull registry.gitlab.com/nsf-noirlab/gemini/rtsw/gemini-rtsw-repo/rocky8-packages:latest
+    #- docker pull registry.gitlab.com/nsf-noirlab/gemini/rtsw/gemini-rtsw-repo/rocky8-packages:latest
     
     # Create rpms directory for artifacts
     - mkdir -p rpms
@@ -79,6 +79,9 @@ docker-build:
     # Install required tools
     - apk add --no-cache bash git
     
-    # Run the docker build script
+    # Run the docker build script with debug output
     - chmod +x build_docker.sh
+    - echo "CI_REGISTRY=${CI_REGISTRY}"
+    - echo "CI_REGISTRY_IMAGE=${CI_REGISTRY_IMAGE}"
+    - echo "REGISTRY_TOKEN is $(if [ -n \"${REGISTRY_TOKEN}\" ]; then echo 'set'; else echo 'NOT set'; fi)"
     - ./build_docker.sh 
