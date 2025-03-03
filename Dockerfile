@@ -3,6 +3,7 @@ FROM rockylinux:8
 # Build arguments
 ARG IN_PIPELINE=false
 ARG PACKAGE_NAME
+ARG REPO_PATH=rpm-repo/1.0
 
 # Enable PowerTools and EPEL
 RUN dnf install -y epel-release && \
@@ -30,7 +31,7 @@ RUN --mount=type=secret,id=gitlab_token \
     echo -e "\n\
 [gitlab-rpm-repo]\n\
 name=GitLab RPM Repository\n\
-baseurl=https://oauth2:${TOKEN}@gitlab.com/api/v4/projects/66226575/packages/generic/rpm-repo/1.0/\n\
+baseurl=https://oauth2:${TOKEN}@gitlab.com/api/v4/projects/66226575/packages/generic/${REPO_PATH}/\n\
 enabled=1\n\
 gpgcheck=0\n\
 " > /etc/yum.repos.d/gitlab-rpm-repo.repo && \

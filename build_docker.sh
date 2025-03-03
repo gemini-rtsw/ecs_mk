@@ -6,6 +6,24 @@ set -e
 # Default token for local builds (same as in .gitlab-ci.yml)
 TOKEN="${TOKEN:-***REMOVED-GITLAB-TOKEN***}"
 
+# Default repository path
+REPO_PATH="rpm-repo/1.0"
+IS_PROD=false
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -p|--prod)
+      REPO_PATH="prod/1.0"
+      IS_PROD=true
+      shift
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+
 # Determine if we're in pipeline
 IN_PIPELINE="false"
 if [ -n "$CI_REGISTRY" ]; then
@@ -33,6 +51,7 @@ fi
 echo "PACKAGE_NAME before: ${PACKAGE_NAME}"
 echo "Current directory: $(pwd)"
 echo "Basename: $(basename $(pwd))"
+echo "Using repository path: $REPO_PATH"
 
 # Convert CI_REGISTRY_IMAGE to lowercase for Docker compatibility
 CI_REGISTRY_IMAGE=$(echo "$CI_REGISTRY_IMAGE" | tr '[:upper:]' '[:lower:]')
@@ -48,13 +67,22 @@ echo "${TOKEN}" > "${TOKEN_FILE}"
 # Enable BuildKit for Docker
 export DOCKER_BUILDKIT=1
 
+# Set image tags based on whether this is a production build
+if [ "$IS_PROD" = true ]; then
+    # Production tags
+    TAGS="-t ${CI_REGISTRY_IMAGE}:prod-devel -t ${CI_REGISTRY_IMAGE}:prod"
+else
+    # Default tags
+    TAGS="-t ${CI_REGISTRY_IMAGE}:latest-devel -t ${CI_REGISTRY_IMAGE}:latest"
+fi
+
 # Build the development image using BuildKit secrets
 docker build \
     --build-arg IN_PIPELINE="${IN_PIPELINE}" \
     --build-arg PACKAGE_NAME="${PACKAGE_NAME}" \
+    --build-arg REPO_PATH="${REPO_PATH}" \
     --secret id=gitlab_token,src="${TOKEN_FILE}" \
-    -t "${CI_REGISTRY_IMAGE}:latest-devel" \
-    -t "${CI_REGISTRY_IMAGE}:latest" .
+    ${TAGS} .
 
 # Remove the temporary token file - don't fail if it's already gone
 if [ -f "${TOKEN_FILE}" ]; then
@@ -71,17 +99,31 @@ if [ -n "$CI_REGISTRY" ]; then
     # We're already logged in via .docker-login in .gitlab-ci.yml
     # No need to login again
     
-    # Push the images
-    echo "Pushing image: ${CI_REGISTRY_IMAGE}:latest"
-    if ! docker push "${CI_REGISTRY_IMAGE}:latest"; then
-        echo "ERROR: Failed to push ${CI_REGISTRY_IMAGE}:latest"
-        exit 1
-    fi
-    
-    echo "Pushing image: ${CI_REGISTRY_IMAGE}:latest-devel"
-    if ! docker push "${CI_REGISTRY_IMAGE}:latest-devel"; then
-        echo "ERROR: Failed to push ${CI_REGISTRY_IMAGE}:latest-devel"
-        exit 1
+    # Push the images based on whether this is a production build
+    if [ "$IS_PROD" = true ]; then
+        echo "Pushing image: ${CI_REGISTRY_IMAGE}:prod"
+        if ! docker push "${CI_REGISTRY_IMAGE}:prod"; then
+            echo "ERROR: Failed to push ${CI_REGISTRY_IMAGE}:prod"
+            exit 1
+        fi
+        
+        echo "Pushing image: ${CI_REGISTRY_IMAGE}:prod-devel"
+        if ! docker push "${CI_REGISTRY_IMAGE}:prod-devel"; then
+            echo "ERROR: Failed to push ${CI_REGISTRY_IMAGE}:prod-devel"
+            exit 1
+        fi
+    else
+        echo "Pushing image: ${CI_REGISTRY_IMAGE}:latest"
+        if ! docker push "${CI_REGISTRY_IMAGE}:latest"; then
+            echo "ERROR: Failed to push ${CI_REGISTRY_IMAGE}:latest"
+            exit 1
+        fi
+        
+        echo "Pushing image: ${CI_REGISTRY_IMAGE}:latest-devel"
+        if ! docker push "${CI_REGISTRY_IMAGE}:latest-devel"; then
+            echo "ERROR: Failed to push ${CI_REGISTRY_IMAGE}:latest-devel"
+            exit 1
+        fi
     fi
     
     echo "Successfully pushed all images"
@@ -89,6 +131,11 @@ else
     # Local push - make it optional
     echo
     echo "Images built successfully. To push them, run:"
-    echo "docker push ${CI_REGISTRY_IMAGE}:latest"
-    echo "docker push ${CI_REGISTRY_IMAGE}:latest-devel"
+    if [ "$IS_PROD" = true ]; then
+        echo "docker push ${CI_REGISTRY_IMAGE}:prod"
+        echo "docker push ${CI_REGISTRY_IMAGE}:prod-devel"
+    else
+        echo "docker push ${CI_REGISTRY_IMAGE}:latest"
+        echo "docker push ${CI_REGISTRY_IMAGE}:latest-devel"
+    fi
 fi 

@@ -3,6 +3,22 @@
 # Ensure script fails on any error
 set -e
 
+# Default repository path
+REPO_PATH="rpm-repo/1.0"
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -p|--prod)
+      REPO_PATH="prod/1.0"
+      shift
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+
 # Get package name from spec file or git as fallback
 SPEC_FILE=$(ls *.spec)
 if [ -z "$SPEC_FILE" ]; then
@@ -28,6 +44,7 @@ if [ -z "$PACKAGE_NAME" ]; then
 fi
 
 echo "Building package: $PACKAGE_NAME"
+echo "Using repository path: $REPO_PATH"
 
 # Pull the container
 echo "Pulling Rocky 8 base image..."
@@ -41,7 +58,7 @@ docker run --rm -v $(pwd):/work -w /work \
         # Configure GitLab repository first
         echo "[gitlab-rpm-repo]
 name=GitLab RPM Repository
-baseurl=https://oauth2:***REMOVED-GITLAB-TOKEN***@gitlab.com/api/v4/projects/66226575/packages/generic/rpm-repo/1.0/
+baseurl=https://oauth2:***REMOVED-GITLAB-TOKEN***@gitlab.com/api/v4/projects/66226575/packages/generic/'$REPO_PATH'/
 enabled=1
 gpgcheck=0" > /etc/yum.repos.d/gitlab-rpm-repo.repo && \
         

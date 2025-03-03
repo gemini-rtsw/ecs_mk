@@ -3,6 +3,22 @@
 # Ensure the script fails on any error
 set -e
 
+# Default tag suffix
+TAG_SUFFIX="latest-devel"
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -p|--prod)
+      TAG_SUFFIX="prod-devel"
+      shift
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+
 # Check if we're in a git repository
 if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     echo "Error: Not in a git repository"
@@ -28,7 +44,7 @@ fi
 # Get the GitLab registry URL from the environment or use a default
 GITLAB_REGISTRY=${CI_REGISTRY:-"registry.gitlab.com"}
 # Use the repository's own image with full path - ensure lowercase for Docker
-IMAGE_NAME="${REPO_PATH_LOWERCASE}:latest-devel"
+IMAGE_NAME="${REPO_PATH_LOWERCASE}:${TAG_SUFFIX}"
 FULL_IMAGE_PATH="${GITLAB_REGISTRY}/${IMAGE_NAME}"
 
 echo "Detected repository path: ${REPO_PATH}"
