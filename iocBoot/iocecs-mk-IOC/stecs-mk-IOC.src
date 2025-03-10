@@ -1,7 +1,7 @@
 $(LINUX_ONLY)#!${INSTALL}/bin/${ARCH}/ecs-mk-IOC
 
-cd ../..
-
+#cd ../..
+epicsEnvSet("EPICS_TS_NTP_CONF_FILE","/rtconfig/ntp/ntp-10.2.50.10.conf")
 nfsMount("$(CFGSERVER)", "$(CFGREMOTE)", "$(CFGLOCAL)")
 
 ## Register all support components
@@ -9,8 +9,8 @@ dbLoadDatabase("dbd/ecs-mk-IOC.dbd")
 ecs_mk_IOC_registerRecordDeviceDriver(pdbbase)
 
 ## Load records
-dbLoadRecords("db/ecs.db", "top=ec:, prtop=pr:, port=/dev/ttyS1 41")
-dbLoadRecords("db/ecsSad.db","sad=ec:sad:, ectop=ec:")
+dbLoadRecords("db/ecs.db", "top=ecv:, prtop=pr:, port=/dev/ttyS1 41")
+dbLoadRecords("db/ecsSad.db","sad=ecv:sad:, ectop=ecv:")
 # dbLoadRecords("db/iocAdminRTEMS.db","IOC=ec:iocStats,TODFORMAT=%m/%d/%Y %H:%M:%S")
 
 ## Run this to trace the stages of iocInit
