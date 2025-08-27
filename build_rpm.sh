@@ -67,6 +67,9 @@ gpgcheck=0" > /etc/yum.repos.d/gitlab-rpm-repo.repo && \
         dnf install -y dnf-plugins-core && \
         dnf config-manager --set-enabled powertools && \
         dnf makecache --refresh && \
+        
+        # Clean package cache to avoid corrupted packages
+        dnf clean packages && \
 
         # Install gemini-ade package
         dnf install -y gemini-ade && \
@@ -85,6 +88,9 @@ gpgcheck=0" > /etc/yum.repos.d/gitlab-rpm-repo.repo && \
             exit 1
         fi &&
 
+        # Clean package cache again before installing build dependencies
+        dnf clean packages && \
+        
         # Install build dependencies from spec file
         dnf builddep -y $SPEC_FILE &&
 
