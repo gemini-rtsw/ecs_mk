@@ -758,30 +758,38 @@ long moveShtrsCad( struct cadRecord *pcad )
         
   debug   = atoi(pcad->a);             /* read current debug level argument */
 
+  printf("DEBUG: moveShtrsCad: Entering function, directive = %d\n", pcad->dir);
+
   /* Check for interlocks */
   if (pcad->dir != menuDirectiveCLEAR)
   {
+    printf("DEBUG: moveShtrsCad: Checking interlocks\n");
     interlockType = ecsInterlocked (interlockMess);
     if (interlockType == INTRLK_MOTION || 
            interlockType == INTRLK_GLOBAL ||
                   interlockType == INTRLK_NORUN)
     {
+      printf("DEBUG: moveShtrsCad: INTERLOCK REJECT - type %ld\n", interlockType);
       strcpy (pcad->mess, interlockMess);
       return CAD_REJECT ;
     }
+    printf("DEBUG: moveShtrsCad: No interlocks blocking\n");
   }
 
   switch( pcad->dir )                                 /* read CAD directive */
   {
     case menuDirectiveMARK:
+      printf("DEBUG: moveShtrsCad: MARK directive\n");
       ret = CAD_ACCEPT;
       break;
 
     case menuDirectiveCLEAR:
+      printf("DEBUG: moveShtrsCad: CLEAR directive\n");
       ret = CAD_ACCEPT;
       break;
 
     case menuDirectivePRESET:
+      printf("DEBUG: moveShtrsCad: PRESET directive - starting validation\n");
       tsDmdPos = strtod(pcad->b, NULL);  /*     read tsh position argument  */
       bsDmdPos = strtod(pcad->c, NULL);  /*     read bsh position argument  */
       tsMax = strtod( pcad->d, NULL);   /* read maximum tsh limit argument  */
@@ -797,8 +805,11 @@ errlogSevPrintf (errlogInfo, "moveShtrs: b=(%s), c=(%s), tsDmdPos=%g, bsDmdPos=%
       bsType = checkBuffer (pcad->c);         /* check for valid bsh data   */
 errlogSevPrintf (errlogInfo, "moveShtrs: tsType=%ld, bsType=%ld\n", tsType, bsType);
 
+      printf("DEBUG: moveShtrsCad: Input validation - tsType=%ld, bsType=%ld\n", tsType, bsType);
+
       if (tsType == BAD_VALUE)
       {                                           /* tsh data type invalid  */
+        printf("DEBUG: moveShtrsCad: PATH - TSH BAD_VALUE rejection\n");
         if (debug)
           errlogSevPrintf(errlogInfo, "moveShtrsCad: tsh demand has invalid data type from checkBuffer (%d)\n", (int) tsType);
         sprintf(pcad->mess,"tsh data type invalid: %d", (int) tsType);
@@ -806,6 +817,7 @@ errlogSevPrintf (errlogInfo, "moveShtrs: tsType=%ld, bsType=%ld\n", tsType, bsTy
       }
       else if (bsType == BAD_VALUE)
       {                                           /* bsh data type invalid  */
+        printf("DEBUG: moveShtrsCad: PATH - BSH BAD_VALUE rejection\n");
         if (debug)
           errlogSevPrintf (errlogInfo, "moveShtrsCad: checkBuffer: bsh data type invalid: (%d)\n",
                                    (int) bsType);
@@ -814,20 +826,27 @@ errlogSevPrintf (errlogInfo, "moveShtrs: tsType=%ld, bsType=%ld\n", tsType, bsTy
       }
       else if (tsType == ALL_BLANKS && bsType == ALL_BLANKS)
       {                                         /* tsh & bsh are both blank */
+        printf("DEBUG: moveShtrsCad: PATH - Both arguments blank rejection\n");
         if (debug)
           errlogSevPrintf(errlogInfo, "moveShtrsCad: both arguments are blank\n");
         sprintf(pcad->mess,"Both arguments are blank");
         ret = CAD_REJECT;
       }
       else
+      {
+        printf("DEBUG: moveShtrsCad: PATH - Initial validation passed\n");
         ret = CAD_ACCEPT;
+      }
 
       if (ret != CAD_REJECT)
       {
+        printf("DEBUG: moveShtrsCad: Checking TSH limits and blanks\n");
         if (tsType != ALL_BLANKS)
         {
+          printf("DEBUG: moveShtrsCad: TSH not blank, checking limits\n");
           if( tsDmdPos < tsMin || tsDmdPos > tsMax )
           {                                   /* tsh argument out of limits */
+            printf("DEBUG: moveShtrsCad: PATH - TSH out of limits rejection\n");
             if (debug)
               errlogSevPrintf(errlogInfo, "moveShtrsCad: tsh argument out of limits\n");
             sprintf(pcad->mess, "tsh out of range: %3.1f - %3.1f",
@@ -836,11 +855,13 @@ errlogSevPrintf (errlogInfo, "moveShtrs: tsType=%ld, bsType=%ld\n", tsType, bsTy
           }
           else             
           {                            /* valid top shutter position demand */
+            printf("DEBUG: moveShtrsCad: PATH - TSH limits OK\n");
             ret = CAD_ACCEPT;
           }
         }
         else
         {                                              /* argument is blank */
+          printf("DEBUG: moveShtrsCad: PATH - TSH is blank, accepting\n");
           if (debug)
             errlogSevPrintf(errlogInfo, "moveShtrsCad: tsh demand is blank\n");
           ret = CAD_ACCEPT;
@@ -849,10 +870,13 @@ errlogSevPrintf (errlogInfo, "moveShtrs: tsType=%ld, bsType=%ld\n", tsType, bsTy
 
       if (ret != CAD_REJECT)
       {
+        printf("DEBUG: moveShtrsCad: Checking BSH limits and blanks\n");
         if (bsType != ALL_BLANKS)
         {
+          printf("DEBUG: moveShtrsCad: BSH not blank, checking limits\n");
           if( bsDmdPos < bsMin || bsDmdPos > bsMax )
           {                                   /* bsh argument out of limits */
+            printf("DEBUG: moveShtrsCad: PATH - BSH out of limits rejection\n");
             if (debug)
               errlogSevPrintf(errlogInfo, "moveShtrsCad: bsh argument out of limits\n");
             sprintf(pcad->mess, "bsh out of range: %3.1f - %3.1f",
@@ -861,11 +885,13 @@ errlogSevPrintf (errlogInfo, "moveShtrs: tsType=%ld, bsType=%ld\n", tsType, bsTy
           }
           else             
           {                         /* valid bottom shutter position demand */
+            printf("DEBUG: moveShtrsCad: PATH - BSH limits OK\n");
             ret = CAD_ACCEPT;
           }
         }
         else
         {                                              /* argument is blank */
+          printf("DEBUG: moveShtrsCad: PATH - BSH is blank, accepting\n");
           if (debug)
             errlogSevPrintf(errlogInfo, "moveShtrsCad: bsh demand is blank\n");
           ret = CAD_ACCEPT;
@@ -874,15 +900,23 @@ errlogSevPrintf (errlogInfo, "moveShtrs: tsType=%ld, bsType=%ld\n", tsType, bsTy
 
       if (ret == CAD_ACCEPT)
       {
+        printf("DEBUG: moveShtrsCad: All validations passed, processing demands\n");
         if (tsType == ALL_BLANKS)          /* if blank - recover old values */
+        {
+          printf("DEBUG: moveShtrsCad: PATH - Recovering old TSH value\n");
           tsDmdPos = *(double *)pcad->valb + tsOff;
+        }
         if (bsType == ALL_BLANKS)
+        {
+          printf("DEBUG: moveShtrsCad: PATH - Recovering old BSH value\n");
           bsDmdPos = *(double *)pcad->valc + bsOff;
+        }
 
 errlogSevPrintf(errlogInfo, "moveShtrs: tsDmdPos=%g, bsDmdPos=%g, tsOff=%g, bsOff=%g\n", tsDmdPos, bsDmdPos, tsOff, bsOff);
 
         if (tsDmdPos < bsDmdPos)            /* check if bottom is above top */
         {                                            /* bottom is above top */
+          printf("DEBUG: moveShtrsCad: PATH - Bottom above top rejection\n");
           if (debug)
             errlogSevPrintf(errlogInfo, "moveShtrsCad: Tsh (%3.1f) must be above Bsh (%3.1f)\n",
                              tsDmdPos, bsDmdPos);
@@ -892,10 +926,13 @@ errlogSevPrintf(errlogInfo, "moveShtrs: tsDmdPos=%g, bsDmdPos=%g, tsOff=%g, bsOf
         }
         else
         {                                            /* bottom is below top */
+          printf("DEBUG: moveShtrsCad: PATH - Position relationship OK, writing outputs\n");
           if (tsType != ALL_BLANKS)
           {                                         /* don't write if blank */
+            printf("DEBUG: moveShtrsCad: Writing TSH MOVE command\n");
 	    if (*(long *)pcad->vala == MOVE)
 	    {
+                printf("DEBUG: moveShtrsCad: TSH already moving, stopping first\n");
 		*(long *)pcad->vala = STOP;         /* if it is already moving, we need to stop it so it can process the new demand */ 
 	        errlogSevPrintf(errlogInfo, "moveShtrs: top shutter still moving, applying stop before next move\n");
 	    }
@@ -905,8 +942,10 @@ errlogSevPrintf(errlogInfo, "moveShtrs: tsDmdPos=%g, bsDmdPos=%g, tsOff=%g, bsOf
           }
           if (bsType != ALL_BLANKS)
           {                                         /* don't write if blank */
+            printf("DEBUG: moveShtrsCad: Writing BSH MOVE command\n");
 	    if (*(long *)pcad->valc == MOVE)
 	    {
+                printf("DEBUG: moveShtrsCad: BSH already moving, stopping first\n");
 		*(long *)pcad->valc = STOP; /* if it is already moving, we need to stop it so it can process the new demand */
 	        errlogSevPrintf(errlogInfo, "moveShtrs: bottom shutter still moving, applying stop before next move\n");
 	    }
@@ -920,25 +959,30 @@ errlogSevPrintf(errlogInfo, "moveShtrs: tsDmdPos=%g, bsDmdPos=%g, tsOff=%g, bsOf
         }
       }
       *(long *)pcad->vale = fanSel;          /* Write fanout select integer */
+      printf("DEBUG: moveShtrsCad: PRESET complete, fanSel=%ld, ret=%ld\n", fanSel, ret);
       break;
 
     case menuDirectiveSTART:
+      printf("DEBUG: moveShtrsCad: START directive\n");
       if (debug)
         errlogSevPrintf(errlogInfo, "moveShtrsCad: ACCEPTED moveShtrs command\n");
       ret = CAD_ACCEPT;
       break;
 
     case menuDirectiveSTOP:
+      printf("DEBUG: moveShtrsCad: STOP directive\n");
       ret = CAD_ACCEPT;
       break;
 
     default:
+      printf("DEBUG: moveShtrsCad: Invalid directive\n");
       if (debug)
         errlogSevPrintf(errlogInfo, "moveShtrsCad: invalid CAD directive\n");
       sprintf(pcad->mess, "invalid CAD directive");
       ret = CAD_REJECT;
       break;
   }
+  printf("DEBUG: moveShtrsCad: Exiting function, returning %ld\n", ret);
   return ret;
 }
 
