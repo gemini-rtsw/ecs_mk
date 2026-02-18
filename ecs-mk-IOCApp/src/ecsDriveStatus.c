@@ -497,10 +497,14 @@ long ecsPowSeqProc4 (struct genSubRecord *psr) {
 
    case 6:
     strcpy(psr->vald, "22 - Close Sequence Done ");
+    psr->vali = psr->i;
+    psr->valj = psr->j;
     break;
 
    case 7:
     strcpy(psr->vald, "22 - Close Sequence Done - Shutters Not Fully Closed ");
+    psr->vali = psr->i;
+    psr->valj = psr->j;
     break;
 
   }
