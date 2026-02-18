@@ -1,5 +1,5 @@
 [schematic2]
-uniq 15
+uniq 17
 [tools]
 [detail]
 w -64 483 100 0 n#1 ahuWordGet.ahuWordGet#1313.flnk -128 480 0 480 0 160 160 160 ecalcs.calcword1.SLNK
@@ -18,7 +18,9 @@ w 696 355 100 0 n#10 ecalcs.calcword1.VAL 448 352 944 352 egenSub.proc.INPA
 w 947 -157 100 0 n#11 hwin.hwin#1316.in 944 -160 944 -160 egenSub.proc.INPI
 w 947 -221 100 0 n#12 hwin.hwin#1317.in 944 -224 944 -224 egenSub.proc.INPJ
 w 1235 -157 100 0 n#13 hwout.hwout#1315.outp 1232 -160 1232 -160 egenSub.proc.OUTI
-w 1242 -214 -100 0 n#14 hwout.hwout#1314.outp 1232 -224 1232 -224 egenSub.proc.OUTJ
+w 1235 -221 100 0 n#14 hwout.hwout#1314.outp 1232 -224 1232 -224 egenSub.proc.OUTJ
+w 947 -29 100 0 n#15 hwin.hwin#1319.in 944 -32 944 -32 egenSub.proc.INPG
+w 954 -86 -100 0 n#16 hwin.hwin#1318.in 944 -96 944 -96 egenSub.proc.INPH
 s 2256 -2160 100 0 Angelic Ebbers
 s 2912 -2048 150 0 Drive Powering Status sequences
 s 2320 -2240 80 0 23/March/2015
@@ -89,4 +91,10 @@ p 755 -168 100 0 -1 val(in):$(top)botShtrPos
 use hwin 752 -240 100 0 hwin#1317
 xform 0 848 -224
 p 755 -232 100 0 -1 val(in):$(top)topShtrPos
+use hwin 752 -112 100 0 hwin#1318
+xform 0 848 -96
+p 755 -104 100 0 -1 val(in):$(top)topShtrOffset
+use hwin 752 -48 100 0 hwin#1319
+xform 0 848 -32
+p 755 -40 100 0 -1 val(in):$(top)botShtrOffset
 [comments]
