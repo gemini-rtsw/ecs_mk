@@ -71,6 +71,7 @@
 #include "ecs.h"
 
 #include <dbEvent.h>
+#include <dbScan.h>
 
 #include <cadRecord.h>
 #include <cad.h>
@@ -738,6 +739,8 @@ long moveDomeCad( struct cadRecord *pcad )
  */
 /* *INDENT-ON* */
 
+static int moveShtrsPending = 0;
+
 long moveShtrsCad( struct cadRecord *pcad )
 {
   long   ret;                        /* CAD return status                   */
@@ -770,6 +773,11 @@ long moveShtrsCad( struct cadRecord *pcad )
                   interlockType == INTRLK_NORUN)
     {
       printf("DEBUG: moveShtrsCad: INTERLOCK REJECT - type %ld\n", interlockType);
+      if (moveShtrsPending)
+      {
+        printf("DEBUG: moveShtrsCad: Clearing pending move due to interlock\n");
+        moveShtrsPending = 0;
+      }
       strcpy (pcad->mess, interlockMess);
       return CAD_REJECT ;
     }
@@ -926,37 +934,77 @@ errlogSevPrintf(errlogInfo, "moveShtrs: tsDmdPos=%g, bsDmdPos=%g, tsOff=%g, bsOf
         }
         else
         {                                            /* bottom is below top */
+          int tsMoving = 0;
+          int bsMoving = 0;
+          int stopOnly = 0;
+
           printf("DEBUG: moveShtrsCad: PATH - Position relationship OK, writing outputs\n");
-          if (tsType != ALL_BLANKS)
-          {                                         /* don't write if blank */
-            printf("DEBUG: moveShtrsCad: Writing TSH MOVE command\n");
-	    if (*(long *)pcad->vala == MOVE)
-	    {
-                printf("DEBUG: moveShtrsCad: TSH already moving, stopping first\n");
-		*(long *)pcad->vala = STOP;         /* if it is already moving, we need to stop it so it can process the new demand */ 
-	        errlogSevPrintf(errlogInfo, "moveShtrs: top shutter still moving, applying stop before next move\n");
-	    }
-            fanSel = (fanSel + 1);                        /* enable ts FLNK */
-            *(long *)pcad->vala = MOVE;  /* Write tsh MOVE demand state out */
-            *(double *)pcad->valb = tsDmdPos - tsOff; /* Write tsh demand pos out */
+          tsMoving = (tsType != ALL_BLANKS && *(long *)pcad->vala == MOVE);
+          bsMoving = (bsType != ALL_BLANKS && *(long *)pcad->valc == MOVE);
+
+          if (!moveShtrsPending && (tsMoving || bsMoving))
+          {
+            if (tsMoving)
+            {
+              printf("DEBUG: moveShtrsCad: TSH moving, issuing STOP before new demand\n");
+              *(long *)pcad->vala = STOP;
+            }
+            if (bsMoving)
+            {
+              printf("DEBUG: moveShtrsCad: BSH moving, issuing STOP before new demand\n");
+              *(long *)pcad->valc = STOP;
+            }
+            fanSel = (tsMoving ? 1 : 0) + (bsMoving ? 2 : 0);
+            *(long *)pcad->vale = fanSel;
+            moveShtrsPending = 1;
+            printf("DEBUG: moveShtrsCad: STOP issued, scheduling reprocess for new demand\n");
+            scanOnce((dbCommon *)pcad);
+            stopOnly = 1;
           }
-          if (bsType != ALL_BLANKS)
-          {                                         /* don't write if blank */
-            printf("DEBUG: moveShtrsCad: Writing BSH MOVE command\n");
-	    if (*(long *)pcad->valc == MOVE)
-	    {
-                printf("DEBUG: moveShtrsCad: BSH already moving, stopping first\n");
-		*(long *)pcad->valc = STOP; /* if it is already moving, we need to stop it so it can process the new demand */
-	        errlogSevPrintf(errlogInfo, "moveShtrs: bottom shutter still moving, applying stop before next move\n");
-	    }
-            fanSel = (fanSel + 2);                        /* enable bs FLNK */
-            *(long *)pcad->valc = MOVE;  /* Write bsh MOVE demand state out */
-            *(double *)pcad->vald = bsDmdPos - bsOff; /* Write bsh demand pos out */
+
+          if (!stopOnly)
+          {
+            if (moveShtrsPending)
+            {
+              printf("DEBUG: moveShtrsCad: Applying pending move after stop\n");
+              moveShtrsPending = 0;
+            }
+            if (tsType != ALL_BLANKS)
+            {                                         /* don't write if blank */
+              printf("DEBUG: moveShtrsCad: Writing TSH MOVE command\n");
+	      if (*(long *)pcad->vala == MOVE)
+	      {
+                  printf("DEBUG: moveShtrsCad: TSH already moving, stopping first\n");
+		  *(long *)pcad->vala = STOP;         /* if it is already moving, we need to stop it so it can process the new demand */ 
+	          errlogSevPrintf(errlogInfo, "moveShtrs: top shutter still moving, applying stop before next move\n");
+	      }
+              fanSel = (fanSel + 1);                        /* enable ts FLNK */
+              *(long *)pcad->vala = MOVE;  /* Write tsh MOVE demand state out */
+              *(double *)pcad->valb = tsDmdPos - tsOff; /* Write tsh demand pos out */
+            }
+            if (bsType != ALL_BLANKS)
+            {                                         /* don't write if blank */
+              printf("DEBUG: moveShtrsCad: Writing BSH MOVE command\n");
+	      if (*(long *)pcad->valc == MOVE)
+	      {
+                  printf("DEBUG: moveShtrsCad: BSH already moving, stopping first\n");
+		  *(long *)pcad->valc = STOP; /* if it is already moving, we need to stop it so it can process the new demand */
+	          errlogSevPrintf(errlogInfo, "moveShtrs: bottom shutter still moving, applying stop before next move\n");
+	      }
+              fanSel = (fanSel + 2);                        /* enable bs FLNK */
+              *(long *)pcad->valc = MOVE;  /* Write bsh MOVE demand state out */
+              *(double *)pcad->vald = bsDmdPos - bsOff; /* Write bsh demand pos out */
+            }
+            if (debug)
+              errlogSevPrintf(errlogInfo, "moveShtrsCad: ACCEPTED el. demands: tsh = %f, bsh = %f\n",
+                            tsDmdPos, bsDmdPos );
           }
-          if (debug)
-            errlogSevPrintf(errlogInfo, "moveShtrsCad: ACCEPTED el. demands: tsh = %f, bsh = %f\n",
-                          tsDmdPos, bsDmdPos );
         }
+      }
+      if (ret == CAD_REJECT && moveShtrsPending)
+      {
+        printf("DEBUG: moveShtrsCad: Clearing pending move due to rejection\n");
+        moveShtrsPending = 0;
       }
       *(long *)pcad->vale = fanSel;          /* Write fanout select integer */
       printf("DEBUG: moveShtrsCad: PRESET complete, fanSel=%ld, ret=%ld\n", fanSel, ret);
@@ -3417,6 +3465,3 @@ epicsRegisterFunction(deiceLoginCad);
 epicsRegisterFunction(deiceMoveCad);
 epicsRegisterFunction(deicePcu2Cad);
 epicsRegisterFunction(deicePowerCad);
-
-
-
