@@ -497,14 +497,14 @@ long ecsPowSeqProc4 (struct genSubRecord *psr) {
 
    case 6:
     strcpy(psr->vald, "22 - Close Sequence Done ");
-    psr->vali = (void *)(intptr_t)(*(double *)psr->i + *(double *)psr->g);
-    psr->valj = (void *)(intptr_t)(*(double *)psr->j + *(double *)psr->h);    
+    psr->vali = (void *)(intptr_t)(*(double *)psr->i - *(double *)psr->g);
+    psr->valj = (void *)(intptr_t)(*(double *)psr->j - *(double *)psr->h);    
     break;
 
    case 7:
     strcpy(psr->vald, "22 - Close Sequence Done - Shutters Not Fully Closed ");
-    psr->vali = (void *)(intptr_t)(*(double *)psr->i + *(double *)psr->g);
-    psr->valj = (void *)(intptr_t)(*(double *)psr->j + *(double *)psr->h);    
+    psr->vali = (void *)(intptr_t)(*(double *)psr->i - *(double *)psr->g);
+    psr->valj = (void *)(intptr_t)(*(double *)psr->j - *(double *)psr->h);    
     break;
 
   }
