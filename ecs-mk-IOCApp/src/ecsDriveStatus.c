@@ -472,8 +472,6 @@ long ecsPowSeqProc4 (struct genSubRecord *psr) {
   {
 
    case 0:
-    *(double *)psr->vali = 0;
-    *(double *)psr->valj = 0;
     strcpy(psr->vald, "16 - Init ");
     break;
 
@@ -498,15 +496,11 @@ long ecsPowSeqProc4 (struct genSubRecord *psr) {
     break;
 
    case 6:
-    *(double *)psr->vali = 1;
-    *(double *)psr->valj = 1;
     sprintf(psr->vald, "22 - Close Sequence Done i=%.2f j=%.2f",
             *(double *)psr->vali, *(double *)psr->valj);
     break;
 
    case 7:
-    *(double *)psr->vali = 1;
-    *(double *)psr->valj = 1;
     sprintf(psr->vald, "22 - Not Fully Closed i=%.2f j=%.2f",
             *(double *)psr->vali, *(double *)psr->valj);
     break;
