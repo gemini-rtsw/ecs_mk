@@ -19,14 +19,12 @@
 # Build settings that are NOT module paths should appear in a
 # CONFIG_SITE file.
 
+SUPPORT=/gem_base/epics/support
 
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
 PROD_SUPP=/gem_base/epics/support
 WORK_SUPP=/gem_base/epics/support
-
-# If using the sequencer, point SNCSEQ at its top directory:
-#SNCSEQ=$(EPICS_BASE)/../modules/soft/seq
 
 SERIAL=$(PROD_SUPP)/drvSerial
 ABDF1=$(PROD_SUPP)/abdf1
@@ -39,24 +37,10 @@ SNCSEQ=$(PROD_SUPP)/sequencer
 GEMUTILS=$(PROD_SUPP)/gemUtil
 
 # EPICS_BASE usually appears last so other apps can override stuff:
-SUPPORT=/gem_base/epics/support
 EPICS_BASE=/gem_base/epics/epics-base
-SUPPORT=/gem_base/epics/support
-#EPICS_BASE=/home/ekurz/epics-base
 
-# Set RULES here if you want to take build rules from somewhere
-# other than EPICS_BASE:
-#RULES=/path/to/epics/support/module/rules/x-y
-
-# include local RELEASE configuration file (this will be ignored by with
-# .gitignore to keep it local and prevent poisoning the default build 
-# scheme)
-# overwrite configuration from above with this file and do not edit
-# this one
-#
 # These lines allow developers to override these RELEASE settings
 # without having to modify this file directly.
 -include $(TOP)/../RELEASE.local
 -include $(TOP)/../RELEASE.$(EPICS_HOST_ARCH).local
 -include $(TOP)/configure/RELEASE.local
-
