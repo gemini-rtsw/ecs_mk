@@ -19,24 +19,19 @@
 # Build settings that are NOT module paths should appear in a
 # CONFIG_SITE file.
 
-SUPPORT=/gem_base/epics/support
-
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
-PROD_SUPP=/gem_base/epics/support
-WORK_SUPP=/gem_base/epics/support
-
-SERIAL=$(PROD_SUPP)/drvSerial
-ABDF1=$(PROD_SUPP)/abdf1
-ECSMOTOR=$(PROD_SUPP)/ecsmotorrecord
-GEMREC=$(PROD_SUPP)/geminiRec
-PVLOAD=$(PROD_SUPP)/pvload
-# IOCSTATS=$(PROD_SUPP)/iocStats/3-1-16-5
-XYCOM=$(PROD_SUPP)/xycom
-SNCSEQ=$(PROD_SUPP)/sequencer
-GEMUTILS=$(PROD_SUPP)/gemUtil
+SERIAL=$(SUPPORT)/drvSerial
+ABDF1=$(SUPPORT)/AbDf1
+ECSMOTOR=$(SUPPORT)/ecsmotorrecord
+GEMREC=$(SUPPORT)/geminiRec
+PVLOAD=$(SUPPORT)/pvload
+XYCOM=$(SUPPORT)/xycom
+SNCSEQ=$(SUPPORT)/sequencer
+GEMUTILS=$(SUPPORT)/gemUtil
 
 # EPICS_BASE usually appears last so other apps can override stuff:
+SUPPORT=/gem_base/epics/support
 EPICS_BASE=/gem_base/epics/epics-base
 
 # These lines allow developers to override these RELEASE settings
