@@ -39,7 +39,9 @@ SNCSEQ=$(PROD_SUPP)/sequencer
 GEMUTILS=$(PROD_SUPP)/gemUtil
 
 # EPICS_BASE usually appears last so other apps can override stuff:
+SUPPORT=/gem_base/epics/support
 EPICS_BASE=/gem_base/epics/epics-base
+SUPPORT=/gem_base/epics/support
 #EPICS_BASE=/home/ekurz/epics-base
 
 # Set RULES here if you want to take build rules from somewhere
