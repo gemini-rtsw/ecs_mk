@@ -68,6 +68,8 @@ use ecsPlcCmd 32 1511 100 0 ecsPlcCmd#33
 xform 0 144 1600
 p 64 1504 100 0 -1 seta:cmd closeSH
 p 64 1472 100 0 -1 setb:address $(closeSH)
+p 64 1440 100 0 -1 setc:lnk1 $(top)stopShtrs.DIR
+p 64 1408 100 0 -1 setd:dol1 2
 use ecsPlcCmd 32 1287 100 0 ecsPlcCmd#34
 xform 0 144 1376
 p 64 1280 100 0 -1 seta:cmd abortCloseSH
