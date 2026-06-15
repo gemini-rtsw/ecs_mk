@@ -1,5 +1,5 @@
 [schematic2]
-uniq 22
+uniq 24
 [tools]
 [detail]
 w 1496 83 100 0 flink efanouts.efanouts#367.LNK1 1392 80 1600 80 outhier.flink.p
@@ -24,6 +24,8 @@ w 1448 315 100 0 n#18 ecalcouts.ecalcouts#394.INPA 1632 312 1264 312 1264 592 99
 w 1448 1035 100 0 n#19 ecalcouts.ecalcouts#392.INPA 1632 1032 1264 1032 1264 736 992 736 ecsMotorControl.ecsMotorControl#383.NewPosition
 w 1635 1003 100 0 n#20 hwin.hwin#393.in 1632 1000 1632 1000 ecalcouts.ecalcouts#392.INPB
 w 1642 290 -100 0 n#21 hwin.hwin#395.in 1632 280 1632 280 ecalcouts.ecalcouts#394.INPB
+w 1840 964 100 0 n#22 ecalcouts.ecalcouts#392.OUT 1952 968 2096 960 hwout.hwout#387.outp
+w 1840 264 100 0 n#23 ecalcouts.ecalcouts#394.OUT 1952 248 1984 280 hwout.hwout#391.outp
 s 1104 -688 100 0 Pedro Gigoux, 14/May/99
 s 1104 -656 100 0 Added flink output
 [cell use]
@@ -64,7 +66,7 @@ use eborderC -632 -913 100 0 eborderC#258
 xform 0 1048 392
 p 2052 -756 100 1024 -1 author:Bob Wooff
 p 2044 -792 100 1024 -1 date:May 8, 1998
-p 2448 -792 80 768 -1 file:dev2Ctrl.sch
+p 2448 -792 80 768 -1 file:dev3Ctrl.sch
 p 2396 -640 150 256 -1 project:Enclosure Control System
 p 2216 -760 100 0 0 revision:$Revision: 1.1.1.1 $
 p 2392 -696 140 256 -1 title:Device Control w/o Velocity
@@ -93,10 +95,26 @@ xform 0 2080 280
 p 2195 275 100 0 -1 val(outp):@$(abC) $(hs) $(drvena)
 use ecalcouts 1632 872 100 0 ecalcouts#392
 xform 0 1792 968
+p 1680 1080 100 0 1 CALC:B?0:A
+p 1680 1048 100 0 1 OOPT:Every Time
+p 1680 1016 100 0 1 DOPT:Use CALC
+p 1680 904 100 0 1 DTYP:AB DF1 serial
+p 1520 1032 75 1024 -1 pproc(INPA):CP
+p 1520 1000 75 1024 -1 pproc(INPB):CP
+p 1700 1152 100 1024 -1 name:$(top)$(dev)NewPosGate
 use hwin 1440 984 100 0 hwin#393
 xform 0 1536 1000
+p 1300 1000 100 0 -1 val(in):$(top)autocloseTimerState
 use ecalcouts 1632 152 100 0 ecalcouts#394
 xform 0 1792 248
+p 1680 360 100 0 1 CALC:B?0:A
+p 1680 328 100 0 1 OOPT:Every Time
+p 1680 296 100 0 1 DOPT:Use CALC
+p 1680 184 100 0 1 DTYP:AB DF1 serial
+p 1520 312 75 1024 -1 pproc(INPA):CP
+p 1520 280 75 1024 -1 pproc(INPB):CP
+p 1700 432 100 1024 -1 name:$(top)$(dev)DrvEnaGate
 use hwin 1440 264 100 0 hwin#395
 xform 0 1536 280
+p 1300 280 100 0 -1 val(in):$(top)autocloseTimerState
 [comments]

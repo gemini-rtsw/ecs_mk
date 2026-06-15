@@ -14,7 +14,7 @@ uniq 337
 [attributes]
 [layers]
 <symbol>
-l 100 2 0 240 48 dev2Ctrl
+l 100 2 0 240 48 dev3Ctrl
 l 100 7 0 80 304 Device Control w/o Velocity
 r 0 -96 288 256 320
 r 0 -96 32 256 288
