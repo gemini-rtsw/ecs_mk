@@ -23,9 +23,9 @@ w 1264 643 100 0 n#17 ecsMotorControl.ecsMotorControl#383.PositionDemand 992 640
 w 1448 315 100 0 n#18 ecalcouts.ecalcouts#394.INPA 1632 312 1264 312 1264 592 992 592 ecsMotorControl.ecsMotorControl#383.DriveEnable
 w 1448 1035 100 0 n#19 ecalcouts.ecalcouts#392.INPA 1632 1032 1264 1032 1264 736 992 736 ecsMotorControl.ecsMotorControl#383.NewPosition
 w 1635 1003 100 0 n#20 hwin.hwin#393.in 1632 1000 1632 1000 ecalcouts.ecalcouts#392.INPB
-w 1642 290 -100 0 n#21 hwin.hwin#395.in 1632 280 1632 280 ecalcouts.ecalcouts#394.INPB
-w 1840 964 100 0 n#22 ecalcouts.ecalcouts#392.OUT 1952 968 2096 960 hwout.hwout#387.outp
-w 1840 264 100 0 n#23 ecalcouts.ecalcouts#394.OUT 1952 248 1984 280 hwout.hwout#391.outp
+w 1635 283 100 0 n#21 hwin.hwin#395.in 1632 280 1632 280 ecalcouts.ecalcouts#394.INPB
+w 2032 907 100 0 n#22 ecalcouts.ecalcouts#392.OUT 1952 904 2112 904 hwout.hwout#387.outp
+w 1960 187 100 0 n#23 ecalcouts.ecalcouts#394.OUT 1952 184 2120 184 hwout.hwout#391.outp
 s 1104 -688 100 0 Pedro Gigoux, 14/May/99
 s 1104 -656 100 0 Added flink output
 [cell use]
@@ -62,14 +62,14 @@ p -911 443 100 0 -1 val(in):$(top)simulateL
 use hwin -736 359 100 0 hwin#343
 xform 0 -640 400
 p -912 395 100 0 -1 val(in):$(top)debugM
-use eborderC -632 -913 100 0 eborderC#258
-xform 0 1048 392
-p 2052 -756 100 1024 -1 author:Bob Wooff
-p 2044 -792 100 1024 -1 date:May 8, 1998
-p 2448 -792 80 768 -1 file:dev3Ctrl.sch
-p 2396 -640 150 256 -1 project:Enclosure Control System
-p 2216 -760 100 0 0 revision:$Revision: 1.1.1.1 $
-p 2392 -696 140 256 -1 title:Device Control w/o Velocity
+use eborderC -608 -881 100 0 eborderC#258
+xform 0 1072 424
+p 2076 -724 100 1024 -1 author:Bob Wooff
+p 2068 -760 100 1024 -1 date:May 8, 1998
+p 2472 -760 80 768 -1 file:dev3Ctrl.sch
+p 2420 -608 150 256 -1 project:Enclosure Control System
+p 2240 -728 100 0 0 revision:$Revision: 1.1.1.1 $
+p 2416 -664 140 256 -1 title:Device Control w/o Velocity
 use ecsMotorControl 608 288 100 0 ecsMotorControl#383
 xform 0 800 560
 p 712 686 100 0 -1 set1:dev $(dev)
@@ -84,15 +84,15 @@ p -605 779 100 0 -1 val(in):@$(abC) $(enc)
 use hwin -464 976 100 0 hwin#386
 xform 0 -368 992
 p -643 985 100 0 -1 val(in):@$(abC) $(posdmd)
-use hwout 2096 944 100 0 hwout#387
-xform 0 2192 960
-p 2303 954 100 0 -1 val(outp):@$(abC) $(hs) $(newpos)
+use hwout 2112 888 100 0 hwout#387
+xform 0 2208 904
+p 2319 898 100 0 -1 val(outp):@$(abC) $(hs) $(newpos)
 use hwout 1536 624 100 0 hwout#388
 xform 0 1632 640
 p 1741 637 100 0 -1 val(outp):@$(abC) $(posdmd)
-use hwout 1984 264 100 0 hwout#391
-xform 0 2080 280
-p 2195 275 100 0 -1 val(outp):@$(abC) $(hs) $(drvena)
+use hwout 2120 168 100 0 hwout#391
+xform 0 2216 184
+p 2331 179 100 0 -1 val(outp):@$(abC) $(hs) $(drvena)
 use ecalcouts 1632 872 100 0 ecalcouts#392
 xform 0 1792 968
 p 1680 1080 100 0 1 CALC:B?0:A
