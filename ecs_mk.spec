@@ -26,8 +26,25 @@ Source0: %{name}-%{version}.tar.gz
 ExclusiveArch: %{arch}
 Prefix: %{_prefix}
 ## You may specify dependencies here
-BuildRequires: epics-base-devel re2c tdct sequencer-devel geminiRec-devel xycom-devel gemUtil-devel pvload-devel ecsmotorrecord-devel abdf1-devel drvSerial-devel 
-Requires: epics-base sequencer geminiRec xycom gemUtil pvload ecsmotorrecord abdf1 drvSerial
+## Versions are pinned exactly. To upgrade a dependency, edit the version
+## below explicitly — do not relax the pins.
+BuildRequires: re2c
+BuildRequires: tdct
+BuildRequires: epics-base-devel     = 7.0.7-0.git.16f5056.el8
+BuildRequires: sequencer-devel      = 2.2.9.e5e3615-4.git.3d01cdb.el8
+BuildRequires: geminiRec-devel      = 4.1.13-3.git.75a1b03.el8
+BuildRequires: xycom-devel          = 2.1.12-2.git.f891432.el8
+BuildRequires: gemUtil-devel        = 1.6.13-2.git.87948f5.el8
+BuildRequires: pvload-devel         = 1.2.1-7.git.a9b856d.el8
+BuildRequires: ecsmotorrecord-devel = 2.8.22-0.git.fc62144.el8
+BuildRequires: abdf1-devel          = 4.1.13-3.git.f4066df.el8
+BuildRequires: drvSerial-devel      = 1.3-0.git.8718260.el8
+## No runtime Requires on the main package.
+## The artifacts shipped here are cross-compiled for the VME target
+## (RTEMS-mvme2700) and are network-booted by the board; nothing in this
+## package executes on the el8 install host. The support modules above are
+## needed only to LINK the cross-build, hence they are BuildRequires only.
+## (The -devel subpackage below keeps the pins to reproduce the build env.)
 ## Switch dependency checking off
 AutoReqProv: no
 
@@ -39,16 +56,17 @@ This is the module %{name}.
 Summary: %{name}-devel Package
 Group: Development/Gemini
 Requires: %{name} = %{version}-%{release}
-Requires: tdct 
-Requires: epics-base-devel 
-Requires: sequencer-devel 
-Requires: geminiRec-devel 
-Requires: xycom-devel 
-Requires: gemUtil-devel 
-Requires: pvload-devel 
-Requires: ecsmotorrecord-devel 
-Requires: abdf1-devel 
-Requires: drvSerial-devel 
+Requires: tdct
+Requires: re2c
+Requires: epics-base-devel     = 7.0.7-0.git.16f5056.el8
+Requires: sequencer-devel      = 2.2.9.e5e3615-4.git.3d01cdb.el8
+Requires: geminiRec-devel      = 4.1.13-3.git.75a1b03.el8
+Requires: xycom-devel          = 2.1.12-2.git.f891432.el8
+Requires: gemUtil-devel        = 1.6.13-2.git.87948f5.el8
+Requires: pvload-devel         = 1.2.1-7.git.a9b856d.el8
+Requires: ecsmotorrecord-devel = 2.8.22-0.git.fc62144.el8
+Requires: abdf1-devel          = 4.1.13-3.git.f4066df.el8
+Requires: drvSerial-devel      = 1.3-0.git.8718260.el8
 
 %description devel
 This is the module %{name}.
