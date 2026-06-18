@@ -30,15 +30,15 @@ Prefix: %{_prefix}
 ## below explicitly — do not relax the pins.
 BuildRequires: re2c
 BuildRequires: tdct
-BuildRequires: epics-base-devel     = 7.0.7-0.git.1159d86%{?dist}
-BuildRequires: sequencer-devel      = 2.2.9.e5e3615-4.git.cc55bbd%{?dist}
-BuildRequires: geminiRec-devel      = 4.1.13-3.git.b85c7fe%{?dist}
-BuildRequires: xycom-devel          = 2.1.12-2.git.535250e%{?dist}
-BuildRequires: gemUtil-devel        = 1.6.13-2.git.19379e6%{?dist}
-BuildRequires: pvload-devel         = 1.2.1-7.git.784d4d3%{?dist}
-BuildRequires: ecsmotorrecord-devel = 2.8.22-0.git.040fda6%{?dist}
-BuildRequires: abdf1-devel          = 4.1.13-3.git.4985781%{?dist}
-BuildRequires: drvSerial-devel      = 1.3-0.git.7a7681e%{?dist}
+BuildRequires: epics-base-devel     = 7.0.7-0.git.f9e3717%{?dist}
+BuildRequires: sequencer-devel      = 2.2.9.e5e3615-4.git.7b11f25%{?dist}
+BuildRequires: geminiRec-devel      = 4.1.13-3.git.6f58677%{?dist}
+BuildRequires: xycom-devel          = 2.1.12-2.git.e8d8b00%{?dist}
+BuildRequires: gemUtil-devel        = 1.6.13-2.git.9268b49%{?dist}
+BuildRequires: pvload-devel         = 1.2.1-7.git.6df46ce%{?dist}
+BuildRequires: ecsmotorrecord-devel = 2.8.22-0.git.3660238%{?dist}
+BuildRequires: abdf1-devel          = 4.1.13-3.git.380c0e6%{?dist}
+BuildRequires: drvSerial-devel      = 1.3-0.git.6e028c1%{?dist}
 ## No runtime Requires on the main package.
 ## The artifacts shipped here are cross-compiled for the VME target
 ## (RTEMS-mvme2700) and are network-booted by the board; nothing in this
@@ -58,15 +58,15 @@ Group: Development/Gemini
 Requires: %{name} = %{version}-%{release}
 Requires: tdct
 Requires: re2c
-Requires: epics-base-devel     = 7.0.7-0.git.1159d86%{?dist}
-Requires: sequencer-devel      = 2.2.9.e5e3615-4.git.cc55bbd%{?dist}
-Requires: geminiRec-devel      = 4.1.13-3.git.b85c7fe%{?dist}
-Requires: xycom-devel          = 2.1.12-2.git.535250e%{?dist}
-Requires: gemUtil-devel        = 1.6.13-2.git.19379e6%{?dist}
-Requires: pvload-devel         = 1.2.1-7.git.784d4d3%{?dist}
-Requires: ecsmotorrecord-devel = 2.8.22-0.git.040fda6%{?dist}
-Requires: abdf1-devel          = 4.1.13-3.git.4985781%{?dist}
-Requires: drvSerial-devel      = 1.3-0.git.7a7681e%{?dist}
+Requires: epics-base-devel     = 7.0.7-0.git.f9e3717%{?dist}
+Requires: sequencer-devel      = 2.2.9.e5e3615-4.git.7b11f25%{?dist}
+Requires: geminiRec-devel      = 4.1.13-3.git.6f58677%{?dist}
+Requires: xycom-devel          = 2.1.12-2.git.e8d8b00%{?dist}
+Requires: gemUtil-devel        = 1.6.13-2.git.9268b49%{?dist}
+Requires: pvload-devel         = 1.2.1-7.git.6df46ce%{?dist}
+Requires: ecsmotorrecord-devel = 2.8.22-0.git.3660238%{?dist}
+Requires: abdf1-devel          = 4.1.13-3.git.380c0e6%{?dist}
+Requires: drvSerial-devel      = 1.3-0.git.6e028c1%{?dist}
 
 %description devel
 This is the module %{name}.
