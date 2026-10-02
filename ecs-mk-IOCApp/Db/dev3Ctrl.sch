@@ -1,5 +1,5 @@
 [schematic2]
-uniq 24
+uniq 22
 [tools]
 [detail]
 w 1496 83 100 0 flink efanouts.efanouts#367.LNK1 1392 80 1600 80 outhier.flink.p
@@ -9,7 +9,7 @@ w 1024 307 100 0 n#3 ecsMotorControl.ecsMotorControl#383.Flink 992 304 1056 304 
 w -308 -125 100 0 n#4 inhier.flnk.P -520 -128 -96 -128 ecalcs.ecalcs#377.SLNK
 w 32 451 100 0 n#5 hwin.hwin#345.in -544 448 608 448 ecsMotorControl.ecsMotorControl#383.Simulation
 w 32 403 100 0 n#6 hwin.hwin#343.in -544 400 608 400 ecsMotorControl.ecsMotorControl#383.Debug
-w 8 595 100 0 n#7 inhier.state.P -592 592 608 592 ecsMotorControl.ecsMotorControl#383.Mode
+w 8 595 100 0 n#7 inhier.state.P -592 592 -592 1258 206 1258 ecalcs.ecalcs#396.INPA
 w -176 787 100 0 n#8 hwin.hwin#385.in -272 784 -80 784 -80 640 608 640 ecsMotorControl.ecsMotorControl#383.Encoder
 w -128 883 100 0 n#9 hwin.hwin#384.in -272 880 16 880 16 688 608 688 ecsMotorControl.ecsMotorControl#383.HandshakeInput
 w -100 995 100 0 n#10 hwin.hwin#386.in -272 992 72 992 96 992 96 736 608 736 ecsMotorControl.ecsMotorControl#383.PositionFeedback
@@ -20,14 +20,13 @@ w 1280 547 100 0 n#14 ecsMotorControl.ecsMotorControl#383.DevPosn 992 544 1568 5
 w 1280 499 100 0 n#15 ecsMotorControl.ecsMotorControl#383.InPosn 992 496 1568 496 outhier.inPos.p
 w 1280 451 100 0 n#16 ecsMotorControl.ecsMotorControl#383.Status 992 448 1568 448 outhier.curState.p
 w 1264 643 100 0 n#17 ecsMotorControl.ecsMotorControl#383.PositionDemand 992 640 1536 640 hwout.hwout#388.outp
-w 1448 315 100 0 n#18 ecalcouts.ecalcouts#394.INPA 1632 312 1264 312 1264 592 992 592 ecsMotorControl.ecsMotorControl#383.DriveEnable
-w 1448 1035 100 0 n#19 ecalcouts.ecalcouts#392.INPA 1632 1032 1264 1032 1264 736 992 736 ecsMotorControl.ecsMotorControl#383.NewPosition
-w 1635 1003 100 0 n#20 hwin.hwin#393.in 1632 1000 1632 1000 ecalcouts.ecalcouts#392.INPB
-w 1635 283 100 0 n#21 hwin.hwin#395.in 1632 280 1632 280 ecalcouts.ecalcouts#394.INPB
-w 2032 907 100 0 n#22 ecalcouts.ecalcouts#392.OUT 1952 904 2112 904 hwout.hwout#387.outp
-w 1960 187 100 0 n#23 ecalcouts.ecalcouts#394.OUT 1952 184 2120 184 hwout.hwout#391.outp
+w 1264 595 100 0 n#18 hwout.hwout#391.outp 1536 592 992 592 ecsMotorControl.ecsMotorControl#383.DriveEnable
+w 1264 739 100 0 n#19 hwout.hwout#387.outp 1536 736 992 736 ecsMotorControl.ecsMotorControl#383.NewPosition
+w 500 1066 100 0 n#20 ecalcs.ecalcs#396.VAL 494 1066 608 1066 608 592 ecsMotorControl.ecsMotorControl#383.Mode
+w -4 1226 100 0 n#21 hwin.hwin#397.in -4 1226 206 1226 ecalcs.ecalcs#396.INPB
 s 1104 -688 100 0 Pedro Gigoux, 14/May/99
 s 1104 -656 100 0 Added flink output
+s 120 1410 100 0 Autoclose gate: force Mode to STOP (0) while autocloseTimerState is ON
 [cell use]
 use outhier 1584 688 100 0 carMess
 xform 0 1552 688
@@ -62,14 +61,14 @@ p -911 443 100 0 -1 val(in):$(top)simulateL
 use hwin -736 359 100 0 hwin#343
 xform 0 -640 400
 p -912 395 100 0 -1 val(in):$(top)debugM
-use eborderC -608 -881 100 0 eborderC#258
-xform 0 1072 424
-p 2076 -724 100 1024 -1 author:Bob Wooff
-p 2068 -760 100 1024 -1 date:May 8, 1998
-p 2472 -760 80 768 -1 file:dev3Ctrl.sch
-p 2420 -608 150 256 -1 project:Enclosure Control System
-p 2240 -728 100 0 0 revision:$Revision: 1.1.1.1 $
-p 2416 -664 140 256 -1 title:Device Control w/o Velocity
+use eborderC -712 -929 100 0 eborderC#258
+xform 0 968 376
+p 1972 -772 100 1024 -1 author:Bob Wooff
+p 1964 -808 100 1024 -1 date:May 8, 1998
+p 2368 -808 80 768 -1 file:dev3Ctrl.sch
+p 2316 -656 150 256 -1 project:Enclosure Control System
+p 2136 -776 100 0 0 revision:$Revision: 1.1.1.1 $
+p 2312 -712 140 256 -1 title:Device Control w/o Velocity
 use ecsMotorControl 608 288 100 0 ecsMotorControl#383
 xform 0 800 560
 p 712 686 100 0 -1 set1:dev $(dev)
@@ -84,37 +83,22 @@ p -605 779 100 0 -1 val(in):@$(abC) $(enc)
 use hwin -464 976 100 0 hwin#386
 xform 0 -368 992
 p -643 985 100 0 -1 val(in):@$(abC) $(posdmd)
-use hwout 2112 888 100 0 hwout#387
-xform 0 2208 904
-p 2319 898 100 0 -1 val(outp):@$(abC) $(hs) $(newpos)
+use hwout 1536 720 100 0 hwout#387
+xform 0 1632 736
+p 1743 730 100 0 -1 val(outp):@$(abC) $(hs) $(newpos)
 use hwout 1536 624 100 0 hwout#388
 xform 0 1632 640
 p 1741 637 100 0 -1 val(outp):@$(abC) $(posdmd)
-use hwout 2120 168 100 0 hwout#391
-xform 0 2216 184
-p 2331 179 100 0 -1 val(outp):@$(abC) $(hs) $(drvena)
-use ecalcouts 1632 872 100 0 ecalcouts#392
-xform 0 1792 968
-p 1680 1080 100 0 1 CALC:B?0:A
-p 1680 1048 100 0 1 OOPT:Every Time
-p 1680 1016 100 0 1 DOPT:Use CALC
-p 1680 904 100 0 1 DTYP:AB DF1 serial
-p 1520 1032 75 1024 -1 pproc(INPA):CP
-p 1520 1000 75 1024 -1 pproc(INPB):CP
-p 1700 1152 100 1024 -1 name:$(top)$(dev)NewPosGate
-use hwin 1440 984 100 0 hwin#393
-xform 0 1536 1000
-p 1300 1000 100 0 -1 val(in):$(top)autocloseTimerState
-use ecalcouts 1632 152 100 0 ecalcouts#394
-xform 0 1792 248
-p 1680 360 100 0 1 CALC:B?0:A
-p 1680 328 100 0 1 OOPT:Every Time
-p 1680 296 100 0 1 DOPT:Use CALC
-p 1680 184 100 0 1 DTYP:AB DF1 serial
-p 1520 312 75 1024 -1 pproc(INPA):CP
-p 1520 280 75 1024 -1 pproc(INPB):CP
-p 1700 432 100 1024 -1 name:$(top)$(dev)DrvEnaGate
-use hwin 1440 264 100 0 hwin#395
-xform 0 1536 280
-p 1300 280 100 0 -1 val(in):$(top)autocloseTimerState
+use hwout 1536 576 100 0 hwout#391
+xform 0 1632 592
+p 1747 587 100 0 -1 val(outp):@$(abC) $(hs) $(drvena)
+use ecalcs 206 785 100 0 ecalcs#396
+xform 0 350 1050
+p 270 1114 100 0 1 CALC:B?0:A
+p 206 1258 75 1024 -1 pproc(INPA):CP
+p 206 1226 75 1024 -1 pproc(INPB):CP
+p 370 1290 100 1024 -1 name:$(top)$(dev)ModeGate
+use hwin -196 1185 100 0 hwin#397
+xform 0 -100 1226
+p -360 1226 100 0 -1 val(in):$(top)autocloseTimerState
 [comments]
