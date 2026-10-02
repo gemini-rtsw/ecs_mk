@@ -22,12 +22,12 @@ w 1280 451 100 0 n#16 ecsMotorControl.ecsMotorControl#383.Status 992 448 1568 44
 w 1264 643 100 0 n#17 ecsMotorControl.ecsMotorControl#383.PositionDemand 992 640 1536 640 hwout.hwout#388.outp
 w 1264 595 100 0 n#18 hwout.hwout#391.outp 1536 592 992 592 ecsMotorControl.ecsMotorControl#383.DriveEnable
 w 1264 739 100 0 n#19 hwout.hwout#387.outp 1536 736 992 736 ecsMotorControl.ecsMotorControl#383.NewPosition
-w 500 1066 100 0 n#7 ecalcouts.ecalcouts#396.OUT 512 1066 560 1066 560 592 junction
-w -4 1226 100 0 n#21 hwin.hwin#397.in -4 1226 206 1226 ecalcouts.ecalcouts#396.INPA
+w 540 700 100 0 n#7 ecalcouts.ecalcouts#396.OUT 526 817 560 817 560 592 junction
+w 100 1229 100 0 n#21 hwin.hwin#397.in -4 1226 190 1226 190 945 206 945 ecalcouts.ecalcouts#396.INPA
 s 1104 -688 100 0 Pedro Gigoux, 14/May/99
 s 1104 -656 100 0 Added flink output
-s 120 1410 100 0 Autoclose gate: while autocloseTimerState is ON, write Mode = STOP (0)
-s 120 1378 100 0 on change and every 0.5 s, so a command cannot leave the motor in MOVE
+s 120 1130 100 0 Autoclose gate: while autocloseTimerState is ON, write Mode = STOP (0)
+s 120 1098 100 0 on change and every 0.5 s, so a command cannot leave the motor in MOVE
 [cell use]
 use outhier 1584 688 100 0 carMess
 xform 0 1552 688
@@ -95,13 +95,13 @@ xform 0 1632 592
 p 1747 587 100 0 -1 val(outp):@$(abC) $(hs) $(drvena)
 use ecalcouts 206 785 100 0 ecalcouts#396
 xform 0 366 881
-p 270 1114 100 0 1 CALC:A
-p 270 1082 100 0 1 OOPT:When Non-zero
-p 270 1050 100 0 1 DOPT:Use OCAL
-p 270 1018 100 0 1 OCAL:0
-p 270 986 100 0 1 SCAN:.5 second
-p 206 1226 75 1024 -1 pproc(INPA):CP
-p 370 1290 100 1024 -1 name:$(top)$(dev)ModeGate
+p 254 993 100 0 1 CALC:A
+p 254 961 100 0 1 OOPT:When Non-zero
+p 254 929 100 0 1 DOPT:Use OCAL
+p 254 897 100 0 1 OCAL:0
+p 254 865 100 0 1 SCAN:.5 second
+p 94 945 75 1024 -1 pproc(INPA):CP
+p 274 1065 100 1024 -1 name:$(top)$(dev)ModeGate
 use hwin -196 1185 100 0 hwin#397
 xform 0 -100 1226
 p -360 1226 100 0 -1 val(in):$(top)autocloseTimerState
