@@ -9,7 +9,7 @@ w 1024 307 100 0 n#3 ecsMotorControl.ecsMotorControl#383.Flink 992 304 1056 304 
 w -308 -125 100 0 n#4 inhier.flnk.P -520 -128 -96 -128 ecalcs.ecalcs#377.SLNK
 w 32 451 100 0 n#5 hwin.hwin#345.in -544 448 608 448 ecsMotorControl.ecsMotorControl#383.Simulation
 w 32 403 100 0 n#6 hwin.hwin#343.in -544 400 608 400 ecsMotorControl.ecsMotorControl#383.Debug
-w 8 595 100 0 n#7 inhier.state.P -592 592 -592 1258 206 1258 ecalcs.ecalcs#396.INPA
+w 8 595 100 0 n#7 inhier.state.P -592 592 608 592 ecsMotorControl.ecsMotorControl#383.Mode
 w -176 787 100 0 n#8 hwin.hwin#385.in -272 784 -80 784 -80 640 608 640 ecsMotorControl.ecsMotorControl#383.Encoder
 w -128 883 100 0 n#9 hwin.hwin#384.in -272 880 16 880 16 688 608 688 ecsMotorControl.ecsMotorControl#383.HandshakeInput
 w -100 995 100 0 n#10 hwin.hwin#386.in -272 992 72 992 96 992 96 736 608 736 ecsMotorControl.ecsMotorControl#383.PositionFeedback
@@ -22,11 +22,12 @@ w 1280 451 100 0 n#16 ecsMotorControl.ecsMotorControl#383.Status 992 448 1568 44
 w 1264 643 100 0 n#17 ecsMotorControl.ecsMotorControl#383.PositionDemand 992 640 1536 640 hwout.hwout#388.outp
 w 1264 595 100 0 n#18 hwout.hwout#391.outp 1536 592 992 592 ecsMotorControl.ecsMotorControl#383.DriveEnable
 w 1264 739 100 0 n#19 hwout.hwout#387.outp 1536 736 992 736 ecsMotorControl.ecsMotorControl#383.NewPosition
-w 500 1066 100 0 n#20 ecalcs.ecalcs#396.VAL 494 1066 608 1066 608 592 ecsMotorControl.ecsMotorControl#383.Mode
-w -4 1226 100 0 n#21 hwin.hwin#397.in -4 1226 206 1226 ecalcs.ecalcs#396.INPB
+w 540 700 100 0 n#7 ecalcouts.ecalcouts#396.OUT 526 817 560 817 560 592 junction
+w 100 1229 100 0 n#21 hwin.hwin#397.in -4 1226 190 1226 190 945 206 945 ecalcouts.ecalcouts#396.INPA
 s 1104 -688 100 0 Pedro Gigoux, 14/May/99
 s 1104 -656 100 0 Added flink output
-s 120 1410 100 0 Autoclose gate: force Mode to STOP (0) while autocloseTimerState is ON
+s 120 1130 100 0 Autoclose gate: while autocloseTimerState is ON, write Mode = STOP (0)
+s 120 1098 100 0 on change and every 0.5 s, so a command cannot leave the motor in MOVE
 [cell use]
 use outhier 1584 688 100 0 carMess
 xform 0 1552 688
@@ -92,12 +93,15 @@ p 1741 637 100 0 -1 val(outp):@$(abC) $(posdmd)
 use hwout 1536 576 100 0 hwout#391
 xform 0 1632 592
 p 1747 587 100 0 -1 val(outp):@$(abC) $(hs) $(drvena)
-use ecalcs 206 785 100 0 ecalcs#396
-xform 0 350 1050
-p 270 1114 100 0 1 CALC:B?0:A
-p 206 1258 75 1024 -1 pproc(INPA):CP
-p 206 1226 75 1024 -1 pproc(INPB):CP
-p 370 1290 100 1024 -1 name:$(top)$(dev)ModeGate
+use ecalcouts 206 785 100 0 ecalcouts#396
+xform 0 366 881
+p 254 993 100 0 1 CALC:A
+p 254 961 100 0 1 OOPT:When Non-zero
+p 254 929 100 0 1 DOPT:Use OCAL
+p 254 897 100 0 1 OCAL:0
+p 254 865 100 0 1 SCAN:.5 second
+p 94 945 75 1024 -1 pproc(INPA):CP
+p 274 1065 100 1024 -1 name:$(top)$(dev)ModeGate
 use hwin -196 1185 100 0 hwin#397
 xform 0 -100 1226
 p -360 1226 100 0 -1 val(in):$(top)autocloseTimerState
