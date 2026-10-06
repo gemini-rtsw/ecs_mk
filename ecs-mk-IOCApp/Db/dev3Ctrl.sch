@@ -9,7 +9,7 @@ w 1024 307 100 0 n#3 ecsMotorControl.ecsMotorControl#383.Flink 992 304 1056 304 
 w -308 -125 100 0 n#4 inhier.flnk.P -520 -128 -96 -128 ecalcs.ecalcs#377.SLNK
 w 32 451 100 0 n#5 hwin.hwin#345.in -544 448 608 448 ecsMotorControl.ecsMotorControl#383.Simulation
 w 32 403 100 0 n#6 hwin.hwin#343.in -544 400 608 400 ecsMotorControl.ecsMotorControl#383.Debug
-w 8 595 100 0 n#7 inhier.state.P -592 592 -592 1114 190 1114 ecalcouts.ecalcouts#396.INPA
+w 8 595 100 0 n#7 inhier.state.P -592 592 608 592 ecsMotorControl.ecsMotorControl#383.Mode
 w -176 787 100 0 n#8 hwin.hwin#385.in -272 784 -80 784 -80 640 608 640 ecsMotorControl.ecsMotorControl#383.Encoder
 w -128 883 100 0 n#9 hwin.hwin#384.in -272 880 16 880 16 688 608 688 ecsMotorControl.ecsMotorControl#383.HandshakeInput
 w -100 995 100 0 n#10 hwin.hwin#386.in -272 992 72 992 96 992 96 736 608 736 ecsMotorControl.ecsMotorControl#383.PositionFeedback
@@ -23,10 +23,10 @@ w 1264 643 100 0 n#17 ecsMotorControl.ecsMotorControl#383.PositionDemand 992 640
 w 1264 595 100 0 n#18 hwout.hwout#391.outp 1536 592 992 592 ecsMotorControl.ecsMotorControl#383.DriveEnable
 w 1264 739 100 0 n#19 hwout.hwout#387.outp 1536 736 992 736 ecsMotorControl.ecsMotorControl#383.NewPosition
 w 550 986 100 0 n#20 ecalcouts.ecalcouts#396.OUT 510 986 608 986 608 592 ecsMotorControl.ecsMotorControl#383.Mode
-w 100 1082 100 0 n#21 hwin.hwin#397.in 46 1082 190 1082 ecalcouts.ecalcouts#396.INPB
+w 100 1114 100 0 n#21 hwin.hwin#397.in 46 1114 190 1114 ecalcouts.ecalcouts#396.INPA
 s 1104 -688 100 0 Pedro Gigoux, 14/May/99
 s 1104 -656 100 0 Added flink output
-s 120 1410 100 0 Autoclose gate: force Mode to STOP (0) while autocloseTimerState is ON
+s 60 1430 100 0 Autoclose override: push Mode=STOP (0) to the motor while autocloseTimerState is ON
 [cell use]
 use outhier 1584 688 100 0 carMess
 xform 0 1552 688
@@ -94,13 +94,15 @@ xform 0 1632 592
 p 1747 587 100 0 -1 val(outp):@$(abC) $(hs) $(drvena)
 use ecalcouts 190 954 100 0 ecalcouts#396
 xform 0 350 1050
-p 250 1150 100 0 1 CALC:B?0:A
-p 250 1120 100 0 1 OOPT:Every Time
-p 250 1090 100 0 1 DOPT:Use CALC
+p 250 1170 100 0 1 CALC:A
+p 250 1140 100 0 1 OCAL:0
+p 250 1110 100 0 1 DOPT:Use OCAL
+p 250 1080 100 0 1 OOPT:When Non-zero
+p 250 1050 100 0 1 SCAN:.5 second
 p 190 1114 75 1024 -1 pproc(INPA):CP
-p 190 1082 75 1024 -1 pproc(INPB):CP
-p 380 1200 100 1024 -1 name:$(top)$(dev)ModeGate
-use hwin -146 1041 100 0 hwin#397
-xform 0 -50 1082
-p -310 1082 100 0 -1 val(in):$(top)autocloseTimerState
+p 510 986 75 1024 -1 pproc(OUT):PP
+p 380 1210 100 1024 -1 name:$(top)$(dev)AutoCloseStop
+use hwin -146 1073 100 0 hwin#397
+xform 0 -50 1114
+p -310 1114 100 0 -1 val(in):$(top)autocloseTimerState
 [comments]
