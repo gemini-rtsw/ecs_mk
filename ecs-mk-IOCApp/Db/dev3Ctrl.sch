@@ -4,28 +4,27 @@ uniq 22
 [detail]
 w 1496 83 100 0 flink efanouts.efanouts#367.LNK1 1392 80 1600 80 outhier.flink.p
 w -144 259 100 0 n#1 ecalcs.ecalcs#377.INPA -96 256 -192 256 -192 320 224 320 224 64 192 64 ecalcs.ecalcs#377.VAL
-w 256 99 100 0 n#2 ecalcs.ecalcs#377.FLNK 192 96 320 96 320 304 608 304 ecsMotorControl.ecsMotorControl#383.Slink
-w 1024 307 100 0 n#3 ecsMotorControl.ecsMotorControl#383.Flink 992 304 1056 304 1056 0 1152 0 efanouts.efanouts#367.SLNK
+w 256 99 100 0 n#2 ecalcs.ecalcs#377.FLNK 192 96 320 96 320 304 608 304 ecsMotorControlAC.ecsMotorControlAC#383.Slink
+w 1024 307 100 0 n#3 ecsMotorControlAC.ecsMotorControlAC#383.Flink 992 304 1056 304 1056 0 1152 0 efanouts.efanouts#367.SLNK
 w -308 -125 100 0 n#4 inhier.flnk.P -520 -128 -96 -128 ecalcs.ecalcs#377.SLNK
-w 32 451 100 0 n#5 hwin.hwin#345.in -544 448 608 448 ecsMotorControl.ecsMotorControl#383.Simulation
-w 32 403 100 0 n#6 hwin.hwin#343.in -544 400 608 400 ecsMotorControl.ecsMotorControl#383.Debug
-w 8 595 100 0 n#7 inhier.state.P -592 592 608 592 ecsMotorControl.ecsMotorControl#383.Mode
-w -176 787 100 0 n#8 hwin.hwin#385.in -272 784 -80 784 -80 640 608 640 ecsMotorControl.ecsMotorControl#383.Encoder
-w -128 883 100 0 n#9 hwin.hwin#384.in -272 880 16 880 16 688 608 688 ecsMotorControl.ecsMotorControl#383.HandshakeInput
-w -100 995 100 0 n#10 hwin.hwin#386.in -272 992 72 992 96 992 96 736 608 736 ecsMotorControl.ecsMotorControl#383.PositionFeedback
-w -152 1203 100 0 n#11 inhier.pos.P -464 1200 160 1200 160 784 608 784 ecsMotorControl.ecsMotorControl#383.Position
-w 1280 787 100 0 n#12 ecsMotorControl.ecsMotorControl#383.Response 992 784 1568 784 outhier.car.p
-w 1280 691 100 0 n#13 ecsMotorControl.ecsMotorControl#383.Message 992 688 1568 688 outhier.carMess.p
-w 1280 547 100 0 n#14 ecsMotorControl.ecsMotorControl#383.DevPosn 992 544 1568 544 outhier.curPos.p
-w 1280 499 100 0 n#15 ecsMotorControl.ecsMotorControl#383.InPosn 992 496 1568 496 outhier.inPos.p
-w 1280 451 100 0 n#16 ecsMotorControl.ecsMotorControl#383.Status 992 448 1568 448 outhier.curState.p
-w 1264 643 100 0 n#17 ecsMotorControl.ecsMotorControl#383.PositionDemand 992 640 1536 640 hwout.hwout#388.outp
-w 1264 595 100 0 n#18 hwout.hwout#391.outp 1536 592 992 592 ecsMotorControl.ecsMotorControl#383.DriveEnable
-w 1264 739 100 0 n#19 hwout.hwout#387.outp 1536 736 992 736 ecsMotorControl.ecsMotorControl#383.NewPosition
-w 100 1114 100 0 n#21 hwin.hwin#397.in 46 1114 190 1114 ecalcouts.ecalcouts#396.INPA
+w 32 451 100 0 n#5 hwin.hwin#345.in -544 448 608 448 ecsMotorControlAC.ecsMotorControlAC#383.Simulation
+w 32 403 100 0 n#6 hwin.hwin#343.in -544 400 608 400 ecsMotorControlAC.ecsMotorControlAC#383.Debug
+w 8 595 100 0 n#7 inhier.state.P -592 592 608 592 ecsMotorControlAC.ecsMotorControlAC#383.Mode
+w -176 787 100 0 n#8 hwin.hwin#385.in -272 784 -80 784 -80 640 608 640 ecsMotorControlAC.ecsMotorControlAC#383.Encoder
+w -128 883 100 0 n#9 hwin.hwin#384.in -272 880 16 880 16 688 608 688 ecsMotorControlAC.ecsMotorControlAC#383.HandshakeInput
+w -100 995 100 0 n#10 hwin.hwin#386.in -272 992 72 992 96 992 96 736 608 736 ecsMotorControlAC.ecsMotorControlAC#383.PositionFeedback
+w -152 1203 100 0 n#11 inhier.pos.P -464 1200 160 1200 160 784 608 784 ecsMotorControlAC.ecsMotorControlAC#383.Position
+w 1280 787 100 0 n#12 ecsMotorControlAC.ecsMotorControlAC#383.Response 992 784 1568 784 outhier.car.p
+w 1280 691 100 0 n#13 ecsMotorControlAC.ecsMotorControlAC#383.Message 992 688 1568 688 outhier.carMess.p
+w 1280 547 100 0 n#14 ecsMotorControlAC.ecsMotorControlAC#383.DevPosn 992 544 1568 544 outhier.curPos.p
+w 1280 499 100 0 n#15 ecsMotorControlAC.ecsMotorControlAC#383.InPosn 992 496 1568 496 outhier.inPos.p
+w 1280 451 100 0 n#16 ecsMotorControlAC.ecsMotorControlAC#383.Status 992 448 1568 448 outhier.curState.p
+w 1264 643 100 0 n#17 ecsMotorControlAC.ecsMotorControlAC#383.PositionDemand 992 640 1536 640 hwout.hwout#388.outp
+w 1264 595 100 0 n#18 hwout.hwout#391.outp 1536 592 992 592 ecsMotorControlAC.ecsMotorControlAC#383.DriveEnable
+w 1264 739 100 0 n#19 hwout.hwout#387.outp 1536 736 992 736 ecsMotorControlAC.ecsMotorControlAC#383.NewPosition
 s 1104 -688 100 0 Pedro Gigoux, 14/May/99
 s 1104 -656 100 0 Added flink output
-s 60 1430 100 0 Autoclose override: push Mode=STOP (0) to the motor while autocloseTimerState is ON
+s 60 1430 100 0 Uses ecsMotorControlAC: NewPosition/DriveEnable gated to 0 while autocloseTimerState is ON
 [cell use]
 use outhier 1584 688 100 0 carMess
 xform 0 1552 688
@@ -68,7 +67,7 @@ p 2368 -808 80 768 -1 file:dev3Ctrl.sch
 p 2316 -656 150 256 -1 project:Enclosure Control System
 p 2136 -776 100 0 0 revision:$Revision: 1.1.1.1 $
 p 2312 -712 140 256 -1 title:Device Control w/o Velocity
-use ecsMotorControl 608 288 100 0 ecsMotorControl#383
+use ecsMotorControlAC 608 288 100 0 ecsMotorControlAC#383
 xform 0 800 560
 p 712 686 100 0 -1 set1:dev $(dev)
 p 712 656 100 0 -1 set4:motor $(motor)
@@ -91,17 +90,4 @@ p 1741 637 100 0 -1 val(outp):@$(abC) $(posdmd)
 use hwout 1536 576 100 0 hwout#391
 xform 0 1632 592
 p 1747 587 100 0 -1 val(outp):@$(abC) $(hs) $(drvena)
-use ecalcouts 190 954 100 0 ecalcouts#396
-xform 0 350 1050
-p 250 1170 100 0 1 CALC:A
-p 250 1140 100 0 1 OCAL:0
-p 250 1110 100 0 1 DOPT:Use OCAL
-p 250 1080 100 0 1 OOPT:When Non-zero
-p 250 1050 100 0 1 SCAN:.5 second
-p 190 1114 75 1024 -1 pproc(INPA):CP
-p 220 1016 100 0 -1 OUT:$(top)$(motor)motor.MODE PP
-p 380 1210 100 1024 -1 name:$(top)$(dev)AutoCloseStop
-use hwin -146 1073 100 0 hwin#397
-xform 0 -50 1114
-p -310 1114 100 0 -1 val(in):$(top)autocloseTimerState
 [comments]
