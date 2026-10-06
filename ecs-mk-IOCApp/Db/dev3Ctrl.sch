@@ -22,7 +22,6 @@ w 1280 451 100 0 n#16 ecsMotorControl.ecsMotorControl#383.Status 992 448 1568 44
 w 1264 643 100 0 n#17 ecsMotorControl.ecsMotorControl#383.PositionDemand 992 640 1536 640 hwout.hwout#388.outp
 w 1264 595 100 0 n#18 hwout.hwout#391.outp 1536 592 992 592 ecsMotorControl.ecsMotorControl#383.DriveEnable
 w 1264 739 100 0 n#19 hwout.hwout#387.outp 1536 736 992 736 ecsMotorControl.ecsMotorControl#383.NewPosition
-w 550 986 100 0 n#20 ecalcouts.ecalcouts#396.OUT 510 986 608 986 608 592 ecsMotorControl.ecsMotorControl#383.Mode
 w 100 1114 100 0 n#21 hwin.hwin#397.in 46 1114 190 1114 ecalcouts.ecalcouts#396.INPA
 s 1104 -688 100 0 Pedro Gigoux, 14/May/99
 s 1104 -656 100 0 Added flink output
@@ -100,7 +99,7 @@ p 250 1110 100 0 1 DOPT:Use OCAL
 p 250 1080 100 0 1 OOPT:When Non-zero
 p 250 1050 100 0 1 SCAN:.5 second
 p 190 1114 75 1024 -1 pproc(INPA):CP
-p 510 986 75 1024 -1 pproc(OUT):PP
+p 220 1016 100 0 -1 OUT:$(top)$(motor)motor.MODE PP
 p 380 1210 100 1024 -1 name:$(top)$(dev)AutoCloseStop
 use hwin -146 1073 100 0 hwin#397
 xform 0 -50 1114
