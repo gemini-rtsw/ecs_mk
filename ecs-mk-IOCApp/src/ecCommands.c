@@ -1345,7 +1345,7 @@ long parkCAD( struct cadRecord *pcad )
           {                                           /* bottom is above top */
             if (debug)
               errlogSevPrintf(errlogInfo, "parkCAD: Tsh(%3.1f) + ovrlp(%3.1f) must be <= Bsh (%3.1f)\n", tsParkDef, overlap, bsParkDef);
-            sprintf(pcad->mess, "Tsh(%3.1f) + ovrlp(%3.1f) must be above Bsh(%3.1f)\n", tsParkDef, overlap, bsParkDef);
+            sprintf(pcad->mess, "Tsh %3.1f+ovlp %3.1f must be >= Bsh %3.1f", tsParkDef, overlap, bsParkDef);
             ret = CAD_REJECT;
           }
           else ret = CAD_ACCEPT;
@@ -1545,7 +1545,7 @@ long parkDomeCad( struct cadRecord *pcad )
       {                                     /* argument out of limits */
         if (debug)
           errlogSevPrintf(errlogInfo, "parkDomeCad: Park mode argument out of limits\n");
-        sprintf(pcad->mess,"Argument must be DEFAULT, POSITION, or ACCESSn");
+        sprintf(pcad->mess,"Must be DEFAULT, POSITION or ACCESS1-3");
         ret = CAD_REJECT;
       }
       else
@@ -1816,7 +1816,7 @@ long parkShtrsCad( struct cadRecord *pcad )
           {                                          /* bottom is above top */
             if (debug)
               errlogSevPrintf(errlogInfo, "parkShtrsCad: Tsh(%3.1f) + ovrlp(%3.1f) must be <= Bsh (%3.1f)\n", dmdPosTs, overlap, dmdPosBs);
-            sprintf(pcad->mess, "Tsh(%3.1f) + ovrlp(%3.1f) must be above Bsh(%3.1f)\n", dmdPosTs, overlap, dmdPosBs);
+            sprintf(pcad->mess, "Tsh %3.1f+ovlp %3.1f must be >= Bsh %3.1f", dmdPosTs, overlap, dmdPosBs);
             ret = CAD_REJECT;
           }
           else
@@ -2855,7 +2855,7 @@ long toleranceCAD( struct cadRecord *pcad )
       {                                            /* all argument are blank */
         if (debug)
             errlogSevPrintf(errlogInfo, "toleranceCAD: requires at least one argument\n");
-        sprintf(pcad->mess,"Requires at least one tolerance argument");
+        sprintf(pcad->mess,"Requires at least one tolerance value");
         ret = CAD_REJECT;
       }
 
